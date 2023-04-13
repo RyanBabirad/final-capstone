@@ -4,7 +4,10 @@ import com.techelevator.model.Landlord;
 
 public interface LandlordDao {
 
-    boolean createLandlord(String firstName, String lastName, String email, String phone);
+    //boolean createLandlord(int userId, String firstName, String lastName, String email, String phone);
+    boolean createLandlord(int landlordId, Landlord landlord);
+
+    int getUserId(int userId);
 
     Landlord getLandLordById(int landLordId);
 

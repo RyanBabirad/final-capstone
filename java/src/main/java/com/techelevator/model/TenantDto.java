@@ -1,25 +1,20 @@
 package com.techelevator.model;
 
-public class LandlordDto {
+public class TenantDto {
 
-    private int landLordId;
+    private int tenantId;
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
     private int userId;
 
-    // ?
-    public LandlordDto() {
-        this.setLandLordId(userId);
+    public int getTenantId() {
+        return tenantId;
     }
 
-    public int getLandLordId() {
-        return landLordId;
-    }
-
-    public void setLandLordId(int landLordId) {
-        this.landLordId = landLordId;
+    public void setTenantId(int tenantId) {
+        this.tenantId = tenantId;
     }
 
     public String getFirstName() {

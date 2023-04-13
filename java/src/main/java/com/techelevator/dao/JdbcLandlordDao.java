@@ -16,14 +16,21 @@ public class JdbcLandlordDao implements LandlordDao {
     }
 
     @Override
-    public boolean createLandlord(String firstName, String lastName, String email, String phone) {
+    public boolean createLandlord(int landlordId, Landlord landlord) { //int userId, String firstName, String lastName, String email, String phone) {
 
-        String sql = "INSERT into landlord (first_name, last_name, email, phone) VALUES (?, ?, ?, ?) RETURNING landlord_id;";
-        Integer newLandLordId;
-        newLandLordId = jdbcTemplate.queryForObject(sql, Integer.class, firstName, lastName, email, phone);
+        String sql = "INSERT into landlord (landlord_id, first_name, last_name, email, phone) VALUES ((SELECT user_id from users where user_id = ?), ?, ?, ?, ?);";
+        int newId = jdbcTemplate.update(sql, landlord.getLandLordId(), landlord.getFirstName(), landlord.getLastName(), landlord.getEmail(), landlord.getPhone());
 
+        return newId == 1;
+    }
 
-        return newLandLordId != null;
+    @Override
+    public int getUserId(int userId) {
+
+        String sql = "SELECT user_id from users WHERE username = ?;";
+        userId = jdbcTemplate.queryForObject(sql, int.class, userId);
+
+        return userId;
     }
 
     @Override
@@ -45,7 +52,7 @@ public class JdbcLandlordDao implements LandlordDao {
     private Landlord mapRowToLandlord(SqlRowSet rowSet) {
         Landlord landlord = new Landlord();
 
-        landlord.setLandLordId(rowSet.getInt("landlord_id"));
+        landlord.setLandLordId(rowSet.getInt("user_id"));
         landlord.setFirstName(rowSet.getString("firstName"));
         landlord.setLastName(rowSet.getString("lastName"));
         landlord.setEmail(rowSet.getString("email"));
@@ -54,6 +61,8 @@ public class JdbcLandlordDao implements LandlordDao {
 
         return landlord;
     }
+
+
 
 
 

@@ -4,7 +4,7 @@ import com.techelevator.model.Tenant;
 
 public interface TenantDao {
 
-    Tenant createTenant(Tenant tenant);
+    boolean createTenant(int tenantId, Tenant tenant);
 
     Tenant getTenantById(int tenantId);
 
