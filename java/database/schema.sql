@@ -1,9 +1,9 @@
---BEGIN TRANSACTION;
+BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS rent;
 DROP TABLE IF EXISTS staff_assignments;
 DROP TABLE IF EXISTS assignments;
-DROP TABLE IF EXISTS maintenance_request;
+DROP TABLE IF EXISTS maintenence_request;
 DROP TABLE IF EXISTS staff;
 DROP TABLE IF EXISTS tenant;
 DROP TABLE IF EXISTS property;
@@ -18,15 +18,31 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
+GRANT ALL
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_owner;
+
+GRANT ALL
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_owner;
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_appuser;
+
+GRANT USAGE, SELECT
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_appuser;
+
 CREATE TABLE landlord (
 	landlord_id int,
 	first_name varchar(20) NOT NULL,
 	last_name varchar(20) NOT NULL,
 	email varchar(50) NOT NULL,
 	phone varchar(12) NOT NULL,
-	user_id int,
+	--user_id int,
 	CONSTRAINT pk_landlord PRIMARY KEY (landlord_id),
-	CONSTRAINT fk_users_landlord FOREIGN KEY (user_id) REFERENCES users (user_id)
+	CONSTRAINT fk_users_landlord FOREIGN KEY (landlord_id) REFERENCES users (user_id)
 
 );
 
@@ -116,7 +132,8 @@ CREATE TABLE rent (
 );
 /*
 SELECT * FROM users
-JOIN landlord on landlord.landlord_id = users.user_id;
+JOIN landlord on users.user_id = landlord.landlord_id;
+WHERE user_id = '3';
 SELECT * FROM landlord;
 SELECT * FROM property;
 SELECT * FROM tenant
@@ -127,6 +144,41 @@ SELECT * FROM maintenence_request;
 SELECT * FROM assignments;
 SELECT * FROM staff_assignments;
 SELECT * FROM rent;
+SELECT * FROM landlord
+JOIN users on landlord.landlord_id = users.user_id;
 */
 
---ROLLBACK;
+
+
+INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+
+
+GRANT ALL
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_owner;
+
+GRANT ALL
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_owner;
+
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_appuser;
+
+GRANT USAGE, SELECT
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_appuser;
+
+
+commit;
+
+
+
+
+
+
+
+
+
