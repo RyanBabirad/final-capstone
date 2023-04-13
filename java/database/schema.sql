@@ -148,34 +148,11 @@ SELECT * FROM landlord
 JOIN users on landlord.landlord_id = users.user_id;
 */
 
---commit;
 
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
-
-
--- INSERT into landlord (first_name, last_name, email, phone, user_id) VALUES ('Ryan', 'Babs', 'test@test.com', '4126168642', '3') RETURNING landlord_id;
--- INSERT into landlord (landlord_id, first_name, last_name, email, phone) VALUES ((select user_id from users where user_id = '3'), 'Colin', 'Baker', 'test@test.com', '4126168642'); --RETURNING landlord_id;
-
-
-INSERT into landlord (landlord_id, first_name, last_name, email, phone) VALUES ((SELECT user_id from users where user_id = 4), 'Ryan', 'Babs', 'test@test.com', '4124124123'); --RETURNING landlord_id;
-
-
-INSERT into landlord (landlord_id, first_name, last_name, email, phone) VALUES (DEFAULT, 'Ryan', 'Babs', 'test@test.com', '4124124123');
-
-
-
-
-
-
---ROLLBACK;
-
-
-
-CREATE USER final_capstone_owner
-WITH PASSWORD 'finalcapstone';
 
 GRANT ALL
 ON ALL TABLES IN SCHEMA public
@@ -185,8 +162,6 @@ GRANT ALL
 ON ALL SEQUENCES IN SCHEMA public
 TO final_capstone_owner;
 
-CREATE USER final_capstone_appuser
-WITH PASSWORD 'finalcapstone';
 
 GRANT SELECT, INSERT, UPDATE, DELETE
 ON ALL TABLES IN SCHEMA public
@@ -195,6 +170,9 @@ TO final_capstone_appuser;
 GRANT USAGE, SELECT
 ON ALL SEQUENCES IN SCHEMA public
 TO final_capstone_appuser;
+
+
+commit;
 
 
 
