@@ -1,15 +1,12 @@
 <template>
-  <section>
-    <router-view />
-  </section>
+  <section></section>
 </template>
 
 <script>
-
-
 export default {
-  
+    
 };
-
 </script>
 
+<style>
+</style>
