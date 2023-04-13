@@ -1,27 +1,35 @@
 <template>
-  <div>
-    <the-header />
-    <br>
-    <!-- map component --> 
-    <property-list />
+  <div class="columns">
+    <rental-map class="column map" />
+    <property-list class="column properties" />
   </div>
 </template>
 
 <script>
+
 import PropertyList from '../components/PropertyList.vue';
-import TheHeader from '../components/TheHeader.vue';
+import RentalMap from '../components/RentalMap.vue';
 
 export default {
   name: "home-view",
   components: {
-    TheHeader,
-    PropertyList
-    
+    PropertyList,
+    RentalMap,
+
   }
 };
 </script>
 
 
 <style scoped>
+.properties {
+  margin-top: 35px;
+}
+.map {
+  order: 1;
+  border-left: 20px double #B22727;
+  margin-top: 35px;
+
+}
 
 </style>

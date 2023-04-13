@@ -1,13 +1,13 @@
 <template>
-  <section class="properties">
+  <section id="properties">
     <div class="loading" v-if="isLoading">
-      <img src="" />
+      <img src="../assets/ppreflex.gif" />
     </div>
-    <div
-      class="property"
-      v-for="property in properties"
-      v-bind:key="property.zpid"
-    >{{ property.streetAddress }}</div>
+    <div class="property" v-for="property in properties" v-bind:key="property.zpid">
+      {{ property.streetAddress }}
+      {{ property.city }}
+      
+    </div>
   </section>
 </template>
 
@@ -37,5 +37,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#properties {
+  display: flex;
+  justify-content: flex-start;
+}
 </style>

@@ -1,16 +1,15 @@
 <template>
   <section>
-      <landlord />
+      <tenant/>
   </section>
 </template>
 
 <script>
-import Landlord from '../components/Landlord.vue'
+import Tenant from '../components/Tenant'
 export default {
-  components: {
-    Landlord 
-    },
-    
+    components: {
+        Tenant
+    }
 }
 </script>
 
