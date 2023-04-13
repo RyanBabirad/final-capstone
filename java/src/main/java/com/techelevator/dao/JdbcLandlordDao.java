@@ -25,6 +25,15 @@ public class JdbcLandlordDao implements LandlordDao {
     }
 
     @Override
+    public int findLandlordIdByEmail(String email) {
+        int landlordId;
+        String sql = "SELECT email from landlord where email = ?;";
+        landlordId = jdbcTemplate.queryForObject(sql, int.class, email);
+
+        return landlordId;
+    }
+
+    @Override
     public int getUserId(int userId) {
 
         String sql = "SELECT user_id from users WHERE username = ?;";

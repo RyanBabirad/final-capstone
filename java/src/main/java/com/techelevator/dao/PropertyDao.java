@@ -4,7 +4,7 @@ import com.techelevator.model.Property;
 
 public interface PropertyDao {
 
-    Property createProperty(Property property);
+    boolean saveProperty(int propertyId, Property property);
 
     Property getPropertyById(int propertyId);
 
