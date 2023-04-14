@@ -8,6 +8,24 @@ public class LandlordDto {
     private String email;
     private String phone;
     private int userId;
+    private int propertyId;
+    private int tenantId;
+
+    public int getPropertyId() {
+        return propertyId;
+    }
+
+    public void setPropertyId(int propertyId) {
+        this.propertyId = propertyId;
+    }
+
+    public int getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(int tenantId) {
+        this.tenantId = tenantId;
+    }
 
     // ?
     public LandlordDto() {

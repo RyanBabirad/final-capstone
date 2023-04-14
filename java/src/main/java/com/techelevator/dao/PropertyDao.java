@@ -1,10 +1,13 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Landlord;
 import com.techelevator.model.Property;
 
 public interface PropertyDao {
 
-    Property createProperty(Property property);
+    boolean saveProperty(int landlordId, Property property, Landlord landlord);
+
+
 
     Property getPropertyById(int propertyId);
 
