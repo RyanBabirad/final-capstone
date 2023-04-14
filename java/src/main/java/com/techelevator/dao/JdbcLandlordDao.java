@@ -25,7 +25,7 @@ public class JdbcLandlordDao implements LandlordDao {
 
         return newId == 1;
     }
-
+    //assignTenant does not work yet - Colin
     @Override
     public void assignTenant(int landlordId, Tenant tenant, Landlord landlord, Property property) {
 
