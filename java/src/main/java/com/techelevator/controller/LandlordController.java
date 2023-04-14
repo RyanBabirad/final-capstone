@@ -37,13 +37,13 @@ public class LandlordController {
         return landlord;
     }
 
-//    @ResponseStatus(HttpStatus.OK)
-//    @RequestMapping(path = "/landlord/tenant", method = RequestMethod.PUT)
-//    public Landlord assignTenant(LandlordDao landlordDao, Property property, @RequestBody Tenant tenant) {
+
+//    @RequestMapping(path = "/landlord/tenant/{id}", method = RequestMethod.PUT)
+//    public Landlord assignTenant(@PathVariable int id, @RequestBody LandlordDto landlordDto, PropertyDto propertyDto, TenantDto tenantDto) {
 //
+//        Landlord landlord = landlordDao.assignTenant(id, propertyDto.getLandlordId(), tenantDto.getTenantId());
 //
-//        landlordDao.assignTenant()
-//
+//        return landlord;
 //    }
 
 
