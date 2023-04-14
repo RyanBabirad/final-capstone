@@ -1,5 +1,5 @@
 <template>
-  <div class="columns">
+  <div class="columns" style="myStyle" id="wrapper">
     <rental-map class="column map" />
     <property-list class="column properties" />
   </div>
@@ -17,6 +17,7 @@ export default {
     RentalMap,
 
   }
+  
 };
 </script>
 
@@ -24,12 +25,18 @@ export default {
 <style scoped>
 .properties {
   margin-top: 35px;
+  text-align: center;
+  background-color:#f7f6f4fa;
+  border: solid #006E7F;
+ /* border-radius: 10px;*/
 }
 .map {
   order: 1;
-  border-left: 20px double #B22727;
   margin-top: 35px;
-
+  text-align: center;
+  background-color:#ebebeb;
+  border: solid #006E7F;
+  /*border-radius: 5px;*/
 }
 
 </style>
