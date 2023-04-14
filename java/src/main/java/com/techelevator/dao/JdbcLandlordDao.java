@@ -27,14 +27,13 @@ public class JdbcLandlordDao implements LandlordDao {
     }
 
     @Override
-    public boolean assignTenant(int propertyId, int landlordId, int tenantId) {
+    public void assignTenant(int landlordId, Tenant tenant, Landlord landlord, Property property) {
 
-        String sql = "UPDATE tenant SET property_id = (SELECT property_id FROM property where landlord_id = ?), \n" +
-                "landlord_id = (SELECT landlord_id FROM landlord where landlord_id = ?) \n" +
-                "where tenant_id = ?;";
+        String sql = "UPDATE tenant SET first_name = ?, last_name = ?, email = ?, phone = ?, property_id = ?, landlord_id = ? WHERE tenant_id=?";
 
 
-        return jdbcTemplate.update(sql, propertyId, landlordId, tenantId) == 1;
+        jdbcTemplate.update(sql, tenant.getFirstName(), tenant.getLastName(), tenant.getEmail(), tenant.getPhone(), property.getPropertyId(), landlord.getLandLordId());
+
     }
 
     @Override
