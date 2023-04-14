@@ -1,8 +1,12 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Tenant;
+import com.techelevator.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+
+import java.util.Objects;
 
 @Component
 public class JdbcTenantDao implements TenantDao {
@@ -26,11 +30,33 @@ public class JdbcTenantDao implements TenantDao {
 
     @Override
     public Tenant getTenantById(int tenantId) {
-        return null;
+        String sql = "SELECT * FROM tenant WHERE tenant_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, tenantId);
+        if (results.next()) {
+            return mapRowToTenant(results);
+        } else {
+            return null;
+        }
     }
 
     @Override
     public Tenant updateTenant(Tenant tenant) {
         return null;
     }
+
+
+
+    private Tenant mapRowToTenant(SqlRowSet rs) {
+        Tenant tenant = new Tenant();
+        tenant.setTenantId(rs.getInt("tenant_id"));
+        tenant.setFirstName(rs.getString("firstName"));
+        tenant.setLastName(rs.getString("lastName"));
+        tenant.setEmail(rs.getString("email"));
+        tenant.setPhone(rs.getString("phone"));
+        return tenant;
+    }
+
+
+
+
 }

@@ -10,6 +10,7 @@ public class Landlord {
     private int userId;
 
 
+
     public Landlord() {}; //default constructor
 
     public Landlord(int landLordId, String firstName, String lastName, String email, String phone, int userId) {

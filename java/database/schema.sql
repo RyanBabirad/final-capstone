@@ -172,6 +172,18 @@ ON ALL SEQUENCES IN SCHEMA public
 TO final_capstone_appuser;
 
 
+
+
+-- INSERT into property (imgSrc, streetAddress, zipCode, state, unit, landlord_id) VALUES ('testImg', '123 Test Ln', '15101', 'PA', '5B', (SELECT landlord_id from landlord where landlord_id = '3'));
+-- SELECT landlord_id from landlord where email = 'test@test.com';
+
+-- INSERT into property (imgSrc, streetAddress, zipCode, state, unit, landlord_id)
+-- VALUES ('secondTestImg', '246 Testing Dr', '15101', 'PA', '6B', (SELECT landlord_id from landlord where email = 'test@test.com'));
+
+-- UPDATE tenant SET property_id = (SELECT property_id FROM property where landlord_id = '5'), 
+-- landlord_id = (SELECT landlord_id FROM landlord where landlord_id = '5') 
+-- where tenant_id = '6';
+
 commit;
 
 
