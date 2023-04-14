@@ -3,9 +3,10 @@
     <ul>
       <li>
         <router-link class="links router-link-active" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;
-        <router-link class="links router-link-active profile" v-bind:to="{ name: 'profile' }">Profile</router-link>
         <router-link class="links router-link-active" v-if="$store.state.token === ''" v-bind:to="{ name: 'login' }">Login</router-link>&nbsp;
-        <router-link class="links router-link-active" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+        <router-link class="links router-link-active" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>&nbsp;
+        <router-link class="links router-link-active" v-bind:to="{ name: 'landlord' }" v-if="$store.state.role = 'landlord'">Landlord</router-link>&nbsp;
+        <router-link class="links router-link-active" v-bind:to="{ name: 'staff' }" v-if="$store.state.role= 'staff'">Staff</router-link>
       </li>
     </ul>
   </section>
