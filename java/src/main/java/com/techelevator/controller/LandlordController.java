@@ -2,9 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.LandlordDao;
 import com.techelevator.dao.UserDao;
-import com.techelevator.model.Landlord;
-import com.techelevator.model.LandlordDto;
-import com.techelevator.model.User;
+import com.techelevator.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +36,15 @@ public class LandlordController {
 
         return landlord;
     }
+
+//    @ResponseStatus(HttpStatus.OK)
+//    @RequestMapping(path = "/landlord/tenant", method = RequestMethod.PUT)
+//    public Landlord assignTenant(LandlordDao landlordDao, Property property, @RequestBody Tenant tenant) {
+//
+//
+//        landlordDao.assignTenant()
+//
+//    }
 
 
 

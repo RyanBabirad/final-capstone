@@ -3,7 +3,9 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.LandlordDao;
 import com.techelevator.dao.PropertyDao;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.Landlord;
+import com.techelevator.model.LandlordDto;
 import com.techelevator.model.Property;
 import com.techelevator.model.PropertyDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,21 +23,23 @@ public class PropertyController {
     private PropertyDao propertyDao;
     @Autowired
     private LandlordDao landlordDao;
+    @Autowired
+    private UserDao userDao;
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/landlord/properties", method = RequestMethod.POST)
-    public Property saveProperty(@Valid @RequestBody PropertyDto propertyDto, Principal principal) {
+    public Property saveProperty(@Valid @RequestBody PropertyDto propertyDto, LandlordDto landlordDto, Principal principal) {
         Property property = new Property();
-        Landlord landlord = landlordDao.getLandLordById(Integer.parseInt(principal.getName()));
+        Landlord landlord = landlordDao.getLandLordById(userDao.findIdByUsername(principal.getName()));
 
         property.setImgSrc(propertyDto.getImgSrc());
         property.setStreetAddress(propertyDto.getStreetAddress());
         property.setZipCode(propertyDto.getZipCode());
         property.setState(propertyDto.getState());
         property.setUnit(propertyDto.getUnit());
-        property.setLandlordId(landlord.getLandLordId());
+        landlord.setLandLordId(landlord.getLandLordId());
 
-        propertyDao.saveProperty(property.getPropertyId(), property);
+        propertyDao.saveProperty(property.getPropertyId(), property, landlord);
 
         return property;
     }

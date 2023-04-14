@@ -1,6 +1,8 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Landlord;
+import com.techelevator.model.Property;
+import com.techelevator.model.Tenant;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -25,7 +27,19 @@ public class JdbcLandlordDao implements LandlordDao {
     }
 
     @Override
+    public boolean assignTenant(Landlord landlord, Tenant tenant, Property property) {
+
+        String sql = "UPDATE tenant SET property_id = (SELECT property_id FROM property where landlord_id = ?), \n" +
+                "landlord_id = (SELECT landlord_id FROM landlord where landlord_id = ?) \n" +
+                "where tenant_id = ?;";
+
+
+        return jdbcTemplate.update(sql, tenant.getTenantId(), property.getPropertyId(), landlord.getLandLordId()) == 1;
+    }
+
+    @Override
     public int findLandlordIdByEmail(String email) {
+
         int landlordId;
         String sql = "SELECT email from landlord where email = ?;";
         landlordId = jdbcTemplate.queryForObject(sql, int.class, email);
@@ -61,12 +75,12 @@ public class JdbcLandlordDao implements LandlordDao {
     private Landlord mapRowToLandlord(SqlRowSet rowSet) {
         Landlord landlord = new Landlord();
 
-        landlord.setLandLordId(rowSet.getInt("user_id"));
-        landlord.setFirstName(rowSet.getString("firstName"));
-        landlord.setLastName(rowSet.getString("lastName"));
+        landlord.setLandLordId(rowSet.getInt("landlord_id"));
+        landlord.setFirstName(rowSet.getString("first_name"));
+        landlord.setLastName(rowSet.getString("last_name"));
         landlord.setEmail(rowSet.getString("email"));
         landlord.setPhone(rowSet.getString("phone"));
-        landlord.setUserId(rowSet.getInt("user_id"));
+        //landlord.setUserId(rowSet.getInt("user_id"));
 
         return landlord;
     }

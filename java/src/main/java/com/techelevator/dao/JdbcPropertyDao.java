@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Landlord;
 import com.techelevator.model.Property;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -13,15 +14,15 @@ public class JdbcPropertyDao implements PropertyDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
     @Override
-    public boolean saveProperty(int propertyId, Property property) {
+    public boolean saveProperty(int landlordId, Property property, Landlord landlord) {
+        int landLordId;
 
         String sql = "INSERT into property (imgSrc, streetAddress, zipCode, state, unit, landlord_id)" +
-                " VALUES (?, ?, ?, ?, (SELECT landlord_id from landlord where landlord_id = ?));";
+                " VALUES (?, ?, ?, ?, ?, (SELECT landlord_id from landlord where email = ?));";
 
-        int newId = jdbcTemplate.update(sql, property.getPropertyId(), property.getImgSrc(),
-                property.getStreetAddress(), property.getZipCode(), property.getState(), property.getUnit());
+        int newId = jdbcTemplate.update(sql, property.getImgSrc(),
+                property.getStreetAddress(), property.getZipCode(), property.getState(), property.getUnit(), landlord.getEmail());
 
         return newId == 1;
     }

@@ -1,11 +1,15 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Landlord;
+import com.techelevator.model.Property;
+import com.techelevator.model.Tenant;
 
 public interface LandlordDao {
 
     //boolean createLandlord(int userId, String firstName, String lastName, String email, String phone);
     boolean createLandlord(int landlordId, Landlord landlord);
+
+    boolean assignTenant(Landlord landlord, Tenant tenant, Property property);
 
     int findLandlordIdByEmail(String email);
 
