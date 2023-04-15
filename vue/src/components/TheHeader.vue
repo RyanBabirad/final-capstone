@@ -2,20 +2,34 @@
   <section class="nav">
     <ul>
       <li>
-        <router-link class="links router-link-active" v-bind:to="{ name: 'home' }" tag="button">Home</router-link>
-        <router-link class="links router-link-active" v-if="$store.state.token === ''" v-bind:to="{ name: 'login' }" tag="button">Login</router-link>&nbsp;
-        <router-link class="links router-link-active" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" tag="button">Logout</router-link>&nbsp;
-        <router-link class="links router-link-active" v-bind:to="{ name: 'landlord' }" v-if="$store.state.role = 'landlord'">Landlord</router-link>&nbsp;
-        <router-link class="links router-link-active" v-bind:to="{ name: 'staff' }" v-if="$store.state.role= 'staff'">Staff</router-link>&nbsp;
-        <router-link class="links router-link-active" v-bind:to="{ name: 'tenant' }" v-if="$store.state.role= 'tenant'">Tenant</router-link>
+        <router-link class="links router-link-active" v-bind:to="{ name: 'home' }" >Home</router-link>&nbsp;
+        <router-link class="links router-link-active" v-bind:to="{ name: 'login' }"  v-if="!isLoggedIn">Login</router-link>&nbsp;
+        <router-link class="links router-link-active" v-bind:to="{ name: 'logout' }" v-if="isLoggedIn">Logout</router-link>&nbsp;
+        <router-link class="links router-link-active" v-bind:to="{ name: 'staff' }"  v-if="isStaff">Staff</router-link>&nbsp;
       </li>
     </ul>
   </section>
 </template>
 
 <script>
+
 export default {
-    
+    name: "header",
+    computed: {
+      isLandlord() {
+        return this.$store.state.user.authorities[0].name === 'ROLE_LANDLORD';
+      },
+      isStaff(){
+        return this.$store.state.user.authorities[0].name === 'ROLE_STAFF';
+      },
+      isTenant() {
+        return this.$store.state.user.authorities[0].name === 'ROLE_TENANT';
+      },
+      isLoggedIn() {
+        return this.$store.state.token !== '';
+      }
+    }
+
 };
 </script>
 
@@ -43,17 +57,12 @@ export default {
     font-weight:bold;
     letter-spacing:1px;
 
-
-
 }
 .links:hover{
     color:white;
     background-color:#F8CB2E ;
     border: 1px solid #F8CB2E;
     cursor:pointer;
-}
-.profile{
-    justify-content: flex-end;
 }
 
 
