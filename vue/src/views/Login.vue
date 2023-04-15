@@ -1,7 +1,8 @@
 <template>
-  <div id="login">
+<body class="main">
+  <div class="login-page" id="login">
     <form @submit.prevent="login">
-      <h1 >Please Sign In</h1>
+      <h1 class="sign-in">Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -10,17 +11,23 @@
       </div>
       <div class="form-input-group">
         <label for="username">Username</label>
+         <div class="control">
         <input type="text" id="username" v-model="user.username" required autofocus />
+      </div>
       </div>
       <div class="form-input-group">
         <label for="password">Password</label>
+         <div class="control">
         <input type="password" id="password" v-model="user.password" required />
       </div>
-      <button type="submit">Sign in</button>
+      </div>
+      <button class="sign-submit" type="submit">Sign in</button>
+      
       <p>
-      <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      <router-link class="links router-link-active" :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
   </div>
+  </body>
 </template>
 
 <script>
@@ -67,5 +74,39 @@ export default {
 }
 label {
   margin-right: 0.5rem;
+}
+#login{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border:solid #57C5B6 ;
+  margin-top:10%;
+  padding-top:40px;
+  padding-bottom: 50px;
+  margin-left:40%;
+  margin-right:40%;
+  background-color: #57C5B6;
+  border-radius:25px;
+}
+.sign-in{
+  text-align:center;
+  font-family:monospace;
+  font-weight:bolder;
+  font-size: x-large;
+  color:black;
+}
+.sign-submit:hover{
+  cursor:pointer;
+  background-color:rgb(165, 162, 162);
+  color: white;
+  border:solid rgb(165, 162, 162);
+  border-radius:2px;
+}
+.links{
+  color:white;
+}
+.links:hover{
+  cursor:pointer;
+  color:#006E7F;
 }
 </style>

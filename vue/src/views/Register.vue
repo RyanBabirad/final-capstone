@@ -1,21 +1,30 @@
 <template>
+<body class="main">
   <div id="register" class="text-center">
     <form @submit.prevent="register">
-      <h1>Create Account</h1>
-      <div role="alert" v-if="registrationErrors">
+      <h1 class="create-account">Create Account</h1>
+      <div class="control">
+        <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
+        </div>
       </div>
       <div class="form-input-group">
         <label for="username">Username</label>
-        <input type="text" id="username" v-model="user.username" required autofocus />
+        <div class="control">
+        <input class="username-box" type="text" id="username" v-model="user.username" required autofocus />
+        </div>
       </div>
       <div class="form-input-group">
         <label for="password">Password</label>
-        <input type="password" id="password" v-model="user.password" required />
+        <div class="control">
+        <input class="password-box" type="password" id="password" v-model="user.password" required />
+        </div>
       </div>
       <div class="form-input-group">
         <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
+        <div class="control">
+        <input class="confirm-password-box" type="password" id="confirmPassword" v-model="user.confirmPassword" required />
+        </div>
       </div>
       <div class="form-in-group">
         <label for="role">Select Role</label>
@@ -26,13 +35,18 @@
           <option value="staff">Staff</option>
         </select>
       </div>
-      <button type="submit">Create Account</button>
+      
+      <div class="submit">
+      <button class="submit-button" type="submit">Create Account</button>
+    
+     </div>
       <p>
-        <router-link :to="{ name: 'login' }"
+        <router-link class="links router-link-active" :to="{ name: 'login' }"
           >Already have an account? Log in.</router-link>
       </p>
     </form>
   </div>
+  </body>
 </template>
 
 <script>
@@ -86,10 +100,70 @@ export default {
 </script>
 
 <style scoped>
+body{
+  
+  background-color: #006E7F;
+  
+}
+
 .form-input-group {
   margin-bottom: 1rem;
 }
 label {
   margin-right: 0.5rem;
+
 }
+#register{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border:solid white ;
+  margin-top:10%;
+  padding-top:30px;
+  padding-bottom: 50px;
+  margin-left:40%;
+  margin-right:40%;
+  background-color: #F8CB2E;
+  border-radius:25px;
+
+}
+.create-account{
+  text-align:center;
+  font-family:monospace;
+  font-weight:bolder;
+  font-size: x-large;
+  
+}
+.username-box{
+  border-color:white;
+}
+.password-box{
+  border-color:white;
+}
+.confirm-password-box{
+  border-color:white;
+}
+.role-box{
+  border-color: white;
+}
+.submit{
+  margin-top:10px;
+  border-color: white;
+  
+}
+.links{
+  color:white;
+}
+.links:hover{
+  cursor:pointer;
+  color:#006E7F;
+}
+.submit-button:hover{
+  cursor:pointer;
+  background-color:rgb(165, 162, 162);
+  color: white;
+  border:solid rgb(165, 162, 162);
+  border-radius:2px;
+}
+
 </style>

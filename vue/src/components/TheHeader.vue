@@ -51,19 +51,22 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #006e7f;
+  background-color: #1A5F7A;
+  
 }
-.links {
-  margin: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  color: black;
-  border-radius: 8px;
-  background-color: white;
-  border: 1px solid black;
-  font-family: monospace;
-  font-weight: bold;
-  letter-spacing: 1px;
+.links{
+    margin:5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color:black;
+    border-radius: 8px;
+    background-color:white;
+    border: 1px solid white;
+    font-family:monospace;
+    letter-spacing:1px;
+
+
+
 }
 .links:hover {
   color: white;
