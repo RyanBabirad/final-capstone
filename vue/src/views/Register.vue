@@ -21,6 +21,7 @@
         <label for="role">Select Role</label>
         <select id="selectRole" v-model="user.role">
           <option value="user">User</option>
+          <option value="tenant">Tenant</option>
           <option value="landlord">Landlord</option>
           <option value="staff">Staff</option>
         </select>
