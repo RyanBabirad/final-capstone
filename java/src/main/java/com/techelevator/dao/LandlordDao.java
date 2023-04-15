@@ -9,7 +9,7 @@ public interface LandlordDao {
     //boolean createLandlord(int userId, String firstName, String lastName, String email, String phone);
     boolean createLandlord(int landlordId, Landlord landlord);
     // this does not work yet - Colin
-    void assignTenant(int landlordId, Tenant tenant, Landlord landlord, Property property);
+    void assignTenant(int propertyId, int landlordId, int tenantId);
 
     int findLandlordIdByEmail(String email);
 

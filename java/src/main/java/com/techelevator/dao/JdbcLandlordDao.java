@@ -25,15 +25,17 @@ public class JdbcLandlordDao implements LandlordDao {
 
         return newId == 1;
     }
+
     //assignTenant does not work yet - Colin
     @Override
-    public void assignTenant(int landlordId, Tenant tenant, Landlord landlord, Property property) {
+    public void assignTenant(int propertyId, int landlordId, int tenantId) {
 
-        String sql = "UPDATE tenant SET first_name = ?, last_name = ?, email = ?, phone = ?, property_id = ?, landlord_id = ? WHERE tenant_id=?";
+        String sql = "UPDATE tenant SET property_id = (SELECT property_id FROM property where landlord_id = ?), \n" +
+                "landlord_id = (SELECT landlord_id FROM landlord where landlord_id = ?) \n" +
+                "where tenant_id = ?;";
 
 
-        jdbcTemplate.update(sql, tenant.getFirstName(), tenant.getLastName(), tenant.getEmail(), tenant.getPhone(), property.getPropertyId(), landlord.getLandLordId());
-
+        jdbcTemplate.update(sql, propertyId, landlordId, tenantId);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.LandlordDao;
+import com.techelevator.dao.PropertyDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class LandlordController {
     private LandlordDao landlordDao;
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private PropertyDao propertyDao;
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path= "/landlord", method = RequestMethod.POST)
@@ -40,8 +43,14 @@ public class LandlordController {
 
     // this does not work yet. - Colin
     @RequestMapping(path = "/landlord/tenant", method = RequestMethod.PUT)
-    public void assignPropertyToTenant(@RequestBody int id, Tenant tenant, Landlord landlord, Property property) {
-        landlordDao.assignTenant(landlord.getLandLordId(), tenant, landlord, property);
+    public void assignPropertyToTenant(@RequestBody int id, Principal principal, Tenant tenant, LandlordDao landlordDao) {
+
+        int landlordId = landlordDao.findLandlordIdByEmail(principal.getName());
+        int propertyId = tenant.getPropertyId();
+        int tenantId = tenant.getTenantId();
+
+
+        landlordDao.assignTenant(propertyId, landlordId, tenantId);
     }
 
 
