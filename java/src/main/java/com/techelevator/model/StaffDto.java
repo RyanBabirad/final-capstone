@@ -1,23 +1,13 @@
 package com.techelevator.model;
 
-public class Staff {
+public class StaffDto {
+
     private int staffId;
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
-    private int landlordId;
-
-    public Staff() { }
-
-    public Staff(int staffId, String firstName, String lastName, String email, String phone, int landlordId) {
-        this.staffId = staffId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.landlordId = landlordId;
-    }
+    private int userId;
 
     public int getStaffId() {
         return staffId;
@@ -59,12 +49,12 @@ public class Staff {
         this.phone = phone;
     }
 
-    public int getLandlordId() {
-        return landlordId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setLandlordId(int landlordId) {
-        this.landlordId = landlordId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
-
 }
+

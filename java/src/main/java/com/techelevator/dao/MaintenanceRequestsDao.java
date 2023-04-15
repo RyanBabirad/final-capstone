@@ -23,7 +23,9 @@ public interface MaintenanceRequestsDao {
 
     boolean updateMaintenanceRequests(MaintenanceRequests maintenanceRequest);
 
-    void deleteMaintenanceRequests(MaintenanceRequests maintenanceRequest);
+    void deleteMaintenanceRequests(int id);
+
+
 
 
 }

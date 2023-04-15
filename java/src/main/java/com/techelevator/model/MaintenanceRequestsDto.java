@@ -1,28 +1,20 @@
 package com.techelevator.model;
 
-public class MaintenanceRequests {
-
-//    request_id SERIAL,
-//    status boolean DEFAULT false,
-//    date_requested date,
-//    description varchar(350),
-//    tenant_id int,
-//    property_id int,
+public class MaintenanceRequestsDto {
 
     private int requestId;
     private boolean status;
-    private String date;  // BE SURE TO CHECK THIS!!!!
+    private String dateRequested;
     private String description;
     private int tenantId;
     private int propertyId;
 
-    public MaintenanceRequests() {}; //default constructor
+    public MaintenanceRequestsDto() {};
 
-
-    public MaintenanceRequests(int requestId, boolean status, String date, String description, int tenantId, int propertyId) {
+    public MaintenanceRequestsDto(int requestId, boolean status, String dateRequested, String description, int tenantId, int propertyId) {
         this.requestId = requestId;
         this.status = status;
-        this.date = date;
+        this.dateRequested = dateRequested;
         this.description = description;
         this.tenantId = tenantId;
         this.propertyId = propertyId;
@@ -44,12 +36,12 @@ public class MaintenanceRequests {
         this.status = status;
     }
 
-    public String getDate() {
-        return date;
+    public String getDateRequested() {
+        return dateRequested;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDateRequested(String dateRequested) {
+        this.dateRequested = dateRequested;
     }
 
     public String getDescription() {
@@ -78,15 +70,13 @@ public class MaintenanceRequests {
 
     @Override
     public String toString() {
-        return "MaintenanceRequests{" +
+        return "MaintenanceRequestsDto{" +
                 "requestId=" + requestId +
                 ", status=" + status +
-                ", date='" + date + '\'' +
+                ", dateRequested='" + dateRequested + '\'' +
                 ", description='" + description + '\'' +
                 ", tenantId=" + tenantId +
                 ", propertyId=" + propertyId +
                 '}';
     }
-
-
 }
