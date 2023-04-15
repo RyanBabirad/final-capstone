@@ -17,7 +17,7 @@ public class AssignmentsController {
     private AssignmentsDao assignmentsDao;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/landlord/maintenance-requests/assignment", method = RequestMethod.POST)
+    @RequestMapping(path = "/landlord/maintenance-request/assignments", method = RequestMethod.POST)
     public Assignments createAssignment(@Valid @RequestBody AssignmentsDto assignmentsDto) {
         Assignments assignment = new Assignments();
 
@@ -32,13 +32,13 @@ public class AssignmentsController {
         return assignment;
     }
 
-    @RequestMapping(path = "/landlord/maintenance-requests/assignment/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/landlord/maintenance-request/assignments/{id}", method = RequestMethod.GET)
     public Assignments getAssignmentById(@PathVariable int id) {
         return assignmentsDao.getAssignmentById(id);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/landlord/maintenance-requests/assignment", method = RequestMethod.PUT)
+    @RequestMapping(path = "/landlord/maintenance-request/assignments", method = RequestMethod.PUT)
     public boolean updateAssignment(@Valid @RequestBody AssignmentsDto assignmentsDto) {
         Assignments assignment = new Assignments();
 
@@ -52,7 +52,7 @@ public class AssignmentsController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/landlord/maintenance-requests/assignment/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/landlord/maintenance-request/assignments/{id}", method = RequestMethod.DELETE)
     public void deleteAssignment(@PathVariable int id) {
         Assignments assignment = assignmentsDao.getAssignmentById(id);
         assignmentsDao.deleteAssignments(assignment);

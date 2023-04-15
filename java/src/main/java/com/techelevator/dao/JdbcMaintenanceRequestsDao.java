@@ -16,14 +16,22 @@ public class JdbcMaintenanceRequestsDao implements MaintenanceRequestsDao {
 
     @Override
     public boolean createMaintenanceRequests(MaintenanceRequests maintenanceRequest) {
-        String sql = "INSERT INTO maintenence_request (status, date_requested, description, tenant_id, property_id) VALUES (?, ?, ?, ?, ?)";
-        int rowsAffected = jdbcTemplate.update(sql, maintenanceRequest.isStatus(), maintenanceRequest.getDate(), maintenanceRequest.getDescription(), maintenanceRequest.getTenantId(), maintenanceRequest.getPropertyId());
+        String sql = "INSERT INTO maintenance_request (request_id, status, date_requested, description, tenant_id, property_id) VALUES (DEFAULT, ?, ?, ?, ?, ?)";
+        int rowsAffected = jdbcTemplate.update(sql, maintenanceRequest.getRequestId(), maintenanceRequest.isStatus(), maintenanceRequest.getDate(), maintenanceRequest.getDescription(), maintenanceRequest.getTenantId(), maintenanceRequest.getPropertyId());
         return rowsAffected == 1;
     }
 
+
+//    @Override
+//    public boolean createMaintenanceRequests(MaintenanceRequests maintenanceRequest) {
+//        String sql = "INSERT INTO maintenance_request (status, date_requested, description, tenant_id, property_id) VALUES (?, ?, ?, ?, ?)";
+//        int rowsAffected = jdbcTemplate.update(sql, maintenanceRequest.isStatus(), maintenanceRequest.getDate(), maintenanceRequest.getDescription(), maintenanceRequest.getTenantId(), maintenanceRequest.getPropertyId());
+//        return rowsAffected == 1;
+//    }
+
     @Override
     public MaintenanceRequests getMaintenanceRequestById(int id) {
-        String sql = "SELECT * FROM maintenence_request WHERE request_id = ?";
+        String sql = "SELECT * FROM maintenance_request WHERE request_id = ?";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, id);
         if (rowSet.next()) {
             return mapRowToMaintenanceRequests(rowSet);
@@ -34,14 +42,14 @@ public class JdbcMaintenanceRequestsDao implements MaintenanceRequestsDao {
 
     @Override
     public boolean updateMaintenanceRequests(MaintenanceRequests maintenanceRequest) {
-        String sql = "UPDATE maintenence_request SET status = ?, date_requested = ?, description = ?, tenant_id = ?, property_id = ? WHERE request_id = ?";
+        String sql = "UPDATE maintenance_request SET status = ?, date_requested = ?, description = ?, tenant_id = ?, property_id = ? WHERE request_id = ?";
         int rowsAffected = jdbcTemplate.update(sql, maintenanceRequest.isStatus(), maintenanceRequest.getDate(), maintenanceRequest.getDescription(), maintenanceRequest.getTenantId(), maintenanceRequest.getPropertyId(), maintenanceRequest.getRequestId());
         return rowsAffected == 1;
     }
 
     @Override
     public void deleteMaintenanceRequests(int id) {
-        String sql = "DELETE FROM maintenence_request WHERE request_id = ?";
+        String sql = "DELETE FROM maintenance_request WHERE request_id = ?";
         jdbcTemplate.update(sql, id);
     }
 

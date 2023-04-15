@@ -16,12 +16,12 @@ public class Tenant {
 
     public Tenant(int tenantId, String firstName, String lastName, String email, String phone, int propertyId, int landlordId) {
         this.tenantId = tenantId;
-        this. firstName = firstName;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.propertyId = propertyId;
-        this. landlordId = landlordId;
+        this.landlordId = landlordId;
 
     }
 

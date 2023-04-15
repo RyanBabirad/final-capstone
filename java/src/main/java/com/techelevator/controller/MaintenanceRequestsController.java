@@ -22,7 +22,7 @@ public class MaintenanceRequestsController {
     private UserDao userDao;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/staff/maintenance-requests", method = RequestMethod.POST)
+    @RequestMapping(path = "/staff/maintenence-request", method = RequestMethod.POST)
     public MaintenanceRequests createMaintenanceRequest(@Valid @RequestBody MaintenanceRequestsDto maintenanceRequestsDto, Principal principal) {
         MaintenanceRequests maintenanceRequest = new MaintenanceRequests();
 
@@ -38,13 +38,13 @@ public class MaintenanceRequestsController {
         return maintenanceRequest;
     }
 
-    @RequestMapping(path = "/staff/maintenance-requests/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/staff/maintenence-request/{id}", method = RequestMethod.GET)
     public MaintenanceRequests getMaintenanceRequestById(@PathVariable int id, Principal principal) {
         return maintenanceRequestsDao.getMaintenanceRequestById(id);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/staff/maintenance-requests/{id}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/staff/maintenence-request/{id}", method = RequestMethod.PUT)
     public boolean updateMaintenanceRequest(@PathVariable int id, @Valid @RequestBody MaintenanceRequestsDto maintenanceRequestsDto, Principal principal) {
         MaintenanceRequests maintenanceRequest = maintenanceRequestsDao.getMaintenanceRequestById(id);
 
@@ -58,7 +58,7 @@ public class MaintenanceRequestsController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/staff/maintenance-requests/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/staff/maintenence-request/{id}", method = RequestMethod.DELETE)
     public void deleteMaintenanceRequest(@PathVariable int id, Principal principal) {
         MaintenanceRequests maintenanceRequest = maintenanceRequestsDao.getMaintenanceRequestById(id);
         maintenanceRequestsDao.deleteMaintenanceRequests(id);
