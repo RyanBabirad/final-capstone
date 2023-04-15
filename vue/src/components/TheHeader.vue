@@ -3,13 +3,9 @@
     <ul>
       <li>
         <router-link class="links router-link-active" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;
-        <router-link class="links router-link-active" v-if="$store.state.token === ''" v-bind:to="{ name: 'login' }">Login</router-link>&nbsp;
-        <router-link class="links router-link-active" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>&nbsp;
-        <router-link class="links router-link-active" v-bind:to="{ name: 'landlord' }" v-if="$store.state.role = 'landlord'">Landlord</router-link>&nbsp;
-        <router-link class="links router-link-active" v-bind:to="{ name: 'staff' }" v-if="$store.state.role= 'staff'">Staff</router-link>
-        <router-link class="links router-link-active" v-bind:to="{ name: 'home' }" tag="button">Home</router-link>&nbsp;
-        <router-link class="links router-link-active" v-if="$store.state.token === ''" v-bind:to="{ name: 'login' }" tag="button">Login</router-link>&nbsp;
-        <router-link class="links router-link-active" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" tag="button">Logout</router-link>
+        <router-link class="links router-link-active" v-bind:to="{ name: 'login' }" v-if="!isLoggedIn">Login</router-link>&nbsp;
+        <router-link class="links router-link-active" v-bind:to="{ name: 'logout' }" v-if="isLoggedIn">Logout</router-link>&nbsp;
+        <router-link class="links router-link-active" v-bind:to="{ name: 'landlord' }" v-if="isRole">landlord</router-link>&nbsp;
       </li>
     </ul>
   </section>
@@ -17,7 +13,32 @@
 
 <script>
 export default {
-    
+  name: "header",
+  computed: {
+    isRole() {
+      if (
+        !this.$store.state.user ||
+        !this.$store.state.user.authorities ||
+        this.$store.state.user.authorities.length === 0
+      ) {
+        return false;
+      } 
+
+      if (this.$store.state.user.authorities[0].name === "ROLE_LANDLORD") {
+      return this.$store.state.user.authorities[0].name === "ROLE_LANDLORD";
+      }
+      if (this.$store.state.user.authorities[0].name === "ROLE_STAFF") {
+      return this.$store.state.user.authorities[0].name === "ROLE_STAFF";
+      }
+      if (this.$store.state.user.authorities[0].name === "ROLE_TENANT") {
+      return this.$store.state.user.authorities[0].name === "ROLE_TENANT";
+      }
+      return this.$store.state.user.authorities[0].name
+    },
+    isLoggedIn() {
+      return this.$store.state.token !== "";
+    }
+  },
 };
 </script>
 
@@ -47,15 +68,10 @@ export default {
 
 
 }
-.links:hover{
-    color:white;
-    background-color:#F8CB2E ;
-    border: 1px solid #F8CB2E;
-    cursor:pointer;
+.links:hover {
+  color: white;
+  background-color: #f8cb2e;
+  border: 1px solid #f8cb2e;
+  cursor: pointer;
 }
-.profile{
-    justify-content: flex-end;
-}
-
-
 </style>

@@ -28,13 +28,11 @@
       </div>
       <div class="form-in-group">
         <label for="role">Select Role</label>
-        <div class="control">
-        <select class="role-box" id="selectRole" v-model="user.role">
-      
-          <option class="user-role" value="user">User</option>
-          <option class="landlord-role" value="landlord">Landlord</option>
-          <option class="staff-role" value="staff">Staff</option>
-          
+        <select id="selectRole" v-model="user.role">
+          <option value="user">User</option>
+          <option value="tenant">Tenant</option>
+          <option value="landlord">Landlord</option>
+          <option value="staff">Staff</option>
         </select>
       </div>
       </div>
