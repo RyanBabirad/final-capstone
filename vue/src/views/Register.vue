@@ -4,7 +4,7 @@
     <form @submit.prevent="register">
       <h1 class="create-account">Create Account</h1>
       <div class="control">
-      <div role="alert" v-if="registrationErrors">
+        <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
         </div>
       </div>
@@ -12,7 +12,7 @@
         <label for="username">Username</label>
         <div class="control">
         <input class="username-box" type="text" id="username" v-model="user.username" required autofocus />
-      </div>
+        </div>
       </div>
       <div class="form-input-group">
         <label for="password">Password</label>
@@ -24,7 +24,7 @@
         <label for="confirmPassword">Confirm Password</label>
         <div class="control">
         <input class="confirm-password-box" type="password" id="confirmPassword" v-model="user.confirmPassword" required />
-      </div>
+        </div>
       </div>
       <div class="form-in-group">
         <label for="role">Select Role</label>
@@ -35,7 +35,7 @@
           <option value="staff">Staff</option>
         </select>
       </div>
-      </div>
+      
       <div class="submit">
       <button class="submit-button" type="submit">Create Account</button>
     
