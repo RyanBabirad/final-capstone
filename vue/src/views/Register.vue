@@ -31,14 +31,14 @@
         <div class="control">
         <select class="role-box" id="selectRole" v-model="user.role">
       
-          <option value="user">User</option>
-          <option value="landlord">Landlord</option>
-          <option value="staff">Staff</option>
+          <option class="user-role" value="user">User</option>
+          <option class="landlord-role" value="landlord">Landlord</option>
+          <option class="staff-role" value="staff">Staff</option>
           
         </select>
       </div>
       </div>
-      <div class="submit-button">
+      <div class="submit">
       <button class="submit-button" type="submit">Create Account</button>
     
      </div>
@@ -104,7 +104,7 @@ export default {
 <style scoped>
 body{
   
-  background-color: tomato;
+  background-color: #006E7F;
   
 }
 
@@ -119,7 +119,7 @@ label {
   display:flex;
   justify-content: center;
   align-items: center;
-  border:solid #EE5007 ;
+  border:solid white ;
   margin-top:10%;
   padding-top:30px;
   padding-bottom: 50px;
@@ -148,7 +148,7 @@ label {
 .role-box{
   border-color: white;
 }
-.submit-button{
+.submit{
   margin-top:10px;
   border-color: white;
   
@@ -159,6 +159,13 @@ label {
 .links:hover{
   cursor:pointer;
   color:#006E7F;
+}
+.submit-button:hover{
+  cursor:pointer;
+  background-color:rgb(165, 162, 162);
+  color: white;
+  border:solid rgb(165, 162, 162);
+  border-radius:2px;
 }
 
 </style>
