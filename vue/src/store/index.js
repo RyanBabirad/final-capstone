@@ -20,8 +20,12 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-      property: {
-      
+      property: { 
+        streetAddress: "123 Main st",
+        unit: "",
+        zipcode: "15057",
+        state: "PA",
+        city: "Pittsburgh"
     }
   },
   mutations: {
