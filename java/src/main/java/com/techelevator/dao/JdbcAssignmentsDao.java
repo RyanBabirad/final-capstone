@@ -21,7 +21,7 @@ public class JdbcAssignmentsDao implements AssignmentsDao {
 
     @Override
     public boolean createAssignment(Assignments assignment) {
-        String sql = "INSERT INTO assignments (request_id, is_assigned, date_assigned, property_id) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO assignments (request_id, is_assigned, date_assigned, property_id) VALUES ( ?, ?, ?, ?)";
         int rowsAffected = jdbcTemplate.update(sql, assignment.getRequestId(), assignment.isAssigned(), assignment.getDate(), assignment.getPropertyId());
         return rowsAffected > 0;
     }
