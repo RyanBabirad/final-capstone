@@ -48,7 +48,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #1A5F7A;
+  background-color: #577D86;
   
 }
 .user-page{
@@ -62,15 +62,15 @@ export default {
     padding-right: 10px;
     color:black;
     border-radius: 8px;
-    background-color:white;
-    border: 1px solid white;
+    background-color:#577D86;
+    border: 1px solid #577D86;
     font-family:monospace;
     letter-spacing:1px;
 }
 .links:hover {
-  color: white;
-  background-color: #f8cb2e;
-  border: 1px solid #f8cb2e;
+  color:black;
+  background-color: white;
+  border: 1px solid white;
   cursor: pointer;
 }
 </style>

@@ -4,7 +4,7 @@ import com.techelevator.model.StaffAssignment;
 
 import java.util.List;
 
-public interface StaffAssignmentDao {
+public interface StaffAssignmentsDao {
 
     boolean createStaffAssignment(int staffId, int assignmentId);
 
