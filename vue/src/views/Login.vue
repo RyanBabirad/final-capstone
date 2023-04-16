@@ -12,14 +12,14 @@
       <div class="form-input-group">
         <label for="username">Username</label>
          <div class="control">
-        <input type="text" id="username" v-model="user.username" required autofocus />
-      </div>
+          <input type="text" id="username" v-model="user.username" required autofocus />
+        </div>
       </div>
       <div class="form-input-group">
         <label for="password">Password</label>
-         <div class="control">
-        <input type="password" id="password" v-model="user.password" required />
-      </div>
+          <div class="control">
+            <input type="password" id="password" v-model="user.password" required />
+          </div>
       </div>
       <button class="sign-submit" type="submit">Sign in</button>
       
