@@ -5,7 +5,9 @@
         <router-link class="links router-link-active" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;
         <router-link class="links router-link-active" v-bind:to="{ name: 'login' }" v-if="!isLoggedIn">Login</router-link>&nbsp;
         <router-link class="links router-link-active" v-bind:to="{ name: 'logout' }" v-if="isLoggedIn">Logout</router-link>&nbsp;
-        <router-link class="links router-link-active" v-bind:to="{ name: 'landlord' }" v-if="isRole">landlord</router-link>&nbsp;
+      </li>
+      <li class="mr-auto">
+        <router-link class="links router-link-active" v-bind:to="userPage" v-if="isLoggedIn">User Page</router-link>&nbsp;
       </li>
     </ul>
   </section>
@@ -14,26 +16,21 @@
 <script>
 export default {
   name: "header",
-  computed: {
-    isRole() {
-      if (
-        !this.$store.state.user ||
-        !this.$store.state.user.authorities ||
-        this.$store.state.user.authorities.length === 0
-      ) {
-        return false;
-      } 
 
-      if (this.$store.state.user.authorities[0].name === "ROLE_LANDLORD") {
-      return this.$store.state.user.authorities[0].name === "ROLE_LANDLORD";
+  computed: {
+    userPage() {
+
+      const role = this.$store.state.user.authorities[0].name;
+      if(role === 'ROLE_LANDLORD') {
+        return { name: 'landlord' };
+      } else if(role === 'ROLE_STAFF') {
+        return { name: 'staff' };
+      } else if(role === 'ROLE_TENANT') {
+        return { name: 'tenant' };
       }
-      if (this.$store.state.user.authorities[0].name === "ROLE_STAFF") {
-      return this.$store.state.user.authorities[0].name === "ROLE_STAFF";
+      else {
+        return { name: 'home' };
       }
-      if (this.$store.state.user.authorities[0].name === "ROLE_TENANT") {
-      return this.$store.state.user.authorities[0].name === "ROLE_TENANT";
-      }
-      return this.$store.state.user.authorities[0].name
     },
     isLoggedIn() {
       return this.$store.state.token !== "";
@@ -54,6 +51,11 @@ export default {
   background-color: #1A5F7A;
   
 }
+.user-page{
+  display: flex;
+  justify-content: flex-end;
+
+}
 .links{
     margin:5px;
     padding-left: 10px;
@@ -64,9 +66,6 @@ export default {
     border: 1px solid white;
     font-family:monospace;
     letter-spacing:1px;
-
-
-
 }
 .links:hover {
   color: white;
