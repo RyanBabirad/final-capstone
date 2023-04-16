@@ -3,6 +3,7 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS rent;
 DROP TABLE IF EXISTS staff_assignments;
 DROP TABLE IF EXISTS assignments;
+DROP TABLE IF EXISTS maintenence_request;
 DROP TABLE IF EXISTS maintenance_request;
 DROP TABLE IF EXISTS staff;
 DROP TABLE IF EXISTS tenant;

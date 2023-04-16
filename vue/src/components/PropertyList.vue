@@ -6,6 +6,7 @@
     <div class="property" v-for="property in properties" v-bind:key="property.zpid">
       {{ property.streetAddress }}
       {{ property.city }}
+      <br>
       
     </div>
   </section>
