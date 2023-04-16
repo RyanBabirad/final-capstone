@@ -26,16 +26,16 @@ export default {
 .properties {
   margin-top: 35px;
   text-align: center;
-  background-color:#006E7F;
-  border: solid #EE5007;
+  background-color:#87CBB9;
+  border: solid #569DAA;
  /* border-radius: 10px;*/
 }
 .map {
   order: 1;
   margin-top: 35px;
   text-align: center;
-  background-color:#006E7F;
-  border: solid #EE5007;
+  background-color:#87CBB9;
+  border: solid #569DAA;
   /*border-radius: 5px;*/
 }
 
