@@ -119,11 +119,11 @@ CREATE TABLE staff_assignments (
 
 CREATE TABLE rent (
 	rent_id SERIAL PRIMARY KEY,
-	due_date varchar,
-	paid_date varchar,
-	payment_status int,
-	amount_paid decimal,
-	amount_due decimal,
+	due_date varchar(10),
+	paid_date varchar(10),
+	payment_status int,  -- 0 for due, 1 for paid, 2 for overdue
+	amount_paid decimal(10, 2),
+	amount_due decimal(10, 2),
 	property_id int,
 	tenant_id int,
 	landlord_id int,
@@ -238,7 +238,6 @@ TO final_capstone_appuser;
 
 -- INSERT into property (imgSrc, streetAddress, zipCode, state, unit, landlord_id)
 -- VALUES ('secondTestImg', '246 Testing Dr', '15101', 'PA', '6B', (SELECT landlord_id from landlord where email = 'test@test.com'));
-
 
 
 commit;
