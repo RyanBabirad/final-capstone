@@ -8,6 +8,7 @@ import store from '../store/index'
 import Landlord from '../components/Landlord.vue'
 import Staff from '../components/Staff.vue'
 import Tenant from '../components/Tenant.vue'
+import UserProfile from '../components/UserProfile.vue'
 
 Vue.use(Router)
 
@@ -54,6 +55,14 @@ const router = new Router({
       component: Register,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/user",
+      name: "user",
+      component: UserProfile,
+      meta: {
+        requiresAuth: true
       }
     },
     {

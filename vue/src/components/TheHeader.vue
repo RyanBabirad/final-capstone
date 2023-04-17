@@ -27,8 +27,9 @@ export default {
         return { name: 'staff' };
       } else if(role === 'ROLE_TENANT') {
         return { name: 'tenant' };
-      }
-      else {
+      } else if(role === 'ROLE_USER') {
+        return { name: 'user'};
+      } else {
         return { name: 'home' };
       }
     },
