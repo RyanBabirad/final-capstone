@@ -3,7 +3,7 @@
     <h1>Contact info</h1>
     <br>
     <div class="landlordInfo">
-        <h3>My Landlord: Elijah Smells</h3>
+        <h3>My Landlord: Elijah is the best</h3>
         <p>Phone Number:</p>
         <p>Email:</p>
     </div>
@@ -23,9 +23,12 @@ export default {
 
 <style scoped>
     .contactInfo{
-        border: solid black;
+        border-left:5px solid #81B214;
         margin-top: 5%;
         margin-right: 10.5%;
         margin-bottom: 60%;
+         background-color:#EEEEEE;
+        padding:5px;
+        border-radius:10px;
     }
 </style>
