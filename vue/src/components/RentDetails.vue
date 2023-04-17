@@ -19,6 +19,20 @@
         </div>
         </div>
 
+         <div class="form-input-group" >
+          <label for="routingNumber">Routing Number</label>
+          <div class="control">
+            <input class="routingNumber-box" type="routingNumber" id="routingNumber" v-model="property.routingNumber" required autofocus />
+        </div>
+        </div>
+
+         <div class="form-input-group" >
+          <label for="bankAccountNumber">Bank Account Number</label>
+          <div class="control">
+            <input class="bankAccountNumber-box" type="bankAccountNumber" id="bankAccountNumber" v-model="property.bankAccountNumber" required autofocus />
+        </div>
+        </div>
+
         </form>
         </div>
   </section>
@@ -32,7 +46,8 @@ export default {
       property: {
           EnterDollarAmount:"",
           Date:"",
-          
+          RoutingNumber:"",
+          BankAccountNumber:""
       },
 
             showForm: false
