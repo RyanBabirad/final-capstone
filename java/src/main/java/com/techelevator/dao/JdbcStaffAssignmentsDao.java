@@ -25,13 +25,6 @@ public class JdbcStaffAssignmentsDao implements StaffAssignmentsDao {
     }
 
     @Override
-    public StaffAssignment getStaffAssignment(int staffId, int assignmentId) {
-
-
-        return null;
-    }
-
-    @Override
     public List<StaffAssignment> getStaffAssignmentsByStaffId(int staffId) {
 
 
