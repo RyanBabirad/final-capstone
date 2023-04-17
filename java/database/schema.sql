@@ -118,11 +118,11 @@ CREATE TABLE staff_assignments (
 
 CREATE TABLE rent (
 	rent_id SERIAL PRIMARY KEY,
-	due_date date,
-	paid_date date,
-	payment_status int,
-	amount_paid bigint,
-	amount_due bigint,
+	due_date varchar(10),
+	paid_date varchar(10),
+	payment_status int,  -- 0 for due, 1 for paid, 2 for overdue
+	amount_paid decimal(10, 2),
+	amount_due decimal(10, 2),
 	property_id int,
 	tenant_id int,
 	landlord_id int,
@@ -175,14 +175,14 @@ TO final_capstone_appuser;
 
 
 
--- INSERT into property (imgSrc, streetAddress, zipCode, state, unit, landlord_id) VALUES ('testImg', '123 Test Ln', '15101', 'PA', '5B', (SELECT landlord_id from landlord where landlord_id = '4'));
+-- INSERT into property (imgSrc, streetAddress, zipCode, state, unit, landlord_id) VALUES ('testImg', '123 Test Ln', '15101', 'PA', '5B', (SELECT landlord_id from landlord where landlord_id = '3'));
 -- SELECT landlord_id from landlord where email = 'test@test.com';
 
 -- INSERT into property (imgSrc, streetAddress, zipCode, state, unit, landlord_id)
 -- VALUES ('secondTestImg', '246 Testing Dr', '15101', 'PA', '6B', (SELECT landlord_id from landlord where email = 'test@test.com'));
 
--- UPDATE tenant SET property_id = (SELECT property_id FROM property where landlord_id = '4'), 
--- landlord_id = (SELECT landlord_id FROM landlord where landlord_id = '4') 
+-- UPDATE tenant SET property_id = (SELECT property_id FROM property where landlord_id = '5'), 
+-- landlord_id = (SELECT landlord_id FROM landlord where landlord_id = '5') 
 -- where tenant_id = '6';
 
 commit;
