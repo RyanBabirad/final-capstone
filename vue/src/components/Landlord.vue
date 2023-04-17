@@ -111,7 +111,6 @@ export default {
     }
   },
   toggleForm(){
-
     this.showForm = !this.showForm;
   }
 }

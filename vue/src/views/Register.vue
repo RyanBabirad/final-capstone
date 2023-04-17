@@ -26,61 +26,11 @@
         <input class="confirm-password-box" type="password" id="confirmPassword" v-model="user.confirmPassword" required />
         </div>
       </div>
-
-      <div class="form-in-group">
-        <label for="role">Select Role</label>
-        <div class="control">
-        <select id="selectRole" v-model="user.role" >
-          
-          <option  value="user">User</option>
-          <option  value="tenant">Tenant</option>
-          <option  value="landlord">Landlord</option>
-          <option  value="staff">Staff</option>
-        </select>
-
-
-        <div class="form-input-group" id="info" v-if="user.role != 'user'">
-        <label for="firstname" >First Name</label>
-        <div class="control">
-        <input class="first-name-box" type="firstname" id="firstname" v-model="user.firstname" required />
-        </div>
-      </div>
-
-      <div class="form-input-group" id="info" v-if="user.role != 'user'">
-        <label for="lastname"> Last Name</label>
-        <div class="control">
-        <input class="last-name-box" type="lastname" id="lastname" v-model="user.lastname" required />
-        </div>
-      </div>
-
-      <div class="form-input-group" id="info" v-if="user.role != 'user'">
-        <label for="emailaddress">Email Adrress</label>
-        <div class="control">
-        <input class="emailaddress-box" type="emailaddress" id="emailaddress" v-model="user.emailaddress" required />
-        </div>
-      </div>
-
-      <div class="form-input-group" id="info" v-if="user.role != 'user'">
-        <label for="phonenumber">Phone Number</label>
-        <div class="control">
-        <input class="phonenumber-box" type="phonenumber" id="phonenumber" v-model="user.phonenumber" required />
-        </div>
-      </div>
-
-<!--need to make div and v-show edfault falsey for first last email and phone comp
-then can make show or not in if state for if value of user tenant landlord or staff -->
-        
-
-        </div>
-      </div>
-      
       <div class="submit">
       <button class="submit-button" type="submit">Create Account</button>
-    
-     </div>
+      </div>
       <p>
-        <router-link class="links router-link-active" :to="{ name: 'login' }"
-          >Already have an account? Log in.</router-link>
+        <router-link class="links router-link-active" :to="{ name: 'login' }">Already have an account? Log in.</router-link>
       </p>
     </form>
   </div>
