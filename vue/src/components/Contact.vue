@@ -3,7 +3,7 @@
     <h1>Contact info</h1>
     <br>
     <div class="landlordInfo">
-        <h3>My Landlord: Elijah Smells</h3>
+        <h3>My Landlord: Elijah is the best</h3>
         <p>Phone Number:</p>
         <p>Email:</p>
     </div>
