@@ -19,5 +19,10 @@ public interface LandlordDao {
 
     Landlord updateLandlord(Landlord landlord); //update can also be used to remove an inactive landlord from page maybe? - Colin
 
+    int getPropertyIdByLandlord(String email);
 
-}
+    void assignPropertyToTenant(int tenantId, int landlordId, int propertyId);
+
+
+
+    }

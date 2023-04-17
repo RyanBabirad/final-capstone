@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.time.LocalDate;
 
 
 @RestController
@@ -42,16 +43,16 @@ public class LandlordController {
 
 
     // this does not work yet. - Colin
-    @RequestMapping(path = "/landlord/tenant", method = RequestMethod.PUT)
-    public void assignPropertyToTenant(@RequestBody int id, Principal principal, Tenant tenant, LandlordDao landlordDao) {
-
-        int landlordId = landlordDao.findLandlordIdByEmail(principal.getName());
-        int propertyId = tenant.getPropertyId();
-        int tenantId = tenant.getTenantId();
-
-
-        landlordDao.assignTenant(propertyId, landlordId, tenantId);
-    }
+//    @RequestMapping(path = "/landlord/tenant", method = RequestMethod.PUT)
+//    public void assignPropertyToTenant(@RequestBody Principal principal, Tenant tenant, LandlordDao landlordDao) {
+//
+//        int landlordId = landlordDao.findLandlordIdByEmail(principal.getName());
+//        int propertyId = landlordDao.getPropertyIdByLandlord(principal.getName());    // grabbing empty id
+//        int tenantId = tenant.getTenantId();
+//
+//
+//        landlordDao.assignTenant(propertyId, landlordId, tenantId);
+//    }
 
 
 
