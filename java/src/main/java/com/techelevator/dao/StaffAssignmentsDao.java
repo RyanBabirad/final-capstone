@@ -8,8 +8,6 @@ public interface StaffAssignmentsDao {
 
     boolean createStaffAssignment(int staffId, int assignmentId);
 
-    StaffAssignment getStaffAssignment(int staffId, int assignmentId);
-
     List<StaffAssignment> getStaffAssignmentsByStaffId(int staffId);
 
     List<StaffAssignment> getStaffAssignmentsByAssignmentId(int assignmentId);
