@@ -1,11 +1,23 @@
 <template>
   <section id="propertyDetails">
-      <!-- container to show individual property details -->
+     
   </section>
 </template>
 
 <script>
 export default {
+  name: "propertyDetails",
+  data() {
+    return {
+      property: {
+        imgName: "",
+        streetAddress: "",
+        zipcode: "",
+        state: "",
+        unit: ""
+      }
+    }
+  }
 
 }
 </script>

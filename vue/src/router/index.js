@@ -5,7 +5,6 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import Profile from '../components/Profile.vue'
 import Landlord from '../components/Landlord.vue'
 import Staff from '../components/Staff.vue'
 import Tenant from '../components/Tenant.vue'
@@ -55,14 +54,6 @@ const router = new Router({
       component: Register,
       meta: {
         requiresAuth: false
-      }
-    },
-    {
-      path: "/profile",
-      name: "profile",
-      component: Profile,
-      meta: {
-        requiresAuth: true
       }
     },
     {

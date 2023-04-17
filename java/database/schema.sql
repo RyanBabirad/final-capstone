@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS rent;
 DROP TABLE IF EXISTS staff_assignments;
 DROP TABLE IF EXISTS assignments;
 DROP TABLE IF EXISTS maintenence_request;
+DROP TABLE IF EXISTS maintenance_request;
 DROP TABLE IF EXISTS staff;
 DROP TABLE IF EXISTS tenant;
 DROP TABLE IF EXISTS property;
@@ -85,7 +86,7 @@ CREATE TABLE staff (
 	--CONSTRAINT fk_users_staff FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
-CREATE TABLE maintenence_request (
+CREATE TABLE maintenance_request (
 	request_id SERIAL,
 	status boolean DEFAULT false,
 	date_requested date,
@@ -103,7 +104,7 @@ CREATE TABLE assignments (
 	is_assigned boolean DEFAULT false,
 	date_assigned date,
 	property_id int,
-	CONSTRAINT fk_main_req_assignments FOREIGN KEY (request_id) REFERENCES maintenence_request (request_id),
+	CONSTRAINT fk_main_req_assignments FOREIGN KEY (request_id) REFERENCES maintenance_request (request_id),
 	CONSTRAINT fk_property_assignments FOREIGN KEY (property_id) REFERENCES property (property_id)
 );
 
@@ -140,7 +141,7 @@ SELECT * FROM tenant
 JOIN users on tenant.tenant_id = users.user_id;
 SELECT * FROM staff
 JOIN users on staff.staff_id = users.user_id;
-SELECT * FROM maintenence_request;
+SELECT * FROM maintenance_request;
 SELECT * FROM assignments;
 SELECT * FROM staff_assignments;
 SELECT * FROM rent;
