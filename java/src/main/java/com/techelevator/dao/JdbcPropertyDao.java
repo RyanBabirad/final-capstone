@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Landlord;
 import com.techelevator.model.Property;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -29,11 +30,40 @@ public class JdbcPropertyDao implements PropertyDao {
 
     @Override
     public Property getPropertyById(int propertyId) {
+
+        String sql = "SELECT * from property where property_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, propertyId);
+
+        if (results.next()) {
+            mapRowToLandlord(results);
+        }
         return null;
     }
+
 
     @Override
     public Property updateProperty(Property property) {
         return null;
     }
+
+
+    private Property mapRowToLandlord(SqlRowSet rowSet) {
+        Property property = new Property();
+
+        property.setPropertyId(rowSet.getInt("property_id"));
+        property.setImgSrc(rowSet.getString("imgsrc"));
+        property.setStreetAddress(rowSet.getString("streetaddress"));
+        property.setZipCode(rowSet.getInt("zipcode"));
+        property.setState(rowSet.getString("state"));
+        property.setUnit(rowSet.getString("unit"));
+        property.setLandlordId(rowSet.getInt("landlord_id"));
+
+        return property;
+    }
+
+
+
+
+
+
 }
