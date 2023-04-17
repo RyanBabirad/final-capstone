@@ -7,6 +7,9 @@
 
        <button @click="toggleForm" class="addPropertybutton" type="submit">Add Properties</button>
    
+      <button @click="toggleForm" class="addTenantButton" type="submit">Add Tenants</button>
+
+
     <div class="addNewProperty" id="add" v-if="showForm">
       <form @submit.prevent="add">
         
@@ -108,7 +111,6 @@ export default {
     }
   },
   toggleForm(){
-
 
     this.showForm = !this.showForm;
   }
