@@ -1,14 +1,14 @@
 package com.techelevator.model;
 
-public class StaffAssignment {
+public class StaffAssignments {
 
     private int staffId;
     private int assignmentId;
 
-    public StaffAssignment() {
+    public StaffAssignments() {
     }
 
-    public StaffAssignment(int staffId, int assignmentId) {
+    public StaffAssignments(int staffId, int assignmentId) {
         this.staffId = staffId;
         this.assignmentId = assignmentId;
     }

@@ -1,6 +1,8 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.AssignmentsDao;
+import com.techelevator.dao.StaffAssignmentsDao;
+import com.techelevator.model.StaffAssignments;
 import com.techelevator.model.Assignments;
 import com.techelevator.model.AssignmentsDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +17,14 @@ public class AssignmentsController {
 
     @Autowired
     private AssignmentsDao assignmentsDao;
+    @Autowired
+    private StaffAssignmentsDao staffAssignmentsDao;
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/landlord/maintenance-request/assignments", method = RequestMethod.POST)
     public Assignments createAssignment(@Valid @RequestBody AssignmentsDto assignmentsDto) {
+        // first create an entry in the assignments table
+
         Assignments assignment = new Assignments();
 
         assignment.setAssignmentId(assignmentsDto.getAssignmentId());
@@ -28,6 +34,10 @@ public class AssignmentsController {
         assignment.setPropertyId(assignmentsDto.getPropertyId());
 
         assignmentsDao.createAssignment(assignment);
+
+        // then create an entry in the staff_assignments table
+
+
 
         return assignment;
     }
