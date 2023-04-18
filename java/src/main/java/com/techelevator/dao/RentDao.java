@@ -14,5 +14,9 @@ public interface RentDao {
 
     public List<Rent> getRentsByPropertyId();
 
+<<<<<<< HEAD
     // public updateRent(int rentId);
+=======
+  //  public updateRent(int rentId);
+>>>>>>> e8c71a929ea927b903f578a24073c451c18a9abe
 }

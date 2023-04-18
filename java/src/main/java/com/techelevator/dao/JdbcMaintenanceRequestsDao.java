@@ -56,7 +56,7 @@ public class JdbcMaintenanceRequestsDao implements MaintenanceRequestsDao {
     private MaintenanceRequests mapRowToMaintenanceRequests(SqlRowSet rowSet) {
         MaintenanceRequests maintenanceRequest = new MaintenanceRequests();
         maintenanceRequest.setRequestId(rowSet.getInt("request_id"));
-        maintenanceRequest.setStatus(rowSet.getBoolean("status"));
+        maintenanceRequest.setStatus(rowSet.getInt("status"));
         maintenanceRequest.setDate(rowSet.getString("date_requested"));
         maintenanceRequest.setDescription(rowSet.getString("description"));
         maintenanceRequest.setTenantId(rowSet.getInt("tenant_id"));

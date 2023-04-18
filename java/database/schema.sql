@@ -89,7 +89,7 @@ CREATE TABLE staff (
 
 CREATE TABLE maintenance_request (
 	request_id SERIAL,
-	status boolean DEFAULT false,
+	status int DEFAULT 0,		-- 0 is pending, 1 is in progress, 2 is completed.
 	date_requested varchar,
 	description varchar(350),
 	tenant_id int,
