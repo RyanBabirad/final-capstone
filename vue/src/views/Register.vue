@@ -104,13 +104,13 @@ label {
   display:flex;
   justify-content: center;
   align-items: center;
-  border:solid #B22727;
+  border:solid #159895;
   margin-top:10%;
   padding-top:30px;
   padding-bottom: 50px;
   margin-left:40%;
   margin-right:40%;
-  background-color: white;
+  background-color: #159895;
   border-radius:25px;
   
 

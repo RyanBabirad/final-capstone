@@ -71,13 +71,13 @@ export default {
     color:black;
     border-radius: 8px;
     background-color: white;
-    border: 1px solid #EEEEEE;
+    border: 1px solid white;
     font-family:monospace;
     letter-spacing:1px;
 }
 .links:hover {
   color:white;
-  background-color:#81B214;
+  background-color:#57C5B6;
   border: 1px solid white;
   cursor: pointer;
 }

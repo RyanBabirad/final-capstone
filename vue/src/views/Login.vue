@@ -2,7 +2,7 @@
   <body class="main">
     <div class="login-page" id="login">
       <form @submit.prevent="login">
-        <h1 class="sign-in">Please Sign In</h1>
+        <h1 class="sign-in" >Please Sign In</h1>
         <div role="alert" v-if="invalidCredentials">
           Invalid username and password!
         </div>
@@ -98,21 +98,22 @@ body {
   border: solid white;
   margin-top: 10%;
   padding-top: 40px;
-  margin-left: 42.5%;
+  margin-left: 40%;
   padding-bottom: 50px;
-  padding-left: (100vh/2);
-border:solid #B22727;
-  background-color: white;
-  border-radius: 25px;
+  /*padding-left: (100vh/2);*/
+  border:solid #159895;
+  background-color: #159895;
+  border-radius: 40px;
   width: 20%;
   height: 30%;
+  color:white;
 }
 .sign-in {
   text-align: center;
   font-family: monospace;
   font-weight: bolder;
   font-size: x-large;
-  color: black;
+  color: white;
 }
 .sign-submit:hover {
   cursor: pointer;
@@ -126,12 +127,13 @@ border:solid #B22727;
 }
 .links:hover {
   cursor: pointer;
-  color: #006e7f;
+  color: #002B5B;
 }
 
 #main {
   display: "flex";
   justify-content: "center";
   align-content: center;
+  
 }
 </style>

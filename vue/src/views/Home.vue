@@ -28,9 +28,9 @@ export default {
   margin-left: 100px;
   margin-right:10px;
   text-align: center;
-  background-color:white;
- border:solid #B22727;
-  border-radius:10px;
+  background-color:#159895;
+ border:solid #159895;
+  border-radius:40px;
  /* border-radius: 10px;*/
 }
 .map {
@@ -39,9 +39,9 @@ export default {
   margin-right: 90px;
   margin-left:50px;
   text-align: center;
-  background-color:white;
-  border:solid #006E7F;
-  border-radius:10px;
+  background-color:#159895;
+  border:solid #159895;
+  border-radius:40px;
   /*border-radius: 5px;*/
 }
 

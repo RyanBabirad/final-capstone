@@ -31,17 +31,20 @@ export default {
   align-items: "center";
   justify-content: center;
   height: "100%";
-   */
+   
   
   position: relative;
   overflow: hidden;
   height: 100vh;
   background: url("assets/rainbow.jpg") no-repeat center center fixed;
   background-size: cover;
+  */
+  background-color:#1A5F7A;
 }
 
 #josie-testing {
   height: 100vh;
+  background-color:#1A5F7A
 }
 
 </style>

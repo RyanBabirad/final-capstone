@@ -51,6 +51,15 @@
                 <textarea type="text" id="description" v-model="text" placeholder="Enter something..." rows="3" max-rows="6"></textarea>
               </div>
             </div>
+
+             <div class="form-input-group" >
+              <label for="rent">Set Rent $</label>
+              <div class="control">
+                <input type=text id="rent" v-model="property.rent" required autofocus />
+              </div>
+              </div>
+              <br>
+
             <button class="addProperty" type="submit">Add</button>
           </form>
         </div>
@@ -82,7 +91,7 @@
                 </div>
               </div>
               <br>
-              <button class="addTenant" type="submit">Add Tenant</button>
+              <button class="addTenant-button" type="submit">Add Tenant</button>
             </form>
           </div>
       </div>
@@ -206,10 +215,11 @@ export default {
 #firstcolumn{
   margin-top:10%;
 margin-left:25%;
-background-color:white;
- border:solid #F8CB2E;
-  border-radius:10px;
+background-color:#159895;
+ 
+  border-radius:40px;
   padding:50px;
+  color:white;
 }
 .maintenance{
   display: flex;
@@ -218,16 +228,44 @@ background-color:white;
 #secondcolumn{
   margin-top:10%;
  margin-right:25%;
- background-color:white;
- border:solid #F8CB2E;
- border-radius:10px;
+ background-color:#159895;
+ 
+ border-radius:40px;
   padding:50px;
+  color:white;
 }
 .columns{
    column-gap:16%;
 }
 #description{
-  border-color:white;
+  border-color:grey;
+}
+.addPropertybutton{
+  background-color:#57C5B6;
+  border:solid #57C5B6;
+  border-radius:15px;
+  color:white;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+}
+.addTenantButton{
+   background-color:#57C5B6;
+  border:solid #57C5B6;
+  border-radius:15px;
+  color:white;
+}
+.addTenant-button{
+  background-color:#57C5B6;
+  border:solid #57C5B6;
+  border-radius:15px;
+  color:white;
+}
+.addProperty{
+   background-color:#57C5B6;
+  border:solid #57C5B6;
+  border-radius:15px;
+  color:white;
 }
 
 
