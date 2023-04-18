@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.MaintenanceRequests;
+import com.techelevator.model.Tenant;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -23,9 +24,9 @@ public class JdbcMaintenanceRequestsDao implements MaintenanceRequestsDao {
 
 
     @Override
-    public boolean createMaintenanceRequests(MaintenanceRequests maintenanceRequest) {
+    public boolean createMaintenanceRequests(MaintenanceRequests maintenanceRequest, Tenant tenant) {
         String sql = "INSERT INTO maintenance_request (status, date_requested, description, tenant_id, property_id) VALUES (?, ?, ?, ?, ?)";
-        int rowsAffected = jdbcTemplate.update(sql, maintenanceRequest.isStatus(), maintenanceRequest.getDate(), maintenanceRequest.getDescription(), maintenanceRequest.getTenantId(), maintenanceRequest.getPropertyId());
+        int rowsAffected = jdbcTemplate.update(sql, maintenanceRequest.isStatus(), maintenanceRequest.getDate(), maintenanceRequest.getDescription(), tenant.getTenantId(), maintenanceRequest.getPropertyId());
         return rowsAffected == 1;
     }
 
