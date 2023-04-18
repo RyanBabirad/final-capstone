@@ -33,7 +33,6 @@ public class JdbcLandlordDao implements LandlordDao {
                 "landlord_id = (SELECT landlord_id FROM landlord where landlord_id = ?) \n" +
                 "where tenant_id = ?;";
 
-
         jdbcTemplate.update(sql, propertyId, landlordId, tenantId);
     }
 
@@ -107,9 +106,5 @@ public class JdbcLandlordDao implements LandlordDao {
 
         return landlord;
     }
-
-
-
-
 
 }
