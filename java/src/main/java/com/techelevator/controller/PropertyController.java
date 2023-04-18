@@ -38,6 +38,7 @@ public class PropertyController {
         property.setZipCode(propertyDto.getZipCode());
         property.setState(propertyDto.getState());
         property.setUnit(propertyDto.getUnit());
+        property.setDescription(propertyDto.getDescription());
         landlord.setLandLordId(landlord.getLandLordId());
 
         propertyDao.saveProperty(property.getPropertyId(), property, landlord);

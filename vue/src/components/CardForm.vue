@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import moment from 'moment';
+//import moment from 'moment';
 import BoardService from '../services/BoardService';
 
 export default {
@@ -42,7 +42,7 @@ export default {
         description: this.request.description,
         status: this.request.status,
         //avatar: "https://randomuser.me/api/portraits/lego/1.jpg",
-        date: moment().format("MMM Do YYYY")
+        //date: moment().format("MMM Do YYYY")
       };
 
       if (this.requestID === 0) {

@@ -156,7 +156,7 @@ JOIN users on landlord.landlord_id = users.user_id
 WHERE username = 'LandlordTwo';
 */
 
-
+UPDATE users set role = 'ROLE_TENANT' where user_id = '8';
 
 
 
