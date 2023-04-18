@@ -6,7 +6,7 @@
       <button @click="toggleForm" class="addPropertybutton" type="submit">Update Account</button>
 
       <div class="updateAcount" v-if="showForm">
-        <form v-on: submit.prevent="updateAccount">
+        <form v-on:submit.prevent="submitUser">
 
           <div class="form-in-group">
             <label for="role">Select Role</label>
@@ -46,7 +46,7 @@
           <input class="phonenumber-box" type="phonenumber" id="phonenumber" v-model="user.phoneNumber" required />
           </div>
         </div>
-        <button class="UpdateUser btn-submit" v-on:submit="submitUser" type="submit">Update</button>
+        <button class="UpdateUser btn-submit" type="submit">Update</button>
         </form>
       </div>  
   </section>
@@ -92,8 +92,8 @@ export default {
         role : this.user.role,
         firstName : this.user.firstName,
         lastName : this.user.lastName,
-        emailAddress : this.user.emailAddress,
-        phoneNumber : this.user.phoneNumber
+        email : this.user.emailAddress,
+        phone : this.user.phoneNumber
       }
       UserService.createUser(newUser).then(response => {
         console.log(response.data)
