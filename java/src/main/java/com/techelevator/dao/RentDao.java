@@ -6,13 +6,12 @@ import java.util.List;
 
 public interface RentDao {
 
-    public boolean createRent();
+    boolean createRent(Rent rent);
 
-    public List<Rent> getRentsByTenantId();
+    List<Rent> getRentsByTenantId(int tenantId);
 
-    public List<Rent> getRentsByLandlordId();
+    List<Rent> getRentsByLandlordId(int landlordId);
 
 }
-
 
     // public updateRent(int rentId);

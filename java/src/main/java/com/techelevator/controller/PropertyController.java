@@ -38,6 +38,7 @@ public class PropertyController {
         property.setZipCode(propertyDto.getZipCode());
         property.setState(propertyDto.getState());
         property.setUnit(propertyDto.getUnit());
+        property.setRentAmount(propertyDto.getRentAmount());
         property.setDescription(propertyDto.getDescription());
         landlord.setLandLordId(landlord.getLandLordId());
 
@@ -48,12 +49,7 @@ public class PropertyController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public List<Property> listProperties() {
-
         return propertyDao.listAllProperties();
     }
-
-
-
-
 
 }

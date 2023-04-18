@@ -19,6 +19,8 @@ public class AssignmentsController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/landlord/maintenance-request/assignments", method = RequestMethod.POST)
     public Assignments createAssignment(@Valid @RequestBody AssignmentsDto assignmentsDto) {
+        // first create an entry in the assignments table
+
         Assignments assignment = new Assignments();
 
         assignment.setAssignmentId(assignmentsDto.getAssignmentId());
@@ -26,8 +28,13 @@ public class AssignmentsController {
         assignment.setAssigned(assignmentsDto.isAssigned());
         assignment.setDate(assignmentsDto.getDate());
         assignment.setPropertyId(assignmentsDto.getPropertyId());
+        assignment.setStaffId(assignmentsDto.getStaffId());
 
         assignmentsDao.createAssignment(assignment);
+
+        // then create an entry in the staff_assignments table
+
+
 
         return assignment;
     }
@@ -47,6 +54,7 @@ public class AssignmentsController {
         assignment.setAssigned(assignmentsDto.isAssigned());
         assignment.setDate(assignmentsDto.getDate());
         assignment.setPropertyId(assignmentsDto.getPropertyId());
+        assignment.setStaffId(assignmentsDto.getStaffId());
 
         return assignmentsDao.updateAssignment(assignment);
     }

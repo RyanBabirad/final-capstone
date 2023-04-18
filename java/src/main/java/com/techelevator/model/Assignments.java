@@ -11,18 +11,20 @@ public class Assignments {
     private int assignmentId;
     private int requestId;
     private boolean isAssigned;
-    private String date; // BE SURE TO CHECK THIS!!
+    private String date;
     private int propertyId;
+    private int staffId;
 
-    public Assignments() {}; //default constructor
+    public Assignments() {};
 
 
-    public Assignments(int assignmentId, int requestId, boolean isAssigned, String date, int propertyId) {
+    public Assignments(int assignmentId, int requestId, boolean isAssigned, String date, int propertyId, int staffId) {
         this.assignmentId = assignmentId;
         this.requestId = requestId;
         this.isAssigned = isAssigned;
         this.date = date;
         this.propertyId = propertyId;
+        this.staffId = staffId;
     }
 
     public int getAssignmentId() {
@@ -63,6 +65,14 @@ public class Assignments {
 
     public void setPropertyId(int propertyId) {
         this.propertyId = propertyId;
+    }
+
+    public int getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(int staffId) {
+        this.staffId = staffId;
     }
 
     @Override

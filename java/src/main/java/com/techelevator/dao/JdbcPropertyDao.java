@@ -22,11 +22,11 @@ public class JdbcPropertyDao implements PropertyDao {
     public boolean saveProperty(int landlordId, Property property, Landlord landlord) {
         int landLordId;
 
-        String sql = "INSERT into property (imgSrc, streetAddress, zipCode, state, unit, description, landlord_id)" +
-                " VALUES (?, ?, ?, ?, ?, ?, (SELECT landlord_id from landlord where email = ?));";
+        String sql = "INSERT into property (imgSrc, streetAddress, zipCode, state, unit, rentAmount, description, landlord_id)" +
+                " VALUES (?, ?, ?, ?, ?, ?, ?, (SELECT landlord_id from landlord where email = ?));";
 
-        int newId = jdbcTemplate.update(sql, property.getImgSrc(),
-                property.getStreetAddress(), property.getZipCode(), property.getState(), property.getUnit(), property.getDescription(), landlord.getEmail());
+        int newId = jdbcTemplate.update(sql, property.getImgSrc(), property.getStreetAddress(), property.getZipCode(),
+                property.getState(), property.getUnit(), property.getRentAmount(), property.getDescription(), landlord.getEmail());
 
         return newId == 1;
     }
@@ -73,15 +73,11 @@ public class JdbcPropertyDao implements PropertyDao {
         property.setZipCode(rowSet.getInt("zipcode"));
         property.setState(rowSet.getString("state"));
         property.setUnit(rowSet.getString("unit"));
+        property.setRentAmount(rowSet.getInt("rentamount"));
         property.setDescription(rowSet.getString("description"));
         property.setLandlordId(rowSet.getInt("landlord_id"));
 
         return property;
     }
-
-
-
-
-
 
 }

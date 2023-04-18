@@ -10,14 +10,14 @@ public class RentDto {
     private String dueDate;
     private String paidDate;
     private int paymentStatus;  // 0 for due, 1 for paid, 2 for overdue
-    private BigDecimal amountPaid;
-    private BigDecimal amountDue;
+    private float amountPaid;
+    private float amountDue;
     private int propertyId;
     private int tenantId;
     private int landlordId;
 
 
-    // Getters .........................................................................................................
+    // getters .........................................................................................................
 
     public int getRentId() {
         return rentId;
@@ -35,11 +35,11 @@ public class RentDto {
         return paymentStatus;
     }
 
-    public BigDecimal getAmountPaid() {
+    public float getAmountPaid() {
         return amountPaid;
     }
 
-    public BigDecimal getAmountDue() {
+    public float getAmountDue() {
         return amountDue;
     }
 
