@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.MaintenanceRequests;
+import com.techelevator.model.Tenant;
 
 public interface MaintenanceRequestsDao {
 
@@ -17,7 +18,7 @@ public interface MaintenanceRequestsDao {
 //    updateMaintenanceRequest
 //            deleteMaintenanceRequest
 
-    boolean createMaintenanceRequests(MaintenanceRequests maintenanceRequest);
+    boolean createMaintenanceRequests(MaintenanceRequests maintenanceRequest, Tenant tenant);
 
     MaintenanceRequests getMaintenanceRequestById(int id);
 

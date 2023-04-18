@@ -8,7 +8,16 @@ public class PropertyDto {
     private int zipCode;
     private String state;
     private String unit;
+    private String description;
     private int landlordId;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public int getPropertyId() {
         return propertyId;

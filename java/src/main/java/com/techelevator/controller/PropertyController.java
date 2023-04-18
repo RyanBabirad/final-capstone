@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -37,11 +38,18 @@ public class PropertyController {
         property.setZipCode(propertyDto.getZipCode());
         property.setState(propertyDto.getState());
         property.setUnit(propertyDto.getUnit());
+        property.setDescription(propertyDto.getDescription());
         landlord.setLandLordId(landlord.getLandLordId());
 
         propertyDao.saveProperty(property.getPropertyId(), property, landlord);
 
         return property;
+    }
+
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public List<Property> listProperties() {
+
+        return propertyDao.listAllProperties();
     }
 
 

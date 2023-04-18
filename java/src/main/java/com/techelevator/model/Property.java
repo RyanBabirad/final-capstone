@@ -8,21 +8,31 @@ public class Property {
     private int zipCode;
     private String state;
     private String unit;
+    private String description;
     private int landlordId;
 
 
 
     public Property() { };
 
-    public Property(int propertyId, String imgSrc, String streetAddress, int zipCode, String state, String unit, int landlordId) {
+    public Property(int propertyId, String imgSrc, String streetAddress, int zipCode, String state, String unit, String description, int landlordId) {
         this.propertyId = propertyId;
         this.imgSrc = imgSrc;
         this.streetAddress = streetAddress;
         this.zipCode = zipCode;
         this.state = state;
         this.unit = unit;
+        this.description = description;
         this. landlordId = landlordId;
 
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getPropertyId() {

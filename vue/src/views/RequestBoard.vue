@@ -11,6 +11,11 @@ export default {
   components: {
     CardList
     },
+    data() {
+    return {
+      
+    };
+  }
 }
 </script>
 

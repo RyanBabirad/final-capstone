@@ -6,6 +6,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class JdbcPropertyDao implements PropertyDao {
 
@@ -19,13 +22,27 @@ public class JdbcPropertyDao implements PropertyDao {
     public boolean saveProperty(int landlordId, Property property, Landlord landlord) {
         int landLordId;
 
-        String sql = "INSERT into property (imgSrc, streetAddress, zipCode, state, unit, landlord_id)" +
-                " VALUES (?, ?, ?, ?, ?, (SELECT landlord_id from landlord where email = ?));";
+        String sql = "INSERT into property (imgSrc, streetAddress, zipCode, state, unit, description, landlord_id)" +
+                " VALUES (?, ?, ?, ?, ?, ?, (SELECT landlord_id from landlord where email = ?));";
 
         int newId = jdbcTemplate.update(sql, property.getImgSrc(),
-                property.getStreetAddress(), property.getZipCode(), property.getState(), property.getUnit(), landlord.getEmail());
+                property.getStreetAddress(), property.getZipCode(), property.getState(), property.getUnit(), property.getDescription(), landlord.getEmail());
 
         return newId == 1;
+    }
+
+    @Override
+    public List<Property> listAllProperties() {
+        List<Property> properties = new ArrayList<>();
+        String sql = "select * from property;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            Property property = mapRowToLandlord(results);
+            properties.add(property);
+        }
+
+        return properties;
     }
 
     @Override
@@ -56,6 +73,7 @@ public class JdbcPropertyDao implements PropertyDao {
         property.setZipCode(rowSet.getInt("zipcode"));
         property.setState(rowSet.getString("state"));
         property.setUnit(rowSet.getString("unit"));
+        property.setDescription(rowSet.getString("description"));
         property.setLandlordId(rowSet.getInt("landlord_id"));
 
         return property;

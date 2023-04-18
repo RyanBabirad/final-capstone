@@ -12,7 +12,7 @@ public interface RentDao {
 
     public List<Rent> getRentsByLandlordId();
 
-    public List<Rent> getRentsByPropertyId();
-
-    public updateRent(int rentId);
 }
+
+
+    // public updateRent(int rentId);

@@ -1,134 +1,103 @@
 <template>
   <section>
-      <form v-on:submit.prevent="submitForm" class="cardForm">
-    <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
-    <div class="form-group">
-      <label for="title">Title:</label>
-      <input id="title" type="text" class="form-control" v-model="card.title" autocomplete="off" />
-    </div>
-    <div class="form-group">
-      <label for="tag">Tag:</label>
-      <select id="tag" class="form-control" v-model="card.tag">
-        <option value="Feature Request">Feature Request</option>
-        <option value="Design">Design</option>
-        <option value="Q&A">Q&A</option>
-      </select>
-      <label for="status">Status:</label>
-      <select id="tag" class="form-control" v-model="card.status">
-        <option value="Planned">Planned</option>
-        <option value="In Progress">In Progress</option>
-        <option value="Completed">Completed</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="description">Description:</label>
-      <textarea id="description" class="form-control" v-model="card.description"></textarea>
-    </div>
-    <button class="btn btn-submit">Submit</button>
-    <button class="btn btn-cancel" v-on:click="cancelForm" type="button">Cancel</button>
-  </form>
+    <form v-on:submit.prevent="submitRequest" class="cardForm">
+      <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" class="form-control" v-model="request.description"></textarea>
+      </div>
+      <button class="btn btn-submit">Submit</button>
+    </form>
   </section>
 </template>
 
 <script>
 //import moment from 'moment';
+import BoardService from '../services/BoardService';
 
 export default {
      name: "card-form",
   props: {
-    cardID: {
+    requestID: {
       type: Number,
       default: 0
     }
   },
   data() {
     return {
-      card: {
-        title: "",
+      request: {
+        id: 0,
+        status: 0,
         description: "",
-        status: "Planned",
-        tag: "",
-        avatar: "",
+        //avatar: "",
         date: null
       },
       errorMsg: ""
     };
   },
   methods: {
-    submitForm() {
-    //   const newCard = {
-    //     boardId: Number(this.$route.params.boardID),
-    //     title: this.card.title,
-    //     description: this.card.description,
-    //     status: this.card.status,
-    //     tag: this.card.tag,
-    //     avatar: "https://randomuser.me/api/portraits/lego/1.jpg",
-    //     date: moment().format("MMM Do YYYY")
-    //   };
+    submitRequest() {
+      const newRequest = {
+        id: this.request.id,
+        description: this.request.description,
+        status: this.request.status,
+        //avatar: "https://randomuser.me/api/portraits/lego/1.jpg",
+        //date: moment().format("MMM Do YYYY")
+      };
 
-    //   if (this.cardID === 0) {
-    //     // add
-    //     boardsService
-    //       .addCard(newCard)
-    //       .then(response => {
-    //         if (response.status === 201) {
-    //           this.$router.push(`/board/${newCard.boardId}`);
-    //         }
-    //       })
-    //       .catch(error => {
-    //         this.handleErrorResponse(error, "adding");
-    //       });
-    //   } else {
-    //     // update
-    //     newCard.id = this.cardID;
-    //     newCard.avatar = this.card.avatar;
-    //     newCard.date = this.card.date;
-    //     boardsService
-    //       .updateCard(newCard)
-    //       .then(response => {
-    //         if (response.status === 200) {
-    //           this.$router.push(`/board/${newCard.boardId}`);
-    //         }
-    //       })
-    //       .catch(error => {
-    //         this.handleErrorResponse(error, "updating");
-    //       });
-    //   }
-    },
-    cancelForm() {
-      this.$router.push(`/board/${this.$route.params.boardID}`);
+      if (this.requestID === 0) {
+        BoardService.addCard(newRequest).then(response => {
+            if (response.status === 201) {
+              this.$router.push({ name: 'staff' });
+            }
+          })
+          .catch(error => {
+            this.handleErrorResponse(error, "adding");
+          });
+      } else {
+        newRequest.id = this.requestID;
+        newRequest.description = this.request.description;
+        //newCard.avatar = this.card.avatar;
+        newRequest.date = this.request.date;
+        BoardService.updateCard(newRequest).then(response => {
+            if (response.status === 200) {
+              this.$router.push({ name: 'staff' });
+            }
+          })
+          .catch(error => {
+            this.handleErrorResponse(error, "updating");
+          });
+      }
     },
     handleErrorResponse(error, verb) {
       if (error.response) {
         this.errorMsg =
-          "Error " + verb + " card. Response received was '" +
+          "Error " + verb + " request. Response received was '" +
           error.response.statusText +
           "'.";
       } else if (error.request) {
         this.errorMsg =
-          "Error " + verb + " card. Server could not be reached.";
+          "Error " + verb + " request. Server could not be reached.";
       } else {
         this.errorMsg =
-          "Error " + verb + " card. Request could not be created.";
+          "Error " + verb + " request. Request could not be created.";
       }
     }
   },
   created() {
-    // if (this.cardID != 0) {
-    //   boardsService
-    //     .getCard(this.cardID)
-    //     .then(response => {
-    //       this.card = response.data;
-    //     })
-    //     .catch(error => {
-    //       if (error.response && error.response.status === 404) {
-    //         alert(
-    //           "Card not available. This card may have been deleted or you have entered an invalid card ID."
-    //         );
-    //         this.$router.push({ name: 'Home' });
-    //       }
-    //     });
-   // }
+    if (this.requestID != 0) {
+      BoardService.getCard(this.requestID).then(response => {
+          this.request = response.data;
+        })
+        .catch(error => {
+          if (error.response && error.response.status === 404) {
+            alert(
+              "Request not available. This request may have been deleted or you have entered an invalid request ID."
+            );
+            this.$router.push({ name: 'staff' });
+          }
+        });
+   }
   }
 }
 </script>

@@ -13,7 +13,7 @@
       </div>
 
       <div class="updateAcount" v-if="showForm">
-        <form @submit.prevent="updateAccount">
+        <form v-on:submit.prevent="submitUser">
 
           <div class="form-in-group">
             <label for="role">Select Role</label>
@@ -53,13 +53,14 @@
           <input class="phonenumber-box" type="phonenumber" id="phonenumber" v-model="user.phoneNumber" required />
           </div>
         </div>
-        <button class="UpdateUser" type="submit">Update</button>
+        <button class="UpdateUser btn-submit" type="submit">Update</button>
         </form>
       </div>  
   </section>
 </template>
 
 <script>
+import UserService from '../services/UserService';
 export default {
   name: "user",
   data() {
@@ -92,6 +93,18 @@ export default {
   methods: {
     toggleForm() {
       this.showForm = !this.showForm;
+    },
+    submitUser() {
+      const newUser = {
+        role : this.user.role,
+        firstName : this.user.firstName,
+        lastName : this.user.lastName,
+        email : this.user.emailAddress,
+        phone : this.user.phoneNumber
+      }
+      UserService.createUser(newUser).then(response => {
+        console.log(response.data)
+      });
     }
   }
 
