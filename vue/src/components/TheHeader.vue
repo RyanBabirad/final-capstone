@@ -5,10 +5,11 @@
         <router-link class="links router-link-active" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;
         <router-link class="links router-link-active" v-bind:to="{ name: 'login' }" v-if="!isLoggedIn">Login</router-link>&nbsp;
         <router-link class="links router-link-active" v-bind:to="{ name: 'logout' }" v-if="isLoggedIn">Logout</router-link>&nbsp;
+       <router-link class="links router-link-active" v-bind:to="userPage" v-if="isLoggedIn">User Page</router-link>&nbsp;
+
       </li>
-      <li class="mr-auto">
-        <router-link class="links router-link-active" v-bind:to="userPage" v-if="isLoggedIn">User Page</router-link>&nbsp;
-      </li>
+      
+     
     </ul>
   </section>
 </template>
@@ -27,8 +28,9 @@ export default {
         return { name: 'staff' };
       } else if(role === 'ROLE_TENANT') {
         return { name: 'tenant' };
-      }
-      else {
+      } else if(role === 'ROLE_USER') {
+        return { name: 'user'};
+      } else {
         return { name: 'home' };
       }
     },
@@ -49,11 +51,7 @@ export default {
   left: 0;
   right: 0;
   background-color: #577D86;
-  
-}
-.user-page{
-  display: flex;
-  justify-content: flex-end;
+
 
 }
 .links{
@@ -62,14 +60,14 @@ export default {
     padding-right: 10px;
     color:black;
     border-radius: 8px;
-    background-color:#577D86;
-    border: 1px solid #577D86;
+    background-color:#EEEEEE;
+    border: 1px solid #EEEEEE;
     font-family:monospace;
     letter-spacing:1px;
 }
 .links:hover {
-  color:black;
-  background-color: white;
+  color:white;
+  background-color:#81B214;
   border: 1px solid white;
   cursor: pointer;
 }

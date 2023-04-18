@@ -1,36 +1,30 @@
 package com.techelevator.model;
 
-public class Tenant {
-
-    private int tenantId;
+public class Staff {
+    private int staffId;
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
-    private int propertyId;
     private int landlordId;
 
+    public Staff() { }
 
-
-    public Tenant() { }
-
-    public Tenant(int tenantId, String firstName, String lastName, String email, String phone, int propertyId, int landlordId) {
-        this.tenantId = tenantId;
+    public Staff(int staffId, String firstName, String lastName, String email, String phone, int landlordId) {
+        this.staffId = staffId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
-        this.propertyId = propertyId;
         this.landlordId = landlordId;
-
     }
 
-    public int getTenantId() {
-        return tenantId;
+    public int getStaffId() {
+        return staffId;
     }
 
-    public void setTenantId(int tenantId) {
-        this.tenantId = tenantId;
+    public void setStaffId(int staffId) {
+        this.staffId = staffId;
     }
 
     public String getFirstName() {
@@ -65,14 +59,6 @@ public class Tenant {
         this.phone = phone;
     }
 
-    public int getPropertyId() {
-        return propertyId;
-    }
-
-    public void setPropertyId(int propertyId) {
-        this.propertyId = propertyId;
-    }
-
     public int getLandlordId() {
         return landlordId;
     }
@@ -80,4 +66,5 @@ public class Tenant {
     public void setLandlordId(int landlordId) {
         this.landlordId = landlordId;
     }
+
 }

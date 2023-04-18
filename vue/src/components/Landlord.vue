@@ -5,8 +5,12 @@
 
       <!--this need to show properties -->
 
+        <div class="control">
        <button @click="toggleForm" class="addPropertybutton" type="submit">Add Properties</button>
+       </div>
    
+
+
     <div class="addNewProperty" id="add" v-if="showForm">
       <form @submit.prevent="add">
         
@@ -17,25 +21,25 @@
             <input type=text id="streetAddress" v-model="property.streetAddress" required autofocus />
           </div>
         </div>
-        <div class="form-input-group" v-if="showForm">
+        <div class="form-input-group">
           <label for="unit">Unit</label>
             <div class="control">
               <input type="text" id="unit" v-model="property.unit" />
             </div>
         </div>
-        <div class="form-input-group" v-if="showForm">
+        <div class="form-input-group">
           <label for="state">State</label>
             <div class="control">
               <input type="text" id="state" v-model="property.state" required />
             </div>
         </div>
-        <div class="form-input-group" v-if="showForm">
+        <div class="form-input-group">
           <label for="zipcode">Zipcode</label>
             <div class="control">
               <input type="text" id="zipcode" v-model="property.zipcode" required />
             </div>
         </div>
-        <div class="form-input-group" v-if="showForm">
+        <div class="form-input-group">
           <label for="imgSrc">Image</label>
             <div class="control">
               <input type="file" class="custom-file-input" id="imgSrc" @change="handleFileUpload" @drop="handleFileDrop" />
@@ -43,15 +47,73 @@
             </div>
         </div>
         <br>
-        <button class="addProperty" type="submit" v-if="showForm">Add</button>
+
+        <div class="form-input-group">
+          <label for="description"> Description:</label>
+          <div class="control">
+             <textarea type="text" id="description" v-model="text"
+      placeholder="Enter something..."
+      rows="3"
+      max-rows="6"
+    ></textarea>
+   
+          </div>
+          </div>
+
+     
+
+        <button class="addProperty" type="submit">Add</button>
       </form>
+      
       </div>
+      <br>
+      <div class="control">
+              <button @click="toggleForm2" class="addTenantButton" type="submit" >Add Tenants</button>
+      </div>
+
+          <div class="addNewProperty" id="add" v-if="showForm2">
+          <form @submit.prevent="add">
+              <div class="form-input-group" >
+          <label for="tenantName">Tenant Name</label>
+          <div class="control">
+            <input type=text id="tenantName" v-model="property.tenantName" required autofocus />
+          </div>
+        </div>
+
+         <div class="form-input-group" >
+          <label for="tenantPhoneNumber">Tenant Phone Number</label>
+          <div class="control">
+            <input type=text id="tenantPhoneNumber" v-model="property.tenantPhoneNumber" required autofocus />
+          </div>
+        </div>
+
+         <div class="form-input-group" >
+          <label for="tenantEmail">Tenant Email</label>
+          <div class="control">
+            <input type=text id="tenantEmail" v-model="property.tenantEmail" required autofocus />
+          </div>
+        </div>
+          <br>
+
+         <button class="addTenant" type="submit">Add Tenant</button>
+
+          </form>
+          </div>
+
+
+
       </div>
       <div class="column is-full is-2" id="secondcolumn">
         <p class="column maintenance"> Maintenance Requests</p>
         <!-- second column for the form -->
         </div>
       </div>
+
+       
+
+
+      
+
     <!-- import info box component(contains property info)  -->
     <!-- import maintenance Request overview component (landlord sees all incoming requests)  -->
   </section>
@@ -59,18 +121,30 @@
 
 <script>
 export default {
+
+
   name: "landlord",
   data() {
     return {
+      Form2:{
+        TenantName:"",
+        TenantPhoneNumber:"",
+        TenantEmail:""
+      },
+
       property: {
         imgSrc: [],
         imgName: "",
         streetAddress: "",
         zipcode: "",
         state: "",
-        unit: ""
+        unit: "",
+        description: "",
+        text:""
       },
-      showForm: false
+      showForm: false,
+      showForm2: false
+    
     };
   },
   methods: {
@@ -107,11 +181,22 @@ export default {
       }
     }
   },
-  toggleForm(){
-
-
+  toggleForm() {
     this.showForm = !this.showForm;
-  }
+  },
+  toggleForm2() {
+    this.showForm2 = !this.showForm2;
+  },
+
+  
+  //  onForm1Submit() {
+  //     // handle form 1 submission here
+  //     console.log('Form 1 submitted with data:', this.form1);
+  //   },
+  //   onForm2Submit() {
+  //     // handle form 2 submission here
+  //     console.log('Form 2 submitted with data:', this.form2);
+  //   }
 }
     /*component for info box and maintenance request*/ 
 };
@@ -152,7 +237,9 @@ margin-left:25%;
 .columns{
    column-gap:16%;
 }
-
+#description{
+  border-color:white;
+}
 
 
 </style>
