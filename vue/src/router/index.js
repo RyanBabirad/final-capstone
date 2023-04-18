@@ -9,6 +9,9 @@ import Landlord from '../components/Landlord.vue'
 import Staff from '../components/Staff.vue'
 import Tenant from '../components/Tenant.vue'
 import UserProfile from '../components/UserProfile.vue'
+import CardView from '../views/CardView.vue'
+import AddCard from '../views/AddCard.vue'
+import EditCard from '../views/EditCard.vue'
 
 Vue.use(Router)
 
@@ -88,6 +91,21 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: '/board/:boardID/card/:cardID',
+      name: 'cardView',
+      component: CardView
+    },
+    {
+      path: '/board/:boardID/card/create',
+      name: 'addCard',
+      component: AddCard
+    },
+    {
+      path: '/board/:boardID/card/:cardID/edit',
+      name: 'editCard',
+      component: EditCard
     }
   ]
 })

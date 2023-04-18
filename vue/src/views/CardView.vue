@@ -1,16 +1,17 @@
 <template>
   <section>
-     <card-list />
+      <card-detail />
   </section>
 </template>
 
 <script>
-import CardList from '../components/CardList.vue'
+import CardDetail from '../components/CardDetail.vue'
 
 export default {
   components: {
-    CardList
-    },
+      CardDetail
+      },
+
 }
 </script>
 
