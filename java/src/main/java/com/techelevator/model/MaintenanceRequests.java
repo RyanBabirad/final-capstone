@@ -10,7 +10,7 @@ public class MaintenanceRequests {
 //    property_id int,
 
     private int requestId;
-    private boolean status;
+    private int status;
     private String date;  // BE SURE TO CHECK THIS!!!!
     private String description;
     private int tenantId;
@@ -19,7 +19,7 @@ public class MaintenanceRequests {
     public MaintenanceRequests() {}; //default constructor
 
 
-    public MaintenanceRequests(int requestId, boolean status, String date, String description, int tenantId, int propertyId) {
+    public MaintenanceRequests(int requestId, int status, String date, String description, int tenantId, int propertyId) {
         this.requestId = requestId;
         this.status = status;
         this.date = date;
@@ -36,11 +36,11 @@ public class MaintenanceRequests {
         this.requestId = requestId;
     }
 
-    public boolean isStatus() {
+    public int isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
