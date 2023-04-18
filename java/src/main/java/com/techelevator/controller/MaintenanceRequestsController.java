@@ -36,8 +36,8 @@ public class MaintenanceRequestsController {
         maintenanceRequest.setStatus(maintenanceRequestsDto.isStatus());
         maintenanceRequest.setDate(maintenanceRequestsDto.getDateRequested());
         maintenanceRequest.setDescription(maintenanceRequestsDto.getDescription());
-        tenant.setTenantId(maintenanceRequestsDto.getTenantId());
-        maintenanceRequest.setPropertyId(maintenanceRequestsDto.getPropertyId());
+        tenant.setTenantId(tenant.getTenantId());
+        maintenanceRequest.setPropertyId(tenant.getPropertyId());
 
         maintenanceRequestsDao.createMaintenanceRequests(maintenanceRequest, tenant);
 

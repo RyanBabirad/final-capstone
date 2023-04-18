@@ -49,10 +49,11 @@ public class JdbcTenantDao implements TenantDao {
     private Tenant mapRowToTenant(SqlRowSet rs) {
         Tenant tenant = new Tenant();
         tenant.setTenantId(rs.getInt("tenant_id"));
-        tenant.setFirstName(rs.getString("firstName"));
-        tenant.setLastName(rs.getString("lastName"));
+        tenant.setFirstName(rs.getString("first_name"));
+        tenant.setLastName(rs.getString("last_name"));
         tenant.setEmail(rs.getString("email"));
         tenant.setPhone(rs.getString("phone"));
+        tenant.setPropertyId(rs.getInt("property_id"));
         return tenant;
     }
 
