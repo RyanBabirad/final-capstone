@@ -1,20 +1,15 @@
 <template>
   <section>
   <div>
-    <div class="header">
-      <h1>{{ title }}</h1>
-      <router-link class="btn addNewCard" :to="{ name: 'AddCard', params: {boardID: this.boardId} }" v-if="!isLoading">Add New Card</router-link>
-      <button class="btn btn-cancel deleteBoard" v-if="!isLoading" v-on:click="deleteBoard">Delete Board</button>
-    </div>
     <div class="loading" v-if="isLoading">
       <img src="../assets/ppreflex.gif" />
     </div>
     <div v-else>
       <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
       <div class="boards">
-        <board-column title="Planned" :cards="planned" :boardID="this.boardId" />
-        <board-column title="In Progress" :cards="inProgress" :boardID="this.boardId" />
-        <board-column title="Completed" :cards="completed" :boardID="this.boardId" />
+        <board-column title="Pending" :requests="0" />
+        <board-column title="In Progress" :requests="1" />
+        <board-column title="Completed" :requests="2" />
       </div>
     </div>
   </div>
@@ -22,62 +17,55 @@
 </template>
 
 <script>
-import BoardColumn from './BoardColumn.vue';
+import BoardColumn from '../components/BoardColumn.vue';
+import BoardService from '../services/BoardService';
 
 export default {
   name: "cardsList",
   components: {
     BoardColumn
   },
-  props: {
-    boardId: {
-      type: Number,
-      default: 0
-    }
-  },
   data() {
     return {
-      title: "",
       isLoading: true,
       errorMsg: ""
     };
   },
   methods: {
      retrieveCards() {
-      // boardsService
-      //   .getCards(this.boardId)
-      //   .then(response => {
-      //     this.title = response.data.title;
-      //     this.$store.commit("SET_BOARD_CARDS", response.data.cards);
-      //     this.isLoading = false;
-      //   })
-      //   .catch(error => {
-      //     if (error.response && error.response.status === 404) {
-      //       alert(
-      //         "Board cards not available. This board may have been deleted or you have entered an invalid board ID."
-      //       );
-      //       this.$router.push({ name: 'Home' });
-      //     }
-      //   });
+      BoardService
+        .getCards()
+        .then(response => {
+          this.$store.commit("SET_BOARD_REQUESTS", response.data.requests);
+          this.isLoading = false;
+        })
+        .catch(error => {
+          if (error.response && error.response.status === 404) {
+            alert(
+              "Board cards not available. This board may have been deleted or you have entered an invalid board ID."
+            );
+            this.$router.push({ name: 'staff' });
+          }
+        });
     }
   },
   created() {
     this.retrieveCards(); 
   },
   computed: {
-    planned() {
+    pending() {
       return this.$store.state.boardCards.filter(
-        card => card.status === "Planned"
+        request => request.status === 0
       );
     },
     inProgress() {
       return this.$store.state.boardCards.filter(
-        card => card.status === "In Progress"
+        request => request.status === 1
       );
     },
     completed() {
       return this.$store.state.boardCards.filter(
-        card => card.status === "Completed"
+        request => request.status === 2
       );
     }
   }

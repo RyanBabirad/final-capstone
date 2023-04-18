@@ -3,7 +3,6 @@
       <h1 class="userGreeting">Hello, *insert user*!</h1>
       <br>
        <rent-details />
-
       <div class="columns">
         <div class="column maintenance">
           <maintenance-request />
@@ -12,7 +11,6 @@
           <contact />
         </div>
       </div>
-
       <lease-info />
   </section>
 </template>

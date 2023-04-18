@@ -10,7 +10,6 @@ import Staff from '../components/Staff.vue'
 import Tenant from '../components/Tenant.vue'
 import UserProfile from '../components/UserProfile.vue'
 import CardView from '../views/CardView.vue'
-import AddCard from '../views/AddCard.vue'
 import EditCard from '../views/EditCard.vue'
 
 Vue.use(Router)
@@ -93,19 +92,20 @@ const router = new Router({
       }
     },
     {
-      path: '/board/:boardID/card/:cardID',
+      path: '/staff/card/:cardID',
       name: 'cardView',
-      component: CardView
+      component: CardView,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
-      path: '/board/:boardID/card/create',
-      name: 'addCard',
-      component: AddCard
-    },
-    {
-      path: '/board/:boardID/card/:cardID/edit',
+      path: '/staff/card/:cardID/edit',
       name: 'editCard',
-      component: EditCard
+      component: EditCard,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })

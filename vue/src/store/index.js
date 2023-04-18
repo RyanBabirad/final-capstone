@@ -20,21 +20,13 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-      property: { 
-        streetAddress: "123 Main st",
-        unit: "",
-        zipcode: "15057",
-        state: "PA",
-        city: "Pittsburgh"
-    },
-    boards: [],
-    activeBoardId: null,
+      property: {},
     boardCards: [],
-    card: {
-      title: '',
-      description: '',
-      status: '',
-      comments: []
+    request: {
+      status: "Pending",
+      description: "",
+      //avatar: "",
+      date: null
     }
   },
   mutations: {
@@ -54,22 +46,11 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    SET_BOARDS(state, data) {
-      state.boards = data;
-    },
-    SET_ACTIVE_BOARD(state, boardId) {
-      state.activeBoardId = boardId;
-    },
-    SET_BOARD_CARDS(state, data) {
+    SET_BOARD_REQUESTS(state, data) {
       state.boardCards = data;
     },
-    SET_CURRENT_CARD(state, data) {
-      state.card = data;
-    },
-    DELETE_BOARD(state, boardIdToDelete) {
-      state.boards = state.boards.filter((board) => {
-        return board.id !== boardIdToDelete;
-      });
+    SET_CURRENT_REQUEST(state, data) {
+      state.request = data;
     }
   }
 })
