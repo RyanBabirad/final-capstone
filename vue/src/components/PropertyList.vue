@@ -13,26 +13,22 @@
 </template>
 
 <script>
-
+import PropertyService from '../services/PropertyService';
 
 export default {
   name: "property-list",
   data() {
     return {
-      properties: [{
-          streetAddress: "123 Main st",
-          state: "PA",
-          city: "Pittsburgh"
-      },
-      {
-          streetAddress: "455 Second st",
-          state: "PA",
-          city: "Pittsburgh"
-      }
-      ],
+      properties:[],
       isLoading: true,
     };
   },
+  created() {
+    PropertyService.getProperties()
+    .then((response) => {
+      this.properties = response.data;
+    });
+  }
 
 
 };
