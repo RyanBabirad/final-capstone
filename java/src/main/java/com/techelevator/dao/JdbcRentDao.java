@@ -8,7 +8,7 @@ public class JdbcRentDao {
 
     // instance variables ..............................................................................................
 
-    private final JdbcTemplate jdbcTemplate;
+    //private final JdbcTemplate jdbcTemplate;
 
 
     // constructor .....................................................................................................
