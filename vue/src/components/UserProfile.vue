@@ -1,9 +1,16 @@
 <template>
   <section class="userProfileContainer">
-
+     
       <h2>Current Status: {{ user.role }}</h2>
+       
+      <div class="control">
       <p>Need to update your account to Tenant/Landlord/Staff?</p>
+      </div>
+      <br>
+      
       <button @click="toggleForm" class="addPropertybutton" type="submit">Update Account</button>
+      <div class="control">
+      </div>
 
       <div class="updateAcount" v-if="showForm">
         <form @submit.prevent="updateAccount">
@@ -98,6 +105,20 @@ export default {
   .updateAcount {
     display: flex;
     justify-content: center;
+  }
+
+  .userProfileContainer{
+     display:flex;
+  justify-content: center;
+  align-items: center;
+  border:solid #87CBB9 ;
+  margin-top:10%;
+  padding-top:30px;
+  padding-bottom: 50px;
+  margin-left:40%;
+  margin-right:40%;
+  background-color: #87CBB9;
+  border-radius:25px;
   }
 
 </style>

@@ -7,6 +7,8 @@
         <router-link class="links router-link-active" v-bind:to="{ name: 'logout' }" v-if="isLoggedIn">Logout</router-link>&nbsp;
        <router-link class="links router-link-active" v-bind:to="userPage" v-if="isLoggedIn">User Page</router-link>&nbsp;
 
+
+ 
       </li>
       
      
@@ -50,7 +52,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #577D86;
+  background-color: white;
 
 
 }
@@ -60,7 +62,7 @@ export default {
     padding-right: 10px;
     color:black;
     border-radius: 8px;
-    background-color:#EEEEEE;
+    background-color: white;
     border: 1px solid #EEEEEE;
     font-family:monospace;
     letter-spacing:1px;

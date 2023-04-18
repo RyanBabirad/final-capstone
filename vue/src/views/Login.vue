@@ -1,32 +1,48 @@
 <template>
-<body class="main">
-  <div class="login-page" id="login">
-    <form @submit.prevent="login">
-      <h1 class="sign-in">Please Sign In</h1>
-      <div role="alert" v-if="invalidCredentials">
-        Invalid username and password!
-      </div>
-      <div role="alert" v-if="this.$route.query.registration">
-        Thank you for registering, please sign in.
-      </div>
-      <div class="form-input-group">
-        <label for="username">Username</label>
-         <div class="control">
-          <input type="text" id="username" v-model="user.username" required autofocus />
+  <body class="main">
+    <div class="login-page" id="login">
+      <form @submit.prevent="login">
+        <h1 class="sign-in">Please Sign In</h1>
+        <div role="alert" v-if="invalidCredentials">
+          Invalid username and password!
         </div>
-      </div>
-      <div class="form-input-group">
-        <label for="password">Password</label>
+        <div role="alert" v-if="this.$route.query.registration">
+          Thank you for registering, please sign in.
+        </div>
+        <div class="form-input-group">
+          <label for="username">Username</label>
           <div class="control">
-            <input type="password" id="password" v-model="user.password" required />
+            <input
+              type="text"
+              id="username"
+              v-model="user.username"
+              required
+              autofocus
+            />
           </div>
-      </div>
-      <button class="sign-submit" type="submit">Sign in</button>
-      
-      <p>
-      <router-link class="links router-link-active" :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
-    </form>
-  </div>
+        </div>
+        <div class="form-input-group">
+          <label for="password">Password</label>
+          <div class="control">
+            <input
+              type="password"
+              id="password"
+              v-model="user.password"
+              required
+            />
+          </div>
+        </div>
+        <button class="sign-submit" type="submit">Sign in</button>
+
+        <p>
+          <router-link
+            class="links router-link-active"
+            :to="{ name: 'register' }"
+            >Need an account? Sign up.</router-link
+          >
+        </p>
+      </form>
+    </div>
   </body>
 </template>
 
@@ -42,29 +58,29 @@ export default {
         username: "",
         password: "",
       },
-      invalidCredentials: false
+      invalidCredentials: false,
     };
   },
   methods: {
     login() {
       authService
         .login(this.user)
-        .then(response => {
+        .then((response) => {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-              this.$router.push("/");
+            this.$router.push("/");
           }
         })
-        .catch(error => {
+        .catch((error) => {
           const response = error.response;
 
           if (response.status === 401) {
             this.invalidCredentials = true;
           }
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -75,38 +91,47 @@ export default {
 label {
   margin-right: 0.5rem;
 }
-#login{
-  display:flex;
+body {
+  display: flex;
   justify-content: center;
   align-items: center;
-  border:solid #57C5B6 ;
-  margin-top:10%;
-  padding-top:40px;
+  border: solid white;
+  margin-top: 20%;
+  padding-top: 40px;
+  margin-left: 42.5%;
   padding-bottom: 50px;
-  margin-left:40%;
-  margin-right:40%;
-  background-color: #57C5B6;
-  border-radius:25px;
+  padding-left: (100vh/2);
+
+  background-color: white;
+  border-radius: 25px;
+  width: 20%;
+  height: 30%;
 }
-.sign-in{
-  text-align:center;
-  font-family:monospace;
-  font-weight:bolder;
+.sign-in {
+  text-align: center;
+  font-family: monospace;
+  font-weight: bolder;
   font-size: x-large;
-  color:black;
+  color: black;
 }
-.sign-submit:hover{
-  cursor:pointer;
-  background-color:rgb(165, 162, 162);
+.sign-submit:hover {
+  cursor: pointer;
+  background-color: rgb(165, 162, 162);
   color: white;
-  border:solid rgb(165, 162, 162);
-  border-radius:2px;
+  border: solid rgb(165, 162, 162);
+  border-radius: 2px;
 }
-.links{
-  color:white;
+.links {
+  color: white;
 }
-.links:hover{
-  cursor:pointer;
-  color:#006E7F;
+.links:hover {
+  cursor: pointer;
+  color: #006e7f;
+}
+
+#main {
+  display: "flex";
+  justify-content: "center";
+  align-content: center;
 }
 </style>

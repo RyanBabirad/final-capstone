@@ -110,12 +110,13 @@ label {
   align-items: center;
   border:solid #87CBB9 ;
   margin-top:10%;
-  padding-top:30px;
+  /*padding-top:30px;
   padding-bottom: 50px;
   margin-left:40%;
   margin-right:40%;
   background-color: #87CBB9;
   border-radius:25px;
+  */
 
 }
 .create-account{
