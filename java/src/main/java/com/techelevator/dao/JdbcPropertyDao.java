@@ -6,6 +6,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class JdbcPropertyDao implements PropertyDao {
 
@@ -26,6 +29,20 @@ public class JdbcPropertyDao implements PropertyDao {
                 property.getStreetAddress(), property.getZipCode(), property.getState(), property.getUnit(), landlord.getEmail());
 
         return newId == 1;
+    }
+
+    @Override
+    public List<Property> listAllProperties() {
+        List<Property> properties = new ArrayList<>();
+        String sql = "select * from property;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            Property property = mapRowToLandlord(results);
+            properties.add(property);
+        }
+
+        return properties;
     }
 
     @Override

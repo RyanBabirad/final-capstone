@@ -3,7 +3,7 @@ package com.techelevator.model;
 public class MaintenanceRequestsDto {
 
     private int requestId;
-    private boolean status;
+    private int status;
     private String dateRequested;
     private String description;
     private int tenantId;
@@ -11,7 +11,7 @@ public class MaintenanceRequestsDto {
 
     public MaintenanceRequestsDto() {};
 
-    public MaintenanceRequestsDto(int requestId, boolean status, String dateRequested, String description, int tenantId, int propertyId) {
+    public MaintenanceRequestsDto(int requestId, int status, String dateRequested, String description, int tenantId, int propertyId) {
         this.requestId = requestId;
         this.status = status;
         this.dateRequested = dateRequested;
@@ -28,11 +28,11 @@ public class MaintenanceRequestsDto {
         this.requestId = requestId;
     }
 
-    public boolean isStatus() {
+    public int isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
