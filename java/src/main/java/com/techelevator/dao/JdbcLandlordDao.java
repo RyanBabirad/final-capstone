@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class JdbcLandlordDao implements LandlordDao {
 
-
     private final JdbcTemplate jdbcTemplate;
 
     public JdbcLandlordDao(JdbcTemplate jdbcTemplate) {
@@ -37,12 +36,6 @@ public class JdbcLandlordDao implements LandlordDao {
 
         jdbcTemplate.update(sql, propertyId, landlordId, tenantId);
     }
-
-
-
-
-
-
 
     @Override
     public int findLandlordIdByEmail(String email) {
