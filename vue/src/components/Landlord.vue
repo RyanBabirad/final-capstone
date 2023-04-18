@@ -88,7 +88,7 @@
       </div>
       <div class="column is-full is-2" id="secondcolumn">
         <h3 class="column maintenance"> Pending Maintenance Requests</h3>
-        <board-column :cards="pending" :boardID="this.boardId" />
+        <board-column :cards="pending" />
 
       </div>
     </div>

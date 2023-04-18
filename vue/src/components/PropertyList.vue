@@ -19,17 +19,7 @@ export default {
   name: "property-list",
   data() {
     return {
-      properties: [{
-          streetAddress: "123 Main st",
-          state: "PA",
-          city: "Pittsburgh"
-      },
-      {
-          streetAddress: "455 Second st",
-          state: "PA",
-          city: "Pittsburgh"
-      }
-      ],
+      properties: [],
       isLoading: true,
     };
   },
