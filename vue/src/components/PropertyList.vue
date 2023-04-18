@@ -13,16 +13,22 @@
 </template>
 
 <script>
-
+import PropertyService from '../services/PropertyService';
 
 export default {
   name: "property-list",
   data() {
     return {
-      properties: [],
+      properties:[],
       isLoading: true,
     };
   },
+  created() {
+    PropertyService.getProperties()
+    .then((response) => {
+      this.properties = response.data;
+    });
+  }
 
 
 };

@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export default {
 
-    getProperties(property) {
-        return axios.get('/', property)
+    getProperties() {
+        return axios.get('/');
     }
 
 }
