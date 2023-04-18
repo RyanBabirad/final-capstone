@@ -105,16 +105,10 @@ CREATE TABLE assignments (
 	is_assigned boolean DEFAULT false,
 	date_assigned varchar,
 	property_id int,
-	CONSTRAINT fk_main_req_assignments FOREIGN KEY (request_id) REFERENCES maintenance_request (request_id),
-	CONSTRAINT fk_property_assignments FOREIGN KEY (property_id) REFERENCES property (property_id)
-);
-
-CREATE TABLE staff_assignments (
 	staff_id int,
-	assignments_id int,
-	CONSTRAINT fk_staff_staffassignments FOREIGN KEY (staff_id) REFERENCES staff (staff_id),
-	CONSTRAINT fk_staffassignments_assignments FOREIGN KEY (assignments_id) REFERENCES assignments (assignments_id),
-	CONSTRAINT pk_staff_staffassignments PRIMARY KEY (staff_id, assignments_id)
+	CONSTRAINT fk_main_req_assignments FOREIGN KEY (request_id) REFERENCES maintenance_request (request_id),
+	CONSTRAINT fk_property_assignments FOREIGN KEY (property_id) REFERENCES property (property_id),
+	CONSTRAINT fk_staff_assignments FOREIGN KEY (staff)_id REFERENCES staff (staff_id)
 );
 
 CREATE TABLE rent (
@@ -247,6 +241,7 @@ commit;
 
 
 SELECT * FROM landlord JOIN users ON (users.user_id = landlord.landlord_id);
+
 
 
 
