@@ -20,18 +20,12 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-      property: { 
-        streetAddress: "123 Main st",
-        unit: "",
-        zipcode: "15057",
-        state: "PA",
-        city: "Pittsburgh"
-    },
+      property: {},
     boardCards: [],
-    card: {
+    request: {
       status: "Pending",
       description: "",
-      avatar: "",
+      //avatar: "",
       date: null
     }
   },
@@ -52,11 +46,11 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    SET_BOARD_CARDS(state, data) {
+    SET_BOARD_REQUESTS(state, data) {
       state.boardCards = data;
     },
-    SET_CURRENT_CARD(state, data) {
-      state.card = data;
+    SET_CURRENT_REQUEST(state, data) {
+      state.request = data;
     }
   }
 })

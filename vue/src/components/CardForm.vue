@@ -1,10 +1,10 @@
 <template>
   <section>
-    <form v-on:submit.prevent="submitForm" class="cardForm">
+    <form v-on:submit.prevent="submitRequest" class="cardForm">
       <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
       <div class="form-group">
         <label for="description">Description:</label>
-        <textarea id="description" class="form-control" v-model="card.description"></textarea>
+        <textarea id="description" class="form-control" v-model="request.description"></textarea>
       </div>
       <button class="btn btn-submit">Submit</button>
     </form>
@@ -18,34 +18,35 @@ import BoardService from '../services/BoardService';
 export default {
      name: "card-form",
   props: {
-    cardID: {
+    requestID: {
       type: Number,
       default: 0
     }
   },
   data() {
     return {
-      card: {
-        status: "Pending",
+      request: {
+        id: 0,
+        status: 0,
         description: "",
-        avatar: "",
+        //avatar: "",
         date: null
       },
       errorMsg: ""
     };
   },
   methods: {
-    submitForm() {
-      const newCard = {
-        description: this.card.description,
-        status: this.card.status,
-        avatar: "https://randomuser.me/api/portraits/lego/1.jpg",
+    submitRequest() {
+      const newRequest = {
+        id: this.request.id,
+        description: this.request.description,
+        status: this.request.status,
+        //avatar: "https://randomuser.me/api/portraits/lego/1.jpg",
         date: moment().format("MMM Do YYYY")
       };
 
-      if (this.cardID === 0) {
-        
-        BoardService.addCard(newCard).then(response => {
+      if (this.requestID === 0) {
+        BoardService.addCard(newRequest).then(response => {
             if (response.status === 201) {
               this.$router.push({ name: 'staff' });
             }
@@ -54,11 +55,11 @@ export default {
             this.handleErrorResponse(error, "adding");
           });
       } else {
-        
-        newCard.id = this.cardID;
-        newCard.avatar = this.card.avatar;
-        newCard.date = this.card.date;
-        BoardService.updateCard(newCard).then(response => {
+        newRequest.id = this.requestID;
+        newRequest.description = this.request.description;
+        //newCard.avatar = this.card.avatar;
+        newRequest.date = this.request.date;
+        BoardService.updateCard(newRequest).then(response => {
             if (response.status === 200) {
               this.$router.push({ name: 'staff' });
             }
@@ -71,27 +72,27 @@ export default {
     handleErrorResponse(error, verb) {
       if (error.response) {
         this.errorMsg =
-          "Error " + verb + " card. Response received was '" +
+          "Error " + verb + " request. Response received was '" +
           error.response.statusText +
           "'.";
       } else if (error.request) {
         this.errorMsg =
-          "Error " + verb + " card. Server could not be reached.";
+          "Error " + verb + " request. Server could not be reached.";
       } else {
         this.errorMsg =
-          "Error " + verb + " card. Request could not be created.";
+          "Error " + verb + " request. Request could not be created.";
       }
     }
   },
   created() {
-    if (this.cardID != 0) {
-      BoardService.getCard(this.cardID).then(response => {
-          this.card = response.data;
+    if (this.requestID != 0) {
+      BoardService.getCard(this.requestID).then(response => {
+          this.request = response.data;
         })
         .catch(error => {
           if (error.response && error.response.status === 404) {
             alert(
-              "Card not available. This card may have been deleted or you have entered an invalid card ID."
+              "Request not available. This request may have been deleted or you have entered an invalid request ID."
             );
             this.$router.push({ name: 'staff' });
           }

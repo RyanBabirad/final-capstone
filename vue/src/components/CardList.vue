@@ -7,9 +7,9 @@
     <div v-else>
       <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
       <div class="boards">
-        <board-column title="Pending" :cards="pending" />
-        <board-column title="In Progress" :cards="inProgress" />
-        <board-column title="Completed" :cards="completed" />
+        <board-column title="Pending" :requests="0" />
+        <board-column title="In Progress" :requests="1" />
+        <board-column title="Completed" :requests="2" />
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@ export default {
       BoardService
         .getCards()
         .then(response => {
-          this.$store.commit("SET_BOARD_CARDS", response.data.cards);
+          this.$store.commit("SET_BOARD_REQUESTS", response.data.requests);
           this.isLoading = false;
         })
         .catch(error => {
@@ -55,17 +55,17 @@ export default {
   computed: {
     pending() {
       return this.$store.state.boardCards.filter(
-        card => card.status === "Pending"
+        request => request.status === 0
       );
     },
     inProgress() {
       return this.$store.state.boardCards.filter(
-        card => card.status === "In Progress"
+        request => request.status === 1
       );
     },
     completed() {
       return this.$store.state.boardCards.filter(
-        card => card.status === "Completed"
+        request => request.status === 2
       );
     }
   }

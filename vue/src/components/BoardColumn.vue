@@ -2,13 +2,13 @@
   <section class="board">
       <h2>{{ title }}</h2>
     <div class="cards">
-      <div class="card" v-for="card in cards" v-bind:key="card.id" v-on:click="viewCardDetails(card.id)">
+      <div class="card" v-for="request in requests" v-bind:key="request.id" v-on:click="viewCardDetails(request.id)">
         <div class="header">
-          <h3>{{ card.title }}</h3>
-          <img :src="card.avatar" class="avatar" />
+          <h3>{{ request.title }}</h3>
+          <img :src="request.avatar" class="avatar" />
         </div>
         <div class="footer">
-          <span class="date">{{ card.date }}</span>
+          <span class="date">{{ request.date }}</span>
         </div>
       </div>
     </div>
@@ -18,10 +18,10 @@
 <script>
 export default {
     name: 'board-column',
-  props: ['cards'],
+  props: ['requests'],
   methods: {
-    viewCardDetails(cardID) {
-      this.$router.push(`/staff/card/${cardID}`);
+    viewCardDetails(requestID) {
+      this.$router.push(`/staff/card/${requestID}`);
     }
   }
 };

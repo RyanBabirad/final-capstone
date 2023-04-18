@@ -4,9 +4,9 @@
       <img src="../assets/ppreflex.gif" />
     </div>
     <div v-else>
-      <h1>{{ card.title }}</h1>
-      <p>{{ card.description }}</p>
-      <router-link :to="{ name: 'EditCard', params: {cardID: $route.params.cardID} }" class="btn editCard">Edit Card</router-link>
+      <h1>{{ request.title }}</h1>
+      <p>{{ request.description }}</p>
+      <router-link :to="{ name: 'EditCard', params: {cardID: $route.params.requestID} }" class="btn editCard">Edit Card</router-link>
       <button class="btn deleteCard" v-on:click="deleteCard">Delete Card</button>
       <div class="status-message error" v-show="errorMsg !== ''">{{errorMsg}}</div>
     </div>
@@ -27,9 +27,9 @@ export default {
   methods: {
     retrieveCard() {
       BoardService
-        .getCard(this.$route.params.cardID)
+        .getCard(this.$route.params.requestID)
         .then(response => {
-          this.$store.commit("SET_CURRENT_CARD", response.data);
+          this.$store.commit("SET_CURRENT_REQUEST", response.data);
           this.isLoading = false;
         })
         .catch(error => {
@@ -48,7 +48,7 @@ export default {
         )
       ) {
         BoardService
-          .deleteCard(this.card.id)
+          .deleteCard(this.request.id)
           .then(response => {
             if (response.status === 200) {
               alert("Card successfully deleted");
@@ -77,7 +77,7 @@ export default {
   },
   computed: {
     card() {
-      return this.$store.state.card;
+      return this.$store.state.request;
     }
   }
 }

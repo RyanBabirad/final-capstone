@@ -88,7 +88,7 @@
       </div>
       <div class="column is-full is-2" id="secondcolumn">
         <h3 class="column maintenance"> Pending Maintenance Requests</h3>
-        <board-column :cards="pending" />
+        <board-column :requests="pending" />
 
       </div>
     </div>
@@ -160,7 +160,7 @@ export default {
   },
   computed: {
     pending() {
-      return this.$store.state.boardCards.filter(card => card.status === "Pending");
+      return this.$store.state.boardCards.filter(request => request.status === 0);
     }
   },
   toggleForm() {

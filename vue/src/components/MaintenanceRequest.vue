@@ -6,7 +6,7 @@
       <p>You currently have no open requests</p>
     </div>
     <br>
-    <button  @click="toggleForm" type="submit" class="newRequest-button">Create New Request</button>
+    <button  @click="toggleForm" class="newRequest-button">Create New Request</button>
       <div class="newRequest" id="add" v-if="showForm">
         <card-form />
     </div>
@@ -15,6 +15,7 @@
 
 <script>
 import CardForm from './CardForm.vue';
+
 export default {
   components: { CardForm },
     name: "maintenanceRequest",

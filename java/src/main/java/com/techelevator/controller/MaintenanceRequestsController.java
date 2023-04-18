@@ -26,7 +26,7 @@ public class MaintenanceRequestsController {
     public MaintenanceRequests createMaintenanceRequest(@Valid @RequestBody MaintenanceRequestsDto maintenanceRequestsDto, Principal principal) {
         MaintenanceRequests maintenanceRequest = new MaintenanceRequests();
 
-        maintenanceRequest.setRequestId(maintenanceRequestsDto.getRequestId());
+        //maintenanceRequest.setRequestId(maintenanceRequestsDto.getRequestId());
         maintenanceRequest.setStatus(maintenanceRequestsDto.isStatus());
         maintenanceRequest.setDate(maintenanceRequestsDto.getDateRequested());
         maintenanceRequest.setDescription(maintenanceRequestsDto.getDescription());

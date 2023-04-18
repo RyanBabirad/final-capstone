@@ -1,28 +1,24 @@
 import axios from 'axios';
 
-const http = axios.create({
-  baseURL: "http://localhost:8080/staff"
-});
-
 export default {
 
   getCards() {
     return 
   },
 
-  getCard(cardID) {
-    return http.get(`/cards/${cardID}`)
+  getCard(requestID) {
+    return axios.get(`/cards/${requestID}`)
   },
 
-  addCard(card) {
-    return http.post('/cards', card);
+  addCard(request) {
+    return axios.post('/staff/maintenance_request', request);
   },
 
-  updateCard(card) {
-    return http.put(`/cards/${card.id}`, card);
+  updateCard(request) {
+    return axios.put(`/cards/${request.id}`, request);
   },
 
-  deleteCard(cardID) {
-    return http.delete(`/cards/${cardID}`);
+  deleteCard(requestID) {
+    return axios.delete(`/cards/${requestID}`);
   },
 }
