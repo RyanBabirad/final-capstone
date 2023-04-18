@@ -29,10 +29,10 @@ export default new Vuex.Store({
     },
     boardCards: [],
     card: {
-      title: '',
-      description: '',
-      status: '',
-      comments: []
+      status: "Pending",
+      description: "",
+      avatar: "",
+      date: null
     }
   },
   mutations: {

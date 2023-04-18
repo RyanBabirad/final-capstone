@@ -27,7 +27,6 @@ export default {
   },
   data() {
     return {
-      title: "",
       isLoading: true,
       errorMsg: ""
     };
@@ -37,7 +36,6 @@ export default {
       BoardService
         .getCards()
         .then(response => {
-          this.title = response.data.title;
           this.$store.commit("SET_BOARD_CARDS", response.data.cards);
           this.isLoading = false;
         })
@@ -55,7 +53,7 @@ export default {
     this.retrieveCards(); 
   },
   computed: {
-    planned() {
+    pending() {
       return this.$store.state.boardCards.filter(
         card => card.status === "Pending"
       );
