@@ -96,12 +96,12 @@ body {
   justify-content: center;
   align-items: center;
   border: solid white;
-  margin-top: 20%;
+  margin-top: 10%;
   padding-top: 40px;
   margin-left: 42.5%;
   padding-bottom: 50px;
   padding-left: (100vh/2);
-
+border:solid #B22727;
   background-color: white;
   border-radius: 25px;
   width: 20%;

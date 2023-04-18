@@ -6,8 +6,8 @@
         <router-link class="links router-link-active" v-bind:to="{ name: 'login' }" v-if="!isLoggedIn">Login</router-link>&nbsp;
         <router-link class="links router-link-active" v-bind:to="{ name: 'logout' }" v-if="isLoggedIn">Logout</router-link>&nbsp;
        <router-link class="links router-link-active" v-bind:to="userPage" v-if="isLoggedIn">User Page</router-link>&nbsp;
-
-
+          <img :src="logo" alt="Logo"  style="width: 100px; height: 40px;" class="log" >&nbsp;
+        
  
       </li>
       
@@ -17,12 +17,14 @@
 </template>
 
 <script>
+import logo from '@/assets/logo.jpg';
+
 export default {
   name: "header",
 
   computed: {
     userPage() {
-
+    
       const role = this.$store.state.user.authorities[0].name;
       if(role === 'ROLE_LANDLORD') {
         return { name: 'landlord' };
@@ -40,6 +42,11 @@ export default {
       return this.$store.state.token !== "";
     }
   },
+   data() {
+    return {
+      logo: logo,
+    };
+   },
 };
 </script>
 
@@ -53,8 +60,9 @@ export default {
   left: 0;
   right: 0;
   background-color: white;
-
-
+  img: url("../assets/logo.jpg") no-repeat center center fixed;
+ 
+  
 }
 .links{
     margin:5px;
@@ -72,5 +80,10 @@ export default {
   background-color:#81B214;
   border: 1px solid white;
   cursor: pointer;
+}
+.log{
+  justify-content: center;
+  align-items: center;
+  margin-top:5px;
 }
 </style>

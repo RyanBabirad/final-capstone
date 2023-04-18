@@ -64,10 +64,10 @@ export default {
 
 <style scoped>
     .rentDetails{
-        border-left:5px solid #81B214;
+        border:5px solid #EE5007;
         margin-left: 5%;
         margin-right: 5%;
-        background-color:#EEEEEE;
+        background-color:white;
         padding:5px;
         border-radius:10px;
     }

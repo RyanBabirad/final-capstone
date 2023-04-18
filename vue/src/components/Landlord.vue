@@ -189,11 +189,12 @@ export default {
 .landlordPage{
   /*temporary to see the form */
   padding-top: 95px;
-
+  
 }
 .addNewProperty{
   display: flex;
   justify-content: center;
+  
   
 }
 #imgSrc {
@@ -203,8 +204,11 @@ export default {
 }
 
 #firstcolumn{
+  margin-top:10%;
 margin-left:25%;
- border:solid white;
+background-color:white;
+ border:solid #F8CB2E;
+  border-radius:10px;
   padding:50px;
 }
 .maintenance{
@@ -212,8 +216,11 @@ margin-left:25%;
   justify-content: center;
 }
 #secondcolumn{
+  margin-top:10%;
  margin-right:25%;
- border:solid white;
+ background-color:white;
+ border:solid #F8CB2E;
+ border-radius:10px;
   padding:50px;
 }
 .columns{
