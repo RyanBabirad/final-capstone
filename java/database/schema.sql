@@ -100,7 +100,7 @@ CREATE TABLE maintenance_request (
 CREATE TABLE assignments (
 	assignments_id SERIAL PRIMARY KEY,
 	request_id int,
-	is_assigned boolean DEFAULT false,
+	is_assigned boolean DEFAULT false,  -- may be a completely unneccessary field
 	date_assigned varchar,
 	property_id int,
 	staff_id int,
