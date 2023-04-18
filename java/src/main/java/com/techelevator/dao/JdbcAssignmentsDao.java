@@ -21,8 +21,9 @@ public class JdbcAssignmentsDao implements AssignmentsDao {
 
     @Override
     public boolean createAssignment(Assignments assignment) {
-        String sql = "INSERT INTO assignments (request_id, is_assigned, date_assigned, property_id) VALUES ( ?, ?, ?, ?)";
-        int rowsAffected = jdbcTemplate.update(sql, assignment.getRequestId(), assignment.isAssigned(), assignment.getDate(), assignment.getPropertyId());
+        String sql = "INSERT INTO assignments (request_id, is_assigned, date_assigned, property_id, staff_id) VALUES ( ?, ?, ?, ?, ?)";
+        int rowsAffected = jdbcTemplate.update(sql, assignment.getRequestId(), assignment.isAssigned(), assignment.getDate(),
+                assignment.getPropertyId(), assignment.getStaffId());
         return rowsAffected > 0;
     }
 
@@ -45,8 +46,10 @@ public class JdbcAssignmentsDao implements AssignmentsDao {
 
     @Override
     public boolean updateAssignment(Assignments assignment) {
-        String sql = "UPDATE assignments SET request_id = ?, is_assigned = ?, date_assigned = ?, property_id = ? WHERE assignments_id = ?";
-        int rowsAffected = jdbcTemplate.update(sql, assignment.getRequestId(), assignment.isAssigned(), assignment.getDate(), assignment.getPropertyId(), assignment.getAssignmentId());
+        String sql = "UPDATE assignments SET request_id = ?, is_assigned = ?, date_assigned = ?, property_id = ?, " +
+                "staff_id = ?, WHERE assignments_id = ?";
+        int rowsAffected = jdbcTemplate.update(sql, assignment.getRequestId(), assignment.isAssigned(), assignment.getDate(),
+                assignment.getPropertyId(), assignment.getStaffId(), assignment.getAssignmentId());
         return rowsAffected > 0;
     }
 
@@ -63,6 +66,7 @@ public class JdbcAssignmentsDao implements AssignmentsDao {
         assignment.setAssigned(rowSet.getBoolean("is_assigned"));
         assignment.setDate(rowSet.getString("date_assigned"));
         assignment.setPropertyId(rowSet.getInt("property_id"));
+        assignment.setStaffId(rowSet.getInt("staff_id"));
         return assignment;
     }
 }

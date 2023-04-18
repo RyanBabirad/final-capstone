@@ -7,55 +7,41 @@ public class AssignmentsDto {
     private boolean isAssigned;
     private String date;
     private int propertyId;
+    private int staffId;
 
-    public AssignmentsDto() {}; //default constructor
+    public AssignmentsDto() {};
 
-    public AssignmentsDto(int assignmentId, int requestId, boolean isAssigned, String date, int propertyId) {
+    public AssignmentsDto(int assignmentId, int requestId, boolean isAssigned, String date, int propertyId, int staffId) {
         this.assignmentId = assignmentId;
         this.requestId = requestId;
         this.isAssigned = isAssigned;
         this.date = date;
         this.propertyId = propertyId;
+        this.staffId = staffId;
     }
 
     public int getAssignmentId() {
         return assignmentId;
     }
 
-    public void setAssignmentId(int assignmentId) {
-        this.assignmentId = assignmentId;
-    }
-
     public int getRequestId() {
         return requestId;
-    }
-
-    public void setRequestId(int requestId) {
-        this.requestId = requestId;
     }
 
     public boolean isAssigned() {
         return isAssigned;
     }
 
-    public void setAssigned(boolean assigned) {
-        isAssigned = assigned;
-    }
-
     public String getDate() {
         return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public int getPropertyId() {
         return propertyId;
     }
 
-    public void setPropertyId(int propertyId) {
-        this.propertyId = propertyId;
+    public int getStaffId() {
+        return staffId;
     }
 
     @Override
@@ -68,5 +54,6 @@ public class AssignmentsDto {
                 ", propertyId=" + propertyId +
                 '}';
     }
+
 }
 

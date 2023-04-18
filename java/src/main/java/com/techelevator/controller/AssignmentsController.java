@@ -1,8 +1,6 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.AssignmentsDao;
-import com.techelevator.dao.StaffAssignmentsDao;
-import com.techelevator.model.StaffAssignments;
 import com.techelevator.model.Assignments;
 import com.techelevator.model.AssignmentsDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +15,6 @@ public class AssignmentsController {
 
     @Autowired
     private AssignmentsDao assignmentsDao;
-    @Autowired
-    private StaffAssignmentsDao staffAssignmentsDao;
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/landlord/maintenance-request/assignments", method = RequestMethod.POST)
@@ -32,6 +28,7 @@ public class AssignmentsController {
         assignment.setAssigned(assignmentsDto.isAssigned());
         assignment.setDate(assignmentsDto.getDate());
         assignment.setPropertyId(assignmentsDto.getPropertyId());
+        assignment.setStaffId(assignmentsDto.getStaffId());
 
         assignmentsDao.createAssignment(assignment);
 
@@ -57,6 +54,7 @@ public class AssignmentsController {
         assignment.setAssigned(assignmentsDto.isAssigned());
         assignment.setDate(assignmentsDto.getDate());
         assignment.setPropertyId(assignmentsDto.getPropertyId());
+        assignment.setStaffId(assignmentsDto.getStaffId());
 
         return assignmentsDao.updateAssignment(assignment);
     }
