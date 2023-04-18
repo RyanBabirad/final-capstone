@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.StaffAssignment;
+import com.techelevator.model.StaffAssignments;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ public interface StaffAssignmentsDao {
 
     boolean createStaffAssignment(int staffId, int assignmentId);
 
-    List<StaffAssignment> getStaffAssignmentsByStaffId(int staffId);
+    List<StaffAssignments> getStaffAssignmentsByStaffId(int staffId);
 
-    List<StaffAssignment> getStaffAssignmentsByAssignmentId(int assignmentId);
+    List<StaffAssignments> getStaffAssignmentsByAssignmentId(int assignmentId);
 
 }

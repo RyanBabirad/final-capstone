@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.StaffAssignment;
+import com.techelevator.model.StaffAssignments;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -27,40 +27,40 @@ public class JdbcStaffAssignmentsDao implements StaffAssignmentsDao {
     }
 
     @Override
-    public List<StaffAssignment> getStaffAssignmentsByStaffId(int staffId) {
-        List<StaffAssignment> list = new ArrayList<>();
+    public List<StaffAssignments> getStaffAssignmentsByStaffId(int staffId) {
+        List<StaffAssignments> list = new ArrayList<>();
 
         String sql = "SELECT * FROM staff_assignment WHERE staff_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, staffId);
 
         while(results.next()) {
-            list.add(mapRowToStaffAssignment(results));
+            list.add(mapRowToStaffAssignments(results));
         }
 
         return list;
     }
 
     @Override
-    public List<StaffAssignment> getStaffAssignmentsByAssignmentId(int assignmentId) {
-        List<StaffAssignment> list = new ArrayList<>();
+    public List<StaffAssignments> getStaffAssignmentsByAssignmentId(int assignmentId) {
+        List<StaffAssignments> list = new ArrayList<>();
 
         String sql = "SELECT * FROM staff_assignment WHERE assignment_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, assignmentId);
 
         while(results.next()) {
-            list.add(mapRowToStaffAssignment(results));
+            list.add(mapRowToStaffAssignments(results));
         }
 
         return list;
     }
 
-    private StaffAssignment mapRowToStaffAssignment(SqlRowSet row) {
-        StaffAssignment staffAssignment = new StaffAssignment();
+    private StaffAssignments mapRowToStaffAssignments(SqlRowSet row) {
+        StaffAssignments staffAssignments = new StaffAssignments();
 
-        staffAssignment.setStaffId(row.getInt("staff_id"));
-        staffAssignment.setAssignmentId(row.getInt("assignment_id"));
+        staffAssignments.setStaffId(row.getInt("staff_id"));
+        staffAssignments.setAssignmentId(row.getInt("assignment_id"));
 
-        return staffAssignment;
+        return staffAssignments;
     }
 
 }
