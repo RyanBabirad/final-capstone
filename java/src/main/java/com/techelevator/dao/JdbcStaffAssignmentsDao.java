@@ -2,8 +2,10 @@ package com.techelevator.dao;
 
 import com.techelevator.model.StaffAssignment;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -25,24 +27,40 @@ public class JdbcStaffAssignmentsDao implements StaffAssignmentsDao {
     }
 
     @Override
-    public StaffAssignment getStaffAssignment(int staffId, int assignmentId) {
-
-
-        return null;
-    }
-
-    @Override
     public List<StaffAssignment> getStaffAssignmentsByStaffId(int staffId) {
+        List<StaffAssignment> list = new ArrayList<>();
 
+        String sql = "SELECT * FROM staff_assignment WHERE staff_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, staffId);
 
-        return null;
+        while(results.next()) {
+            list.add(mapRowToStaffAssignment(results));
+        }
+
+        return list;
     }
 
     @Override
     public List<StaffAssignment> getStaffAssignmentsByAssignmentId(int assignmentId) {
+        List<StaffAssignment> list = new ArrayList<>();
 
+        String sql = "SELECT * FROM staff_assignment WHERE assignment_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, assignmentId);
 
-        return null;
+        while(results.next()) {
+            list.add(mapRowToStaffAssignment(results));
+        }
+
+        return list;
+    }
+
+    private StaffAssignment mapRowToStaffAssignment(SqlRowSet row) {
+        StaffAssignment staffAssignment = new StaffAssignment();
+
+        staffAssignment.setStaffId(row.getInt("staff_id"));
+        staffAssignment.setAssignmentId(row.getInt("assignment_id"));
+
+        return staffAssignment;
     }
 
 }
