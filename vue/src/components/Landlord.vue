@@ -1,128 +1,107 @@
 <template>
   <section >Hello, *insert user*!>
     <div class="landlordPage columns">
-    <div class="column is-2 " id="firstcolumn">
+      <div class="column is-2 " id="firstcolumn">
 
-      <!--this need to show properties -->
+        <!--this need to show properties -->
 
         <div class="control">
-       <button @click="toggleForm" class="addPropertybutton" type="submit">Add Properties</button>
-       </div>
-   
-
-
-    <div class="addNewProperty" id="add" v-if="showForm">
-      <form @submit.prevent="add">
-        
-         
-        <div class="form-input-group" >
-          <label for="streetAddress">Street Address</label>
-          <div class="control">
-            <input type=text id="streetAddress" v-model="property.streetAddress" required autofocus />
-          </div>
+          <button @click="toggleForm" class="addPropertybutton" type="submit">Add Properties</button>
         </div>
-        <div class="form-input-group">
-          <label for="unit">Unit</label>
-            <div class="control">
-              <input type="text" id="unit" v-model="property.unit" />
-            </div>
-        </div>
-        <div class="form-input-group">
-          <label for="state">State</label>
-            <div class="control">
-              <input type="text" id="state" v-model="property.state" required />
-            </div>
-        </div>
-        <div class="form-input-group">
-          <label for="zipcode">Zipcode</label>
-            <div class="control">
-              <input type="text" id="zipcode" v-model="property.zipcode" required />
-            </div>
-        </div>
-        <div class="form-input-group">
-          <label for="imgSrc">Image</label>
-            <div class="control">
-              <input type="file" class="custom-file-input" id="imgSrc" @change="handleFileUpload" @drop="handleFileDrop" />
-              <label for="imgSrc" class="custom-file-label">{{ property.imgName }}</label>
-            </div>
-        </div>
-        <br>
-
-        <div class="form-input-group">
-          <label for="description"> Description:</label>
-          <div class="control">
-             <textarea type="text" id="description" v-model="text"
-      placeholder="Enter something..."
-      rows="3"
-      max-rows="6"
-    ></textarea>
-   
-          </div>
-          </div>
-
-     
-
-        <button class="addProperty" type="submit">Add</button>
-      </form>
-      
-      </div>
-      <br>
-      <div class="control">
-              <button @click="toggleForm2" class="addTenantButton" type="submit" >Add Tenants</button>
-      </div>
-
-          <div class="addNewProperty" id="add" v-if="showForm2">
+        <div class="addNewProperty" id="add" v-if="showForm">
           <form @submit.prevent="add">
-              <div class="form-input-group" >
-          <label for="tenantName">Tenant Name</label>
-          <div class="control">
-            <input type=text id="tenantName" v-model="property.tenantName" required autofocus />
-          </div>
-        </div>
+      
+        
+            <div class="form-input-group" >
+              <label for="streetAddress">Street Address</label>
+              <div class="control">
+                <input type=text id="streetAddress" v-model="property.streetAddress" required autofocus />
+              </div>
+            </div>
+            <div class="form-input-group">
+              <label for="unit">Unit</label>
+                <div class="control">
+                  <input type="text" id="unit" v-model="property.unit" />
+                </div>
+            </div>
+            <div class="form-input-group">
+              <label for="state">State</label>
+                <div class="control">
+                  <input type="text" id="state" v-model="property.state" required />
+                </div>
+            </div>
+            <div class="form-input-group">
+              <label for="zipcode">Zipcode</label>
+                <div class="control">
+                  <input type="text" id="zipcode" v-model="property.zipcode" required />
+                </div>
+            </div>
+            <div class="form-input-group">
+              <label for="imgSrc">Image</label>
+                <div class="control">
+                  <input type="file" class="custom-file-input" id="imgSrc" @change="handleFileUpload" @drop="handleFileDrop" />
+                  <label for="imgSrc" class="custom-file-label">{{ property.imgName }}</label>
+                </div>
+            </div>
+            <br>
 
-         <div class="form-input-group" >
-          <label for="tenantPhoneNumber">Tenant Phone Number</label>
-          <div class="control">
-            <input type=text id="tenantPhoneNumber" v-model="property.tenantPhoneNumber" required autofocus />
-          </div>
-        </div>
-
-         <div class="form-input-group" >
-          <label for="tenantEmail">Tenant Email</label>
-          <div class="control">
-            <input type=text id="tenantEmail" v-model="property.tenantEmail" required autofocus />
-          </div>
+            <div class="form-input-group">
+              <label for="description"> Description:</label>
+              <div class="control">
+                <textarea type="text" id="description" v-model="text" placeholder="Enter something..." rows="3" max-rows="6"></textarea>
+              </div>
+            </div>
+            <button class="addProperty" type="submit">Add</button>
+          </form>
         </div>
           <br>
 
-         <button class="addTenant" type="submit">Add Tenant</button>
-
-          </form>
+          <div class="control">
+            <button @click="toggleForm2" class="addTenantButton" type="submit" >Add Tenants</button>
           </div>
+          <div class="addNewProperty" id="add" v-if="showForm2">
+            <form @submit.prevent="add">
+              <div class="form-input-group" >
+                <label for="tenantName">Tenant Name</label>
+                <div class="control">
+                  <input type=text id="tenantName" v-model="property.tenantName" required autofocus />
+                </div>
+              </div>
 
+              <div class="form-input-group" >
+                <label for="tenantPhoneNumber">Tenant Phone Number</label>
+                  <div class="control">
+                    <input type=text id="tenantPhoneNumber" v-model="property.tenantPhoneNumber" required autofocus />
+                  </div>
+              </div>
 
-
+              <div class="form-input-group" >
+                <label for="tenantEmail">Tenant Email</label>
+                <div class="control">
+                  <input type=text id="tenantEmail" v-model="property.tenantEmail" required autofocus />
+                </div>
+              </div>
+              <br>
+              <button class="addTenant" type="submit">Add Tenant</button>
+            </form>
+          </div>
       </div>
       <div class="column is-full is-2" id="secondcolumn">
-        <p class="column maintenance"> Maintenance Requests</p>
-        <!-- second column for the form -->
-        </div>
+        <h3 class="column maintenance"> Pending Maintenance Requests</h3>
+        <board-column :cards="pending" :boardID="this.boardId" />
+
       </div>
-
-       
-
-
-      
-
-    <!-- import info box component(contains property info)  -->
-    <!-- import maintenance Request overview component (landlord sees all incoming requests)  -->
+    </div>
   </section>
 </template>
 
 <script>
+import BoardColumn from './BoardColumn.vue';
+
 export default {
-
-
+  components: {
+    BoardColumn
+    },
   name: "landlord",
   data() {
     return {
@@ -131,7 +110,6 @@ export default {
         TenantPhoneNumber:"",
         TenantEmail:""
       },
-
       property: {
         imgSrc: [],
         imgName: "",
@@ -144,7 +122,6 @@ export default {
       },
       showForm: false,
       showForm2: false
-    
     };
   },
   methods: {
@@ -179,6 +156,11 @@ export default {
       } else {
         console.error("Invalid image file:", file.name);
       }
+    }
+  },
+  computed: {
+    pending() {
+      return this.$store.state.boardCards.filter(card => card.status === "Pending");
     }
   },
   toggleForm() {

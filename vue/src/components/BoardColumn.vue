@@ -2,21 +2,13 @@
   <section class="board">
       <h2>{{ title }}</h2>
     <div class="cards">
-      <div
-        class="card"
-        v-for="card in cards"
-        v-bind:key="card.id"
-        v-on:click="viewCardDetails(card.id)"
-      >
+      <div class="card" v-for="card in cards" v-bind:key="card.id" v-on:click="viewCardDetails(card.id)">
         <div class="header">
           <h3>{{ card.title }}</h3>
           <img :src="card.avatar" class="avatar" />
         </div>
         <div class="footer">
           <span class="date">{{ card.date }}</span>
-          <span class="pill" :class="getTagClass(card.tag)">{{
-            card.tag
-          }}</span>
         </div>
       </div>
     </div>
@@ -26,25 +18,10 @@
 <script>
 export default {
     name: 'board-column',
-  props: ['title', 'cards', 'boardID'],
+  props: ['cards'],
   methods: {
     viewCardDetails(cardID) {
-      this.$router.push(`/board/${this.boardID}/card/${cardID}`);
-    },
-    getTagClass(tag) {
-      let clazz = '';
-      switch (tag) {
-        case 'Feature Request':
-          clazz = 'feature';
-          break;
-        case 'Design':
-          clazz = 'design';
-          break;
-        case 'Q&A':
-          clazz = 'qa';
-          break;
-      }
-      return clazz;
+      this.$router.push(`/staff/card/${cardID}`);
     }
   }
 };

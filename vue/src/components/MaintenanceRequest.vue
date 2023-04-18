@@ -1,100 +1,41 @@
 <template>
-    <section class="maintenanceRequests">
-        <h1>Open Requests</h1>
-        <br>
-        <div class="openRequestsContainer">
-            <p>You currently have no open requests</p>
-        </div>
-        <br>
-        
-        <button  @click="toggleForm" type="submit" class="newRequest-button">Create New Request</button>
-            <div class="newRequest" id="add" v-if="showForm">
-                <form @submit.prevent="add">
-
-                    <br>
-            
-        <div class="form-input-group" >
-          <label for="firstname">First Name</label>
-          <div class="control">
-            <input class="enter-boxes" type="firstname" id="firstname" v-model="property.firstname" required autofocus />
-          </div>
-        </div>
-
-         <div class="form-input-group" >
-          <label for="lastname">Last Name</label>
-          <div class="control">
-            <input class="enter-boxes" type="lastname" id="lastname" v-model="property.lastname" required autofocus />
-          </div>
-        </div>
-
-         <div class="form-input-group" >
-          <label for="streetaddress">Your Street Address</label>
-          <div class="control">
-            <input class="enter-boxes" type="streetaddress" id="streetaddress" v-model="property.streetaddress" required autofocus />
-          </div>
-        </div>
-
-         <div class="form-input-group" >
-          <label for="city">City</label>
-          <div class="control">
-            <input class="enter-boxes" type="city" id="city" v-model="property.city" required autofocus />
-          </div>
-        </div>
-
-         <div class="form-input-group" >
-          <label for="zip">Zip</label>
-          <div class="control">
-            <input class="enter-boxes" type="zip" id="zip" v-model="property.zip" required autofocus />
-          </div>
-        </div>
-
-         <div class="form-input-group" >
-          <label for="request">Type of Request</label>
-          <div class="control">
-            <input class="enter-boxes" type="request" id="request" v-model="property.request" required autofocus />
-          </div>
-        </div>
-
-        <div class="form-input-group" >
-          <label for="description">Please leave a description</label>
-          <div class="control">
-            <input class="enter-boxes" type="description" id="description" v-model="property.description" required autofocus />
-          </div>
-        </div>
-            <br>
-         <button class="sendRequestForm" type="submit" id="sendrequestform-button">Submit Request</button>
-
-      </form>
-      </div>
-      
-    </section>
+  <section class="maintenanceRequests">
+    <h1>Open Requests</h1>
+    <br>
+    <div class="openRequestsContainer">
+      <p>You currently have no open requests</p>
+    </div>
+    <br>
+    <button  @click="toggleForm" type="submit" class="newRequest-button">Create New Request</button>
+      <div class="newRequest" id="add" v-if="showForm">
+        <card-form />
+    </div>
+  </section>
 </template>
 
 <script>
+import CardForm from './CardForm.vue';
 export default {
+  components: { CardForm },
     name: "maintenanceRequest",
     data() {
         return{
       property: {
-          firstname:"",
-          lastname:"",
-          streetaddress:"",
-          city:"",
-          zip:"",
-          request:'',
-          description:"",
-
-        
-      },
-
-            showForm: false
-        };
+        // firstname:"",   **This should only contain the information relevant to the maintenanceRequest table**
+        // lastname:"",
+        // streetaddress:"",
+        // city:"",
+        // zip:"",
+        // request:'',
+        description:"",
+        },
+        showForm: false
+      };
     },
     methods:{
-        toggleForm(){
-
-    this.showForm = !this.showForm;
-  }
+      toggleForm(){
+        this.showForm = !this.showForm;
+      }
     }
 };
 </script>
