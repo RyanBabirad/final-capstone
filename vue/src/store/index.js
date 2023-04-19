@@ -52,8 +52,8 @@ export default new Vuex.Store({
     SET_CURRENT_REQUEST(state, data) {
       state.request = data;
     },
-    GET_USER_ROLE(state, user) {
-      state.user = user;
+    SET_USER_ROLE(state, role) {
+      state.user.authorities[0].name = role;
     }
   }
 })

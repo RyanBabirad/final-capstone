@@ -56,7 +56,7 @@
         </div>
 
         <div class="form-input-group text-center" id="info">
-          <label for="emailaddress">Email Adrress</label>
+          <label for="emailaddress">Email Address</label>
           <div class="control">
             <input
               class="emailaddress-box"
@@ -139,7 +139,7 @@ export default {
 
       UserService.getUpdatedRole().then((response) => {
         console.log(response.data);
-        this.$store.commit("GET_USER_ROLE", response.data.authorities[0].name);
+        this.$store.commit("SET_USER_ROLE", response.data.authorities[0].name);
       });
       //this.successMsg = "Your status has been updated!"
       //this.user.role = "",
