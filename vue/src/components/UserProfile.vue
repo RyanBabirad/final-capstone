@@ -4,7 +4,7 @@
       <h2>Current Status: {{ user.role }}</h2>
       <p>Need to update your account to Tenant/Landlord/Staff?</p>
       <button @click="toggleForm" class="addPropertybutton" type="submit">Update Account</button>
-      </div>
+      
         <br>
       <div class="updateAcount" v-if="showForm">
         <form v-on:submit.prevent="submitUser">
