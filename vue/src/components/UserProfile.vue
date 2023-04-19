@@ -1,14 +1,8 @@
 <template>
   <section class="userProfileContainer">
-     <div class="control">
-      <div>Current Status: User {{ user.role }}</div>
-      </div>
-       <br>
-      <div class="control">
-      <div>Update your account to Tenant/Landlord/Staff</div>
-      </div>
-      <br>
-      <div class="control">
+    <div class="status-message success" v-show="successMsg !== ''">{{successMsg}}</div>
+      <h2>Current Status: {{ user.role }}</h2>
+      <p>Need to update your account to Tenant/Landlord/Staff?</p>
       <button @click="toggleForm" class="addPropertybutton" type="submit">Update Account</button>
       </div>
         <br>
@@ -74,7 +68,8 @@ export default {
         emailAddress: "",
         phoneNumber: ""
       },
-      showForm: false
+      showForm: false,
+      successMsg: ""
     };
   },
     created() {
@@ -103,10 +98,24 @@ export default {
         lastName : this.user.lastName,
         email : this.user.emailAddress,
         phone : this.user.phoneNumber
-      }
+      };
+      
       UserService.createUser(newUser).then(response => {
-        console.log(response.data)
+        console.log(response.data);
+        UserService.updateRole(newUser).then(response => {
+          console.log(response.data)
+          if (response.status === 200) {
+              this.successMsg = "Your status has been updated!"
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      })
+      .catch(error => {
+        console.log(error);
       });
+      
     }
   }
 

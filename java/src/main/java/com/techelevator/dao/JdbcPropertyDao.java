@@ -68,12 +68,12 @@ public class JdbcPropertyDao implements PropertyDao {
         Property property = new Property();
 
         property.setPropertyId(rowSet.getInt("property_id"));
-        property.setImgSrc(rowSet.getString("imgsrc"));
-        property.setStreetAddress(rowSet.getString("streetaddress"));
+        property.setImgSrc(rowSet.getString("imgSrc"));
+        property.setStreetAddress(rowSet.getString("streetAddress"));
         property.setZipCode(rowSet.getInt("zipcode"));
         property.setState(rowSet.getString("state"));
         property.setUnit(rowSet.getString("unit"));
-        property.setRentAmount(rowSet.getInt("rentamount"));
+        property.setRentAmount(rowSet.getInt("rentAmount"));
         property.setDescription(rowSet.getString("description"));
         property.setLandlordId(rowSet.getInt("landlord_id"));
 

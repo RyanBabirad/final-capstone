@@ -14,5 +14,18 @@ export default {
           // Handle error if role is not recognized
           return Promise.reject(new Error(`Invalid user role: ${role}`));
         }
+      },
+      updateRole(user) {
+        const role = user.role;
+        if (role === 'Landlord') {
+          return axios.put('/role', user);
+        } else if (role === 'Tenant') {
+          return axios.put('/role', user);
+        } else if (role === 'Staff') {
+          return axios.put('/role', user);
+        } else {
+          // Handle error if role is not recognized
+          return Promise.reject(new Error(`Invalid user role: ${role}`));
       }
+    }
 }

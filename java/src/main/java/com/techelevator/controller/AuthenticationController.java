@@ -18,6 +18,8 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.security.Principal;
+
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -58,6 +60,15 @@ public class AuthenticationController {
         } catch (UsernameNotFoundException e) {
             userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole());
         }
+    }
+
+    @RequestMapping(path = "/role", method = RequestMethod.PUT)
+    public void updateUserRole(Principal principal, @RequestBody UserDto userDto) {
+        User body = userDao.findByUsername(principal.getName());
+        int userId = body.getId();
+        String role = "ROLE_" + userDto.getRole().toUpperCase();
+
+        userDao.updateRole(userId, role);
     }
 
 }

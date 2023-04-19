@@ -9,7 +9,7 @@
           <button @click="toggleForm" class="addPropertybutton" type="submit">Add Properties</button>
         </div>
         <div class="addNewProperty" id="add" v-if="showForm">
-          <form @submit.prevent="add">
+          <form v-on:submit.prevent="addProperty">
       
         
             <div class="form-input-group" >
@@ -33,7 +33,7 @@
             <div class="form-input-group">
               <label for="zipcode">Zipcode</label>
                 <div class="control">
-                  <input type="text" id="zipcode" v-model="property.zipcode" required />
+                  <input type="text" id="zipcode" v-model="property.zipCode" required />
                 </div>
             </div>
             <div class="form-input-group">
@@ -48,7 +48,7 @@
             <div class="form-input-group">
               <label for="description"> Description:</label>
               <div class="control">
-                <textarea type="text" id="description" v-model="text" placeholder="Enter something..." rows="3" max-rows="6"></textarea>
+                <textarea type="text" id="description" v-model="property.description" placeholder="Enter something..." rows="3" max-rows="6"></textarea>
               </div>
             </div>
 
@@ -105,6 +105,7 @@
 </template>
 
 <script>
+import PropertyService from '../services/PropertyService';
 import BoardColumn from './BoardColumn.vue';
 
 export default {
@@ -123,7 +124,7 @@ export default {
         imgSrc: [],
         imgName: "",
         streetAddress: "",
-        zipcode: "",
+        zipCode: "",
         state: "",
         unit: "",
         description: "",
@@ -166,6 +167,23 @@ export default {
         console.error("Invalid image file:", file.name);
       }
     }
+  },
+  addProperty() {
+    const newProperty = {
+      imgSrc : this.property.imgSrc,
+      imgName : this.property.imgName,
+      streetAddress : this.property.streetAddress,
+      zipCode : this.property.zipCode,
+      state : this.property.state,
+      unit : this.property.unit,
+      description : this.property.description,
+      text : this.property.text
+    };
+    PropertyService.createProperty(newProperty).then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    })
   },
   computed: {
     pending() {
