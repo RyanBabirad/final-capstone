@@ -18,5 +18,5 @@ public interface UserDao {
 
     void updateRole(int userId, String role);
 
-    String getRoleByUser(int userId);
+    User getRoleByUserId(int userId);
 }

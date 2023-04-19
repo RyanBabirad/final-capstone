@@ -30,6 +30,9 @@ export default {
     },
     assignTenant(tenantId) {
       return axios.put(`/landlord/tenant/${tenantId}`)
+    },
+    getUpdatedRole() {
+      return axios.get('/changeRole')
     }
     
 }

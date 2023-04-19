@@ -3,9 +3,9 @@
     <div class="landlordPage columns">
       <div class="column is-2 " id="firstcolumn">
         
-        <div v-for="property in properties" v-bind:key="property.id">
+        <div class="getPropertyByLandlord" v-for="property in properties" v-bind:key="property.id">
         <!--this need to show properties -->
-          <div>{{property}}</div>
+          <div>{{property.streetAddress}}</div>
         </div>
         <div class="control">
           <button @click="toggleForm" class="addPropertybutton" type="submit">Add Properties</button>
@@ -314,5 +314,7 @@ border:#1A5F7A solid;
    background-color:#1A5F7A;
 border:#1A5F7A solid;
 }
-
+.getPropertyByLandlord {
+  border:solid white 5px;
+}
 </style>
