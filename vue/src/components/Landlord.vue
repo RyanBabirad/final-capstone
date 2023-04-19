@@ -9,7 +9,7 @@
           <button @click="toggleForm" class="addPropertybutton" type="submit">Add Properties</button>
         </div>
         <div class="addNewProperty" id="add" v-if="showForm">
-          <form @submit.prevent="add">
+          <form v-on:submit.prevent="addProperty">
       
         
             <div class="form-input-group" >
@@ -96,6 +96,7 @@
 </template>
 
 <script>
+import PropertyService from '../services/PropertyService';
 import BoardColumn from './BoardColumn.vue';
 
 export default {
@@ -157,6 +158,23 @@ export default {
         console.error("Invalid image file:", file.name);
       }
     }
+  },
+  addProperty() {
+    const newProperty = {
+      imgSrc : this.property.imgSrc,
+      imgName : this.property.imgName,
+      streetAddress : this.property.streetAddress,
+      zipcode : this.property.zipcode,
+      state : this.property.state,
+      unit : this.property.unit,
+      description : this.property.description,
+      text : this.property.text
+    };
+    PropertyService.createProperty(newProperty).then(response => {
+      console.log(response.data);
+    }).catch(error => {
+      console.log(error);
+    })
   },
   computed: {
     pending() {

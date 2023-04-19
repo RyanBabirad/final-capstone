@@ -94,10 +94,21 @@ export default {
         lastName : this.user.lastName,
         email : this.user.emailAddress,
         phone : this.user.phoneNumber
-      }
+      };
+      
       UserService.createUser(newUser).then(response => {
-        console.log(response.data)
+        console.log(response.data);
+        UserService.updateRole(newUser).then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      })
+      .catch(error => {
+        console.log(error);
       });
+      
     }
   }
 
