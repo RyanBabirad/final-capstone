@@ -27,5 +27,9 @@ export default {
           // Handle error if role is not recognized
           return Promise.reject(new Error(`Invalid user role: ${role}`));
       }
+    },
+    assignTenant(tenantId) {
+      return axios.put(`/landlord/tenant/${tenantId}`)
     }
+    
 }

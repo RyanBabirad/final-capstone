@@ -103,6 +103,12 @@ export default {
           console.log(response.data)
           if (response.status === 200) {
               this.successMsg = "Your status has been updated!"
+              this.user.role = "",
+              this.user.firstName = "",
+              this.user.lastName = "",
+              this.user.emailAddress = "",
+              this.user.phoneNumber = "",
+              this.showForm = false;
           }
         })
         .catch(error => {

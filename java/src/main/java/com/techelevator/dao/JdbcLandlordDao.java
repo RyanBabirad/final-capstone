@@ -7,6 +7,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class JdbcLandlordDao implements LandlordDao {
 
@@ -91,6 +94,7 @@ public class JdbcLandlordDao implements LandlordDao {
                 "where tenant_id = ?;";
         jdbcTemplate.update(sql, propertyId, landlordId, tenantId);
     }
+
 
 
 

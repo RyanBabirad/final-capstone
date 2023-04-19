@@ -7,6 +7,9 @@ export default {
     },
     createProperty(property) {
         return axios.post('/landlord/properties', property)
-    }
+    },
+    getPropertiesByLandlordId() {
+        return axios.get('/landlord')
+      }
 
 }

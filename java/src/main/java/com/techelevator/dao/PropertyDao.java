@@ -15,6 +15,7 @@ public interface PropertyDao {
 
     Property updateProperty(Property property);
 
+    List<Property> getPropertiesByLandlord(int landlordId);
 
 
 }

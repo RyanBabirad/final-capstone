@@ -2,9 +2,11 @@
   <section >Hello, *insert user*!>
     <div class="landlordPage columns">
       <div class="column is-2 " id="firstcolumn">
-
+        
+        <div v-for="property in properties" v-bind:key="property.id">
         <!--this need to show properties -->
-
+          <div>{{property}}</div>
+        </div>
         <div class="control">
           <button @click="toggleForm" class="addPropertybutton" type="submit">Add Properties</button>
         </div>
@@ -122,7 +124,8 @@ export default {
         text:""
       },
       showForm: false,
-      showForm2: false
+      showForm2: false,
+      properties: []
     };
   },
   methods: {
@@ -160,35 +163,45 @@ export default {
     }
   },
   addProperty() {
-    const newProperty = {
-      imgSrc : this.property.imgSrc,
-      imgName : this.property.imgName,
-      streetAddress : this.property.streetAddress,
-      zipCode : this.property.zipCode,
-      state : this.property.state,
-      unit : this.property.unit,
-      description : this.property.description,
-      text : this.property.text
-    };
-    PropertyService.createProperty(newProperty).then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      console.log(error);
-    })
+      const newProperty = {
+        imgSrc : this.property.imgSrc,
+        imgName : this.property.imgName,
+        streetAddress : this.property.streetAddress,
+        zipCode : this.property.zipCode,
+        state : this.property.state,
+        unit : this.property.unit,
+        description : this.property.description,
+        text : this.property.text
+      };
+      PropertyService.createProperty(newProperty).then(response => {
+        console.log(response.data);
+      }).catch(error => {
+        console.log(error);
+      })
+    },
+    assignTenant() {
+      
+    },
+    toggleForm() {
+      this.showForm = !this.showForm;
+    },
+    toggleForm2() {
+      this.showForm2 = !this.showForm2;
+    },
   },
   computed: {
     pending() {
       return this.$store.state.boardCards.filter(request => request.status === 0);
     }
   },
-  toggleForm() {
-    this.showForm = !this.showForm;
-  },
-  toggleForm2() {
-    this.showForm2 = !this.showForm2;
-  },
+  created() {
+    PropertyService.getPropertiesByLandlordId().then((response) => {
+      this.properties = response.data;
+      this.isLoading = false;
+    })
+  }
 
-  
+};
   //  onForm1Submit() {
   //     // handle form 1 submission here
   //     console.log('Form 1 submitted with data:', this.form1);
@@ -197,9 +210,7 @@ export default {
   //     // handle form 2 submission here
   //     console.log('Form 2 submitted with data:', this.form2);
   //   }
-}
     /*component for info box and maintenance request*/ 
-};
 </script>
 
 <style scoped>
