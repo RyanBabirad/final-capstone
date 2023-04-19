@@ -98,17 +98,22 @@ label {
   padding-bottom: 50px;*/
 
   /*transform-origin: center;*/
+   display:flex;
+  justify-content: center;
+  align-items: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: fixed;
-  border-left: solid 10px #002b5b;
+  border: solid 5px #1A5F7A;
   background-color: #159895;
   border-radius: 40px;
   width: 20%;
   height: 30%;
   color: white;
   padding-left:20px;
+  box-shadow: #002B5B 5px 5px 10px 2px;
+  padding:10px;
 }
 .sign-in {
   text-align: center;
