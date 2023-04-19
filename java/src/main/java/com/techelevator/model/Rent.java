@@ -10,20 +10,20 @@ public class Rent {
     private String dueDate;
     private String paidDate;
     private int paymentStatus;  // 0 for due, 1 for paid, 2 for overdue
-    private BigDecimal amountPaid;
-    private BigDecimal amountDue;
+    private float amountPaid;
+    private float amountDue;
     private int propertyId;
     private int tenantId;
     private int landlordId;
 
 
-    // Constructors ....................................................................................................
+    // constructors ....................................................................................................
 
     public Rent() {
     }
 
-    public Rent(int rentId, String dueDate, String paidDate, int paymentStatus, BigDecimal amountPaid,
-                BigDecimal amountDue, int propertyId, int tenantId, int landlordId) {
+    public Rent(int rentId, String dueDate, String paidDate, int paymentStatus, float amountPaid,
+                float amountDue, int propertyId, int tenantId, int landlordId) {
         this.rentId = rentId;
         this.dueDate = dueDate;
         this.paidDate = paidDate;
@@ -70,19 +70,19 @@ public class Rent {
         this.paymentStatus = paymentStatus;
     }
 
-    public BigDecimal getAmountPaid() {
+    public float getAmountPaid() {
         return amountPaid;
     }
 
-    public void setAmountPaid(BigDecimal amountPaid) {
+    public void setAmountPaid(float amountPaid) {
         this.amountPaid = amountPaid;
     }
 
-    public BigDecimal getAmountDue() {
+    public float getAmountDue() {
         return amountDue;
     }
 
-    public void setAmountDue(BigDecimal amountDue) {
+    public void setAmountDue(float amountDue) {
         this.amountDue = amountDue;
     }
 

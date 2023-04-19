@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.math.BigDecimal;
+
 public class Property {
 
     private int propertyId;
@@ -8,31 +10,25 @@ public class Property {
     private int zipCode;
     private String state;
     private String unit;
+    private int rentAmount;
     private String description;
     private int landlordId;
 
 
+    public Property() {
+    }
 
-    public Property() { };
-
-    public Property(int propertyId, String imgSrc, String streetAddress, int zipCode, String state, String unit, String description, int landlordId) {
+    public Property(int propertyId, String imgSrc, String streetAddress, int zipCode, String state, String unit,
+                    int rentAmount, String description, int landlordId) {
         this.propertyId = propertyId;
         this.imgSrc = imgSrc;
         this.streetAddress = streetAddress;
         this.zipCode = zipCode;
         this.state = state;
         this.unit = unit;
+        this.rentAmount = rentAmount;
         this.description = description;
-        this. landlordId = landlordId;
-
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+        this.landlordId = landlordId;
     }
 
     public int getPropertyId() {
@@ -81,6 +77,22 @@ public class Property {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public int getRentAmount() {
+        return rentAmount;
+    }
+
+    public void setRentAmount(int rentAmount) {
+        this.rentAmount = rentAmount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getLandlordId() {
