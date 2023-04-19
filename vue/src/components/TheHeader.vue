@@ -26,13 +26,14 @@ export default {
     userPage() {
     
       const role = this.$store.state.user;
+      const initial = this.$store.state.user.authorities[0].name;
       if(role === 'ROLE_LANLORD') {
         return { name: 'landlord' };
       } else if(role === 'ROLE_STAFF') {
         return { name: 'staff' };
       } else if(role === 'ROLE_TENANT') {
         return { name: 'tenant' };
-      } else if(role === 'ROLE_USER') {
+      } else if(initial === 'ROLE_USER') {
         return { name: 'user'};
       } else {
         return { name: 'home' };
