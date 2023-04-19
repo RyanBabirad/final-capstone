@@ -64,12 +64,21 @@ export default {
 
 <style scoped>
     .rentDetails{
-        border-left:5px solid #81B214;
+        border-left:5px solid #002B5B;
         margin-left: 5%;
         margin-right: 5%;
-        background-color:#EEEEEE;
+        background-color:#159895;
         padding:5px;
         border-radius:10px;
+        color:white;
     }
+    .makePayment:hover{
+         cursor:pointer;
+        background-color:rgb(165, 162, 162);
+        color: white;
+        border:solid rgb(165, 162, 162);
+        border-radius:2px; 
+    }
+
 
 </style>

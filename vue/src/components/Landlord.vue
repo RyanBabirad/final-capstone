@@ -51,6 +51,15 @@
                 <textarea type="text" id="description" v-model="text" placeholder="Enter something..." rows="3" max-rows="6"></textarea>
               </div>
             </div>
+
+             <div class="form-input-group" >
+              <label for="rent">Set Rent $</label>
+              <div class="control">
+                <input type=text id="rent" v-model="property.rent" required autofocus />
+              </div>
+              </div>
+              <br>
+
             <button class="addProperty" type="submit">Add</button>
           </form>
         </div>
@@ -82,7 +91,7 @@
                 </div>
               </div>
               <br>
-              <button class="addTenant" type="submit">Add Tenant</button>
+              <button class="addTenant-button" type="submit">Add Tenant</button>
             </form>
           </div>
       </div>
@@ -189,11 +198,12 @@ export default {
 .landlordPage{
   /*temporary to see the form */
   padding-top: 95px;
-
+  
 }
 .addNewProperty{
   display: flex;
   justify-content: center;
+  
   
 }
 #imgSrc {
@@ -203,24 +213,59 @@ export default {
 }
 
 #firstcolumn{
+  margin-top:10%;
 margin-left:25%;
- border:solid white;
+background-color:#159895;
+ border-left:solid 10px #002B5B;
+  border-radius:40px;
   padding:50px;
+  color:white;
 }
 .maintenance{
   display: flex;
   justify-content: center;
 }
 #secondcolumn{
+  margin-top:10%;
  margin-right:25%;
- border:solid white;
+ background-color:#159895;
+ border-left:solid 10px #002B5B;
+ border-radius:40px;
   padding:50px;
+  color:white;
 }
 .columns{
    column-gap:16%;
 }
 #description{
-  border-color:white;
+  border-color:grey;
+}
+.addPropertybutton{
+  background-color:#57C5B6;
+  border:solid #57C5B6;
+  border-radius:15px;
+  color:white;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+}
+.addTenantButton{
+   background-color:#57C5B6;
+  border:solid #57C5B6;
+  border-radius:15px;
+  color:white;
+}
+.addTenant-button{
+  background-color:#57C5B6;
+  border:solid #57C5B6;
+  border-radius:15px;
+  color:white;
+}
+.addProperty{
+   background-color:#57C5B6;
+  border:solid #57C5B6;
+  border-radius:15px;
+  color:white;
 }
 
 

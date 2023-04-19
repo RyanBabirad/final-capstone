@@ -91,11 +91,7 @@ export default {
 </script>
 
 <style scoped>
-body{
-  
-  background-color: #569DAA;
-  
-}
+
 
 .form-input-group {
   margin-bottom: 1rem;
@@ -105,17 +101,25 @@ label {
 
 }
 #register{
+
+  top: 30%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  position: fixed;
   display:flex;
   justify-content: center;
   align-items: center;
-  border:solid #87CBB9 ;
+  border-left:solid 10px #002B5B;
   margin-top:10%;
   padding-top:30px;
   padding-bottom: 50px;
+  padding-left:50px;
+  padding-right:50px;
   margin-left:40%;
   margin-right:40%;
-  background-color: #87CBB9;
+  background-color: #159895;
   border-radius:25px;
+  
 
 }
 .create-account{
