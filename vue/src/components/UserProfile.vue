@@ -1,11 +1,14 @@
 <template>
-  <section class="userProfileContainer">
+  <section class="userProfileContainer" :style="{ height: showForm ? 'auto' : '30%' } ">
     <div class="status-message success" v-show="successMsg !== ''">{{successMsg}}</div>
+    <div class="status-update-container">
       <h2>Current Status: {{ user.role }}</h2>
-      <p>Need to update your account to Tenant/Landlord/Staff?</p>
-      <button @click="toggleForm" class="addPropertybutton" type="submit">Update Account</button>
-      
-        <br>
+      <br>
+      <p>Update your account status</p>
+      <br>
+      <button @click="toggleForm" class="updateAccountButton" type="submit">Update Account</button>
+    </div>
+    <br>
       <div class="updateAcount" v-if="showForm">
         <form v-on:submit.prevent="submitUser">
 
@@ -47,9 +50,10 @@
           <input class="phonenumber-box" type="phonenumber" id="phonenumber" v-model="user.phoneNumber" required />
           </div>
         </div>
+        <br>
         <div class="control"
 >        <button class="UpdateUser btn-submit" type="submit">Update</button>
-</div>
+        </div>
         </form>
       </div>  
   </section>
@@ -132,22 +136,26 @@ export default {
   .updateAcount {
     display: flex;
     justify-content: center;
+    
   }
 
   .userProfileContainer{
-     top: 20%;
+    height:30%;
+    transition: height 0.5s ease-in-out;
+  top: 20%;
   left: 10%;
   transform: translate(-50%, -50%);
   position: fixed;
   display:flex;
+  flex-direction:column;
   justify-content: center;
   align-items: center;
-  border-left:solid 5px #002B5B;
+  border:solid 5px #1A5F7A;
   margin-top:10%;
   padding-left:40px;
+  padding-top:10px;
+  padding-bottom:10px;
   padding-right:40px;
- 
-  
   margin-left:40%;
   margin-right:40%;
   background-color: #159895;
@@ -155,6 +163,27 @@ export default {
   color:white;
    width: 25%;
   height: 30%;
+  box-shadow: #002B5B 5px 5px 10px 2px;
   }
+  .status-update-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .updateAccountButton:hover{
+     cursor: pointer;
+  background-color: rgb(165, 162, 162);
+  color: white;
+  border: solid rgb(165, 162, 162);
+  border-radius: 2px;
+  }
+  .btn-submit:hover{
+ cursor: pointer;
+  background-color: rgb(165, 162, 162);
+  color: white;
+  border: solid rgb(165, 162, 162);
+  border-radius: 2px;
+  }
+  
 
 </style>

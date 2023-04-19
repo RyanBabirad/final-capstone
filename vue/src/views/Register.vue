@@ -109,17 +109,18 @@ label {
   display:flex;
   justify-content: center;
   align-items: center;
-  border-left:solid 10px #002B5B;
+  border:solid 5px #1A5F7A;
   margin-top:10%;
   padding-top:30px;
   padding-bottom: 50px;
-  padding-left:50px;
-  padding-right:50px;
+  padding-left:100px;
+  padding-right:100px;
   margin-left:40%;
   margin-right:40%;
   background-color: #159895;
   border-radius:25px;
-  
+  color:white;
+  box-shadow: #002B5B 5px 5px 10px 2px;
 
 }
 .create-account{

@@ -43,10 +43,10 @@ export default {
 
 <style scoped>
     .maintenanceRequests{
-        border-left:5px solid #002B5B;
+        border:5px solid #1A5F7A;
         margin-top: 5%;
         margin-left: 10.5%;
-       
+        box-shadow: #002B5B 5px 5px 10px 2px;
         background-color:#159895;
         padding:5px;
         border-radius:10px;

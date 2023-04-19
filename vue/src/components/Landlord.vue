@@ -245,10 +245,11 @@ export default {
   margin-top:10%;
 margin-left:25%;
 background-color:#159895;
- border-left:solid 10px #002B5B;
+ border:solid 5px #1A5F7A;
   border-radius:40px;
   padding:50px;
   color:white;
+   box-shadow: #002B5B 5px 5px 10px 2px;
 }
 .maintenance{
   display: flex;
@@ -258,10 +259,11 @@ background-color:#159895;
   margin-top:10%;
  margin-right:25%;
  background-color:#159895;
- border-left:solid 10px #002B5B;
+ border:solid 5px #1A5F7A;
  border-radius:40px;
   padding:50px;
   color:white;
+   box-shadow: #002B5B 5px 5px 10px 2px;
 }
 .columns{
    column-gap:16%;
@@ -296,6 +298,21 @@ background-color:#159895;
   border-radius:15px;
   color:white;
 }
-
+.addPropertybutton:hover{
+background-color:#1A5F7A;
+border:#1A5F7A solid;
+}
+.addTenantButton:hover{
+  background-color:#1A5F7A;
+border:#1A5F7A solid;
+}
+.addProperty:hover{
+  background-color:#1A5F7A;
+border:#1A5F7A solid;
+}
+.addTenant-button:hover{
+   background-color:#1A5F7A;
+border:#1A5F7A solid;
+}
 
 </style>
