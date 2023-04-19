@@ -43,13 +43,14 @@ export default {
 
 <style scoped>
     .maintenanceRequests{
-        border-left:5px solid #81B214;
+        border-left:5px solid #002B5B;
         margin-top: 5%;
         margin-left: 10.5%;
-        margin-bottom: 60%;
-        background-color:#EEEEEE;
+       
+        background-color:#159895;
         padding:5px;
         border-radius:10px;
+        color:white;
     }
     .newRequest-button:hover{
         cursor:pointer;
