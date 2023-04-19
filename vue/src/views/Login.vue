@@ -1,8 +1,8 @@
 <template>
-  <body class="main">
+  <div class="main">
     <div class="login-page" id="login">
       <form @submit.prevent="login">
-        <h1 class="sign-in" >Please Sign In</h1>
+        <h1 class="sign-in">Please Sign In</h1>
         <div role="alert" v-if="invalidCredentials">
           Invalid username and password!
         </div>
@@ -43,7 +43,7 @@
         </p>
       </form>
     </div>
-  </body>
+  </div>
 </template>
 
 <script>
@@ -91,22 +91,24 @@ export default {
 label {
   margin-right: 0.5rem;
 }
-body {
-  display: flex;
+#login {
+  /*display: flex;
   justify-content: center;
   align-items: center;
-  border: solid white;
-  margin-top: 10%;
-  padding-top: 40px;
-  margin-left: 40%;
-  padding-bottom: 50px;
-  /*padding-left: (100vh/2);*/
-  border:solid #159895;
+  padding-bottom: 50px;*/
+
+  /*transform-origin: center;*/
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  border-left: solid 10px #002b5b;
   background-color: #159895;
   border-radius: 40px;
   width: 20%;
   height: 30%;
-  color:white;
+  color: white;
+  padding-left:20px;
 }
 .sign-in {
   text-align: center;
@@ -127,13 +129,13 @@ body {
 }
 .links:hover {
   cursor: pointer;
-  color: #002B5B;
+  color: #002b5b;
 }
 
 #main {
   display: "flex";
   justify-content: "center";
   align-content: center;
-  
+  background-color: #002b5b;
 }
 </style>

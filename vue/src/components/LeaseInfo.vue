@@ -25,7 +25,7 @@ export default {
 
     PropertyDetails<style scoped>
   .leaseInfo{
-    border: solid #002B5B;
+    border-left: 5px solid #159895;
         margin-left: 5%;
         margin-right: 5%;
         margin-bottom: 30px;

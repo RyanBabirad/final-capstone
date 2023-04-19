@@ -43,7 +43,7 @@ export default {
 
 <style scoped>
     .maintenanceRequests{
-        border:5px solid #159895;
+        border-left:5px solid #002B5B;
         margin-top: 5%;
         margin-left: 10.5%;
        

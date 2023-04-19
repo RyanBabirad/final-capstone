@@ -23,7 +23,7 @@ export default {
 
 <style scoped>
     .contactInfo{
-        border:5px solid #159895;
+        border-left:5px solid #002B5B;
         margin-top: 5%;
         margin-right: 10.5%;
        

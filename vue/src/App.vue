@@ -40,11 +40,13 @@ export default {
   background-size: cover;
   */
   background-color:#1A5F7A;
+  padding-bottom: 100%;
 }
 
 #josie-testing {
   height: 100vh;
-  background-color:#1A5F7A
+  background-color:#1A5F7A;
+  
 }
 
 </style>

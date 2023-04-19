@@ -216,7 +216,7 @@ export default {
   margin-top:10%;
 margin-left:25%;
 background-color:#159895;
- 
+ border-left:solid 10px #002B5B;
   border-radius:40px;
   padding:50px;
   color:white;
@@ -229,7 +229,7 @@ background-color:#159895;
   margin-top:10%;
  margin-right:25%;
  background-color:#159895;
- 
+ border-left:solid 10px #002B5B;
  border-radius:40px;
   padding:50px;
   color:white;

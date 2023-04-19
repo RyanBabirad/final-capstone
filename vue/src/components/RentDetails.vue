@@ -64,7 +64,7 @@ export default {
 
 <style scoped>
     .rentDetails{
-        border:5px solid #159895;
+        border-left:5px solid #002B5B;
         margin-left: 5%;
         margin-right: 5%;
         background-color:#159895;

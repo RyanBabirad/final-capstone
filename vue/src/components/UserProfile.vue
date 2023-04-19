@@ -1,21 +1,21 @@
 <template>
   <section class="userProfileContainer">
-     
-      <h2>Current Status: {{ user.role }}</h2>
-       
+     <div class="control">
+      <div>Current Status: User {{ user.role }}</div>
+      </div>
+       <br>
       <div class="control">
-      <p>Need to update your account to Tenant/Landlord/Staff?</p>
+      <div>Update your account to Tenant/Landlord/Staff</div>
       </div>
       <br>
-      
-      <button @click="toggleForm" class="addPropertybutton" type="submit">Update Account</button>
       <div class="control">
+      <button @click="toggleForm" class="addPropertybutton" type="submit">Update Account</button>
       </div>
-
+        <br>
       <div class="updateAcount" v-if="showForm">
         <form v-on:submit.prevent="submitUser">
 
-          <div class="form-in-group">
+          <div class="form-input-group">
             <label for="role">Select Role</label>
             <div class="control">
             <select id="selectRole" v-model="user.role" >
@@ -25,8 +25,8 @@
             </select>
             </div>
         </div>
-
-          <div class="form-input-group" id="info">
+          
+          <div class="form-in-group" id="info">
             <label for="firstname" >First Name</label>
             <div class="control">
             <input class="first-name-box" type="firstname" id="firstname" v-model="user.firstName" required />
@@ -53,7 +53,9 @@
           <input class="phonenumber-box" type="phonenumber" id="phonenumber" v-model="user.phoneNumber" required />
           </div>
         </div>
-        <button class="UpdateUser btn-submit" type="submit">Update</button>
+        <div class="control"
+>        <button class="UpdateUser btn-submit" type="submit">Update</button>
+</div>
         </form>
       </div>  
   </section>
@@ -112,26 +114,32 @@ export default {
 </script>
 
 <style scoped>
-  .userProfileContainer {
-    padding-top: 50px;
-  }
   .updateAcount {
     display: flex;
     justify-content: center;
   }
 
   .userProfileContainer{
-     display:flex;
+     top: 20%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  display:flex;
   justify-content: center;
   align-items: center;
-  border:solid #87CBB9 ;
+  border-left:solid 5px #002B5B;
   margin-top:10%;
-  padding-top:30px;
-  padding-bottom: 50px;
+  padding-left:40px;
+  padding-right:40px;
+ 
+  
   margin-left:40%;
   margin-right:40%;
-  background-color: #87CBB9;
+  background-color: #159895;
   border-radius:25px;
+  color:white;
+   width: 25%;
+  height: 30%;
   }
 
 </style>
