@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @RestController
@@ -39,6 +40,13 @@ public class LandlordController {
         landlordDao.createLandlord(landlord.getLandLordId(), landlord);
 
         return landlord;
+    }
+
+    @RequestMapping(path = "/landlord", method = RequestMethod.GET)
+    public List<Property> listPropertiesByLandlord(Principal principal) {
+        User user = userDao.findByUsername(principal.getName());
+        int landlordId = user.getId();
+        return propertyDao.getPropertiesByLandlord(landlordId);
     }
 
 

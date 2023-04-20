@@ -4,6 +4,8 @@ import com.techelevator.model.Landlord;
 import com.techelevator.model.Property;
 import com.techelevator.model.Tenant;
 
+import java.util.List;
+
 public interface LandlordDao {
 
     //boolean createLandlord(int userId, String firstName, String lastName, String email, String phone);
@@ -22,7 +24,6 @@ public interface LandlordDao {
     int getPropertyIdByLandlord(String email);
 
     void assignPropertyToTenant(int tenantId, int landlordId, int propertyId);
-
 
 
     }

@@ -25,7 +25,8 @@ export default {
   computed: {
     userPage() {
     
-      const role = this.$store.state.user.authorities[0].name;
+    // const role = this.$store.state.user;
+     const role = this.$store.state.user.authorities[0].name;
       if(role === 'ROLE_LANDLORD') {
         return { name: 'landlord' };
       } else if(role === 'ROLE_STAFF') {

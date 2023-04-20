@@ -71,5 +71,11 @@ public class AuthenticationController {
         userDao.updateRole(userId, role);
     }
 
+    @RequestMapping(path = "/changeRole", method = RequestMethod.GET)
+    public User getUserRole(Principal principal) {
+        User user = userDao.findByUsername(principal.getName());
+        return user;
+    }
+
 }
 

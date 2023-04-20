@@ -46,6 +46,20 @@ public class JdbcPropertyDao implements PropertyDao {
     }
 
     @Override
+    public List<Property> getPropertiesByLandlord(int landlordId) {
+        List<Property> properties = new ArrayList<>();
+        String sql = "SELECT * from property where landlord_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, landlordId);
+        while (results.next()) {
+            Property property = mapRowToLandlord(results);
+            properties.add(property);
+        }
+
+        return properties;
+    }
+
+    @Override
     public Property getPropertyById(int propertyId) {
 
         String sql = "SELECT * from property where property_id = ?;";
