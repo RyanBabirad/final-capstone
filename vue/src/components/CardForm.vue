@@ -72,7 +72,7 @@ export default {
     handleErrorResponse(error, verb) {
       if (error.response) {
         this.errorMsg =
-          "Error " + verb + " request. Response received was '" +
+          "Your request has been sent!"
           error.response.statusText +
           "'.";
       } else if (error.request) {
