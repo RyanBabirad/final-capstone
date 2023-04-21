@@ -33,6 +33,12 @@ export default {
     },
     getUpdatedRole() {
       return axios.get('/changeRole')
+    },
+    getLandlordByTenant(landlord) {
+      return axios.get('/tenant', landlord)
+    },
+    getPropertyByTenant(property) {
+      return axios.get('/tenant-property', property)
     }
     
 }

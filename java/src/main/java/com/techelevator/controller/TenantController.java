@@ -65,5 +65,22 @@ public class TenantController {
         return ResponseEntity.ok().build();
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/tenant", method = RequestMethod.GET)
+    public Landlord getLandlordByTenantId(Principal principal) {
+        User tenant = userDao.findByUsername(principal.getName());
+        int tenantId = tenant.getId();
+
+        return tenantDao.getLandlordByTenantId(tenantId);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/tenant-property", method = RequestMethod.GET)
+    public Property getPropertyByLandlordId(Principal principal) {
+        User tenant = userDao.findByUsername(principal.getName());
+        int tenantId = tenant.getId();
+
+        return tenantDao.getPropertyByTenantId(tenantId);
+    }
 
 }

@@ -1,5 +1,7 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Landlord;
+import com.techelevator.model.Property;
 import com.techelevator.model.Tenant;
 import com.techelevator.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -44,6 +46,32 @@ public class JdbcTenantDao implements TenantDao {
         return null;
     }
 
+    @Override
+    public Landlord getLandlordByTenantId(int tenantId) {
+
+        String sql = "select landlord.first_name, landlord.last_name, landlord.email, landlord.phone from landlord\n" +
+                "JOIN tenant on landlord.landlord_id = tenant.landlord_id\n" +
+                "where tenant_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, tenantId);
+        if (results.next()) {
+            return mapRowToLandlord(results);
+        }
+        return null;
+    }
+
+    @Override
+    public Property getPropertyByTenantId(int tenantId) {
+
+        String sql = "select streetaddress, zipcode, unit, state, rentamount, tenant_id from property\n" +
+                "JOIN tenant on property.property_id = tenant.property_id\n" +
+                "where tenant_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, tenantId);
+        if (results.next()) {
+            return mapRowToProperty(results);
+        }
+        return null;
+    }
 
 
     private Tenant mapRowToTenant(SqlRowSet rs) {
@@ -57,6 +85,33 @@ public class JdbcTenantDao implements TenantDao {
         return tenant;
     }
 
+    private Landlord mapRowToLandlord(SqlRowSet rowSet) {
+        Landlord landlord = new Landlord();
+
+    //    landlord.setLandLordId(rowSet.getInt("landlord_id"));
+        landlord.setFirstName(rowSet.getString("first_name"));
+        landlord.setLastName(rowSet.getString("last_name"));
+        landlord.setEmail(rowSet.getString("email"));
+        landlord.setPhone(rowSet.getString("phone"));
+
+        return landlord;
+    }
+
+    private Property mapRowToProperty(SqlRowSet rowSet) {
+        Property property = new Property();
+
+     //   property.setPropertyId(rowSet.getInt("property_id"));
+     //   property.setImgSrc(rowSet.getString("imgSrc"));
+        property.setStreetAddress(rowSet.getString("streetAddress"));
+        property.setZipCode(rowSet.getInt("zipcode"));
+        property.setState(rowSet.getString("state"));
+        property.setUnit(rowSet.getString("unit"));
+        property.setRentAmount(rowSet.getInt("rentAmount"));
+     //   property.setDescription(rowSet.getString("description"));
+     //   property.setLandlordId(rowSet.getInt("landlord_id"));
+
+        return property;
+    }
 
 
 

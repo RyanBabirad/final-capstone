@@ -2,23 +2,48 @@
   <section class="leaseInfo">
       <h1>Lease Information:</h1>
       <div class="propertyAddress">
-        <p>*Show property info from store, probably using a prop or something idk*</p>
         <br>
-        <p>Street Address:</p>
-        <p>Unit:</p>
-        <p>State:</p>
-        <p>Zipcode:</p>
+        <p>Street Address: {{ property.streetAddress }} </p>
+        <p>Unit: {{ property.unit }} </p>
+        <p>State: {{ property.state }} </p>
+        <p>Zipcode: {{ property.zipCode }} </p>
         
       </div>
   </section>
 </template>
 
 <script>
-
+import UserService from '../services/UserService';
 
 export default {
   name: "leaseInfo",
-
+  data() {
+    return {
+      landlord: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+      },
+      property: {
+        streetAddres: "",
+        zipCode: "",
+        unit: "",
+        state: "",
+        rentAmount: ""
+      },  
+    }
+  },
+  methods: {
+  },
+  created() {
+    UserService.getLandlordByTenant().then(response => {
+      this.landlord = response.data;
+    })
+    UserService.getPropertyByTenant().then(response => {
+      this.property = response.data;
+    })
+  }
 }
 </script>
 

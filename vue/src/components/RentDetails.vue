@@ -1,6 +1,6 @@
 <template>
   <section class="rentDetails">
-      <h1>Your next rent is due *insert date*</h1>
+      <h1>Your next rent is due May 1, 2023 </h1>
       <br>
       <button @click="toggleForm" class="makePayment" type="submit">Make a Payment</button>
          <div class="money" id="add" v-if="showForm">
