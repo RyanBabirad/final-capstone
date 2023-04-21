@@ -103,7 +103,7 @@ export default {
         phoneNumber: "",
       },
       showForm: false,
-      successMsg: "",
+      successMsg: "",    
     };
   },
   created() {
@@ -140,14 +140,17 @@ export default {
       UserService.getUpdatedRole().then((response) => {
         console.log(response.data);
         this.$store.commit("SET_USER_ROLE", response.data.authorities[0].name);
+      if (response === 200) {
+        this.successMsg = "Your status has been updated!"
+      this.user.role = "",
+      this.user.firstName = "",
+      this.user.lastName = "",
+      this.user.emailAddress = "",
+      this.user.phoneNumber = "",
+      this.showForm = false;
+
+      }  
       });
-      //this.successMsg = "Your status has been updated!"
-      //this.user.role = "",
-      //this.user.firstName = "",
-      //this.user.lastName = "",
-      //this.user.emailAddress = "",
-      //this.user.phoneNumber = "",
-      //this.showForm = false;
     },
   },
 };

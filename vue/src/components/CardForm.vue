@@ -48,7 +48,7 @@ export default {
       if (this.requestID === 0) {
         BoardService.addCard(newRequest).then(response => {
             if (response.status === 201) {
-              this.$router.push({ name: 'staff' });
+              this.$router.push({ name: 'tenant' });
             }
           })
           .catch(error => {

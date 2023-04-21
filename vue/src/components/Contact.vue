@@ -3,9 +3,9 @@
     <h1>Contact info</h1>
     <br>
     <div class="landlordInfo">
-        <h3>My Landlord: Elijah is the best</h3>
-        <p>Phone Number:</p>
-        <p>Email:</p>
+        <h3>My Landlord: {{ landlord.firstName }}. {{ landlord.lastName }} </h3>
+        <p>Phone Number: {{ landlord.phone }} </p>
+        <p>Email: {{ landlord.email }} </p>
     </div>
     <br>
     <div class="emergencyMaintenance">
@@ -16,7 +16,23 @@
 </template>
 
 <script>
+import UserService from '../services/UserService'
 export default {
+  data() {
+    return {
+      landlord: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+      }
+    }
+  },
+  created() {
+  UserService.getLandlordByTenant().then(response => {
+      this.landlord = response.data;
+    });
+}
 
 }
 </script>
